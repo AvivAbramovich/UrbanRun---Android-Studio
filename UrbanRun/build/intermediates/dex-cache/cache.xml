@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-7501d4aae74c7378236926d13fa992785b74519e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-768f30d81ae0e7307b8be79797fa6559a9ecb9f5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-5592c65ea9939f487205c8cf5f74b361fba11776.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-56b656d8a5d402b1f71e610a4f0af96908ad7e44.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-6ac40741862de04d6942697a7888233382f5b174.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-c8b99dddb5fb35deab9f593d3df7700ca74851aa.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-a71953e898d63f7dbf5a4aa3a844999169df9b11.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-2c5ae2e7c336cddbc495c49fe55b226fd7d81272.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-0f1b864bfbbf90197af5c979652a7e05165e9f33.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-2f40dea9bcd7dde32910695373243564d90cd353.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-ced718712f39b1e47097cfffce8bf2b6f38e8bbb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-4abb41415390ec1454cc87696bae46e78e567fa5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-5de20a08d89bed6250e51507ed52885ba2ec239a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-8eb196ffbf876a34d0594ac7903e57d27037fe98.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-110844029124f1f6d9d3ba21922ace64cd4395ed.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-180783f208bc56e1212100f4a8f657d5f80c9c41.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-60bb6fc959bc868ebeddf9ea2784f9a4ab8cb00f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-392b283ba9c237da7448764def82dcbe5eb07690.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-f625afd96058f6eca645c085f03e27951187c9ab.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-19f63b0d8170ea91f917d6536b74760984e54944.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-a24c8313b913fada93103e30716099d4d757756d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-0b6ff2bf0be7155e055ebb549b365c5c33b6416c.jar" />
+    </item>
+
+</items>

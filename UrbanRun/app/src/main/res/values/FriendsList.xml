@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="friendsList">
+        <item name="Aviv">Aviv Abramovich</item>
+        <item name="Oren">Oren Tvila</item>
+        <item name="Omri">Omri Cohen</item>
+        <item name="Asaf">Asaf Slilat</item>
+        <item name="Yuval">Yuval Brave</item>
+        <item name="Rotem">Rotem Klorin</item>
+    </string-array>
+</resources>
