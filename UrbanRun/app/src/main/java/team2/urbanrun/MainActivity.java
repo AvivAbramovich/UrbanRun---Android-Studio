@@ -9,6 +9,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -56,6 +57,7 @@ public class MainActivity extends Activity {
 	TextView tv;
 	
 	String oppName;
+    Bitmap myIcon;
 	Bitmap oppImage;
 	
 	@Override
@@ -85,6 +87,8 @@ public class MainActivity extends Activity {
 
 		oppName = getIntent().getExtras().getString("oppName");
 		oppImage= (Bitmap)getIntent().getExtras().getParcelable("oppImage");
+        myIcon = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.aviv),50,50,false);
+        usersLoc.setIcon(BitmapDescriptorFactory.fromBitmap(myIcon));
 
 		//oppName = "Oren";
         //oppImage = BitmapFactory.decodeResource(getResources(),R.drawable.oren);
@@ -194,6 +198,7 @@ public class MainActivity extends Activity {
 				intent.putExtra("oppName", oppName);			//from the former activity intent
 				intent.putExtra("oppImage", (android.os.Parcelable) oppImage); 	//from the former activity intent
 				startActivity(intent);
+                finish();
 			}
 		});
 	}

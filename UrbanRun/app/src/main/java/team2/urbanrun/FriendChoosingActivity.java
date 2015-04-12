@@ -50,29 +50,31 @@ public class FriendChoosingActivity extends ListActivity {
 
            tv.setText(items[position]);
 
+
+           //just for now
            if(items[position].equals("Aviv Abramovich"))
            {
-                iv.setImageResource(R.drawable.aviv_m);
+               iv.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.aviv));
            }
            if(items[position].equals("Asaf Slilat"))
            {
-               iv.setImageResource(R.drawable.asaf_m);
+               iv.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.asaf));
            }
            if(items[position].equals("Oren Tvila"))
            {
-               iv.setImageResource(R.drawable.oren_m);
+               iv.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.oren));
            }
            if(items[position].equals("Omri Cohen"))
            {
-               iv.setImageResource(R.drawable.omri_m);
+               iv.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.omri));
            }
            if(items[position].equals("Rotem Klorin"))
            {
-               iv.setImageResource(R.drawable.rotem_m);
+               iv.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.rotem));
            }
            if(items[position].equals("Yuval Brave"))
            {
-               iv.setImageResource(R.drawable.yuval_m);
+               iv.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.yuval));
            }
 
            row.setOnClickListener(new View.OnClickListener() {

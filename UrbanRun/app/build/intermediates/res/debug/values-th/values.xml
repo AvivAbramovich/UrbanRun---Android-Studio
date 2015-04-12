@@ -33,4 +33,7 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"ลงชื่อใช้"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"ลงชื่อเข้าใช้ด้วย Google"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"แอปนี้ต้องใช้บริการ Google Play อย่างน้อย 1 บริการ ซึ่งไม่พร้อมใช้งานในปัจจุบัน โปรดติดต่อนักพัฒนาซอฟต์แวร์เพื่อขอความช่วยเหลือ"</string>
+    <!-- From: file:/C:/Users/Aviv/AndroidStudioProjects/UrbanRun/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values-th/values.xml -->
+    <eat-comment/>
+    <string name="messenger_send_button_text">ส่ง</string>
 </resources>

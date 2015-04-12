@@ -86,11 +86,11 @@
         <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-4abb41415390ec1454cc87696bae46e78e567fa5.jar" />
     </item>
     <item
-        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
+        jar="C:\Users\Aviv\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="055783146ba9654a725442563be78cad303aad1f">
-        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-5de20a08d89bed6250e51507ed52885ba2ec239a.jar" />
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-b5b4bc2f75522494e2591dd894622a16aee7de8a.jar" />
     </item>
     <item
         jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.0.0\classes.jar"
@@ -98,6 +98,13 @@
         revision="22.0.1"
         sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
         <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-8eb196ffbf876a34d0594ac7903e57d27037fe98.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-5de20a08d89bed6250e51507ed52885ba2ec239a.jar" />
     </item>
     <item
         jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.0.0\classes.jar"
@@ -112,6 +119,13 @@
         revision="22.0.1"
         sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
         <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-180783f208bc56e1212100f4a8f657d5f80c9c41.jar" />
+    </item>
+    <item
+        jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
+        <dex dex="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\pre-dexed\debug\classes-b998a7935fce8ea941c3fabf9989b5c95e3e7b38.jar" />
     </item>
     <item
         jar="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.0.0\classes.jar"

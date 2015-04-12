@@ -4,8 +4,8 @@
     android:weightSum="1">
 
     <ImageView
-        android:layout_width="65dp"
-        android:layout_height="51dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/imageView"
         />
 

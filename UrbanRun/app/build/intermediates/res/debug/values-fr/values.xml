@@ -33,4 +33,7 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"Connexion"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Se connecter avec Google"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"Cette application nécessite un ou plusieurs services Google Play qui ne sont pas disponibles actuellement. Veuillez contacter le développeur pour obtenir de l\'aide."</string>
+    <!-- From: file:/C:/Users/Aviv/AndroidStudioProjects/UrbanRun/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values-fr/values.xml -->
+    <eat-comment/>
+    <string name="messenger_send_button_text">Envoyer</string>
 </resources>

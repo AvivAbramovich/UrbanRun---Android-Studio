@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="Team2.urbanrun"
+    package="team2.urbanrun"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -52,24 +52,21 @@
         <activity
             android:name="team2.urbanrun.MainActivity"
             android:label="@string/app_name" >
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
+        </activity>
+        <activity
+            android:name="team2.urbanrun.GameActivity"
+            android:label="@string/title_activity_game" >
+        </activity>
+        <activity
+            android:name="team2.urbanrun.EndGameActivity"
+            android:label="@string/title_activity_end_game" >
         </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA3weSJpr0JspP4rqo9mgBMmBRB8oz2e_0" />
+        <!-- <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/> -->
 
-        <activity
-            android:name="team2.urbanrun.GameActivity"
-            android:label="@string/title_activity_game" >
-        </activity>
     </application>
 
 </manifest>

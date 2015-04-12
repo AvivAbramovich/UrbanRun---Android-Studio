@@ -53,6 +53,18 @@ containing a value of this type.
 <colgroup align="left" />
 <colgroup align="left" />
 <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>bottom</code></td><td>0</td><td></td></tr>
+<tr><td><code>inline</code></td><td>1</td><td></td></tr>
+<tr><td><code>top</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int auxiliary_view_position=0x7f01002a;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
 <tr><td><code>classic</code></td><td>1</td><td></td></tr>
 <tr><td><code>grayscale</code></td><td>2</td><td></td></tr>
 <tr><td><code>monochrome</code></td><td>3</td><td></td></tr>
@@ -158,6 +170,14 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int circleCrop=0x7f010006;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int confirm_logout=0x7f01002c;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -170,6 +190,15 @@ containing a value of this type.
 </table>
          */
         public static final int environment=0x7f010018;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int foreground_color=0x7f010026;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -185,6 +214,18 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int fragmentStyle=0x7f010019;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>center</code></td><td>0</td><td></td></tr>
+<tr><td><code>left</code></td><td>1</td><td></td></tr>
+<tr><td><code>right</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int horizontal_alignment=0x7f01002b;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -212,7 +253,31 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int is_cropped=0x7f010030;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
         public static final int liteMode=0x7f01000d;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int login_text=0x7f01002d;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int logout_text=0x7f01002e;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -271,6 +336,50 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int maskedWalletDetailsTextAppearance=0x7f01001f;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int object_id=0x7f010027;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>unknown</code></td><td>0</td><td></td></tr>
+<tr><td><code>open_graph</code></td><td>1</td><td></td></tr>
+<tr><td><code>page</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int object_type=0x7f010028;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>small</code></td><td>-2</td><td></td></tr>
+<tr><td><code>normal</code></td><td>-3</td><td></td></tr>
+<tr><td><code>large</code></td><td>-4</td><td></td></tr>
+</table>
+         */
+        public static final int preset_size=0x7f01002f;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>standard</code></td><td>0</td><td></td></tr>
+<tr><td><code>button</code></td><td>1</td><td></td></tr>
+<tr><td><code>box_count</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int style=0x7f010029;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -356,139 +465,236 @@ containing a value of this type.
         public static final int zOrderOnTop=0x7f010015;
     }
     public static final class color {
-        public static final int common_action_bar_splitter=0x7f060000;
-        public static final int common_signin_btn_dark_text_default=0x7f060001;
-        public static final int common_signin_btn_dark_text_disabled=0x7f060002;
-        public static final int common_signin_btn_dark_text_focused=0x7f060003;
-        public static final int common_signin_btn_dark_text_pressed=0x7f060004;
-        public static final int common_signin_btn_default_background=0x7f060005;
-        public static final int common_signin_btn_light_text_default=0x7f060006;
-        public static final int common_signin_btn_light_text_disabled=0x7f060007;
-        public static final int common_signin_btn_light_text_focused=0x7f060008;
-        public static final int common_signin_btn_light_text_pressed=0x7f060009;
-        public static final int common_signin_btn_text_dark=0x7f060017;
-        public static final int common_signin_btn_text_light=0x7f060018;
-        public static final int wallet_bright_foreground_disabled_holo_light=0x7f06000a;
-        public static final int wallet_bright_foreground_holo_dark=0x7f06000b;
-        public static final int wallet_bright_foreground_holo_light=0x7f06000c;
-        public static final int wallet_dim_foreground_disabled_holo_dark=0x7f06000d;
-        public static final int wallet_dim_foreground_holo_dark=0x7f06000e;
-        public static final int wallet_dim_foreground_inverse_disabled_holo_dark=0x7f06000f;
-        public static final int wallet_dim_foreground_inverse_holo_dark=0x7f060010;
-        public static final int wallet_highlighted_text_holo_dark=0x7f060011;
-        public static final int wallet_highlighted_text_holo_light=0x7f060012;
-        public static final int wallet_hint_foreground_holo_dark=0x7f060013;
-        public static final int wallet_hint_foreground_holo_light=0x7f060014;
-        public static final int wallet_holo_blue_light=0x7f060015;
-        public static final int wallet_link_text_light=0x7f060016;
-        public static final int wallet_primary_text_holo_light=0x7f060019;
-        public static final int wallet_secondary_text_holo_dark=0x7f06001a;
+        public static final int com_facebook_blue=0x7f060000;
+        public static final int com_facebook_button_background_color=0x7f060001;
+        public static final int com_facebook_button_background_color_disabled=0x7f060002;
+        public static final int com_facebook_button_background_color_pressed=0x7f060003;
+        public static final int com_facebook_button_like_background_color_selected=0x7f060004;
+        public static final int com_facebook_button_login_silver_background_color=0x7f060005;
+        public static final int com_facebook_button_login_silver_background_color_pressed=0x7f060006;
+        public static final int com_facebook_button_send_background_color=0x7f060007;
+        public static final int com_facebook_button_send_background_color_pressed=0x7f060008;
+        public static final int com_facebook_likeboxcountview_border_color=0x7f060009;
+        public static final int com_facebook_likeboxcountview_text_color=0x7f06000a;
+        public static final int com_facebook_likeview_text_color=0x7f06000b;
+        public static final int com_facebook_share_button_text_color=0x7f06000c;
+        public static final int common_action_bar_splitter=0x7f06000d;
+        public static final int common_signin_btn_dark_text_default=0x7f06000e;
+        public static final int common_signin_btn_dark_text_disabled=0x7f06000f;
+        public static final int common_signin_btn_dark_text_focused=0x7f060010;
+        public static final int common_signin_btn_dark_text_pressed=0x7f060011;
+        public static final int common_signin_btn_default_background=0x7f060012;
+        public static final int common_signin_btn_light_text_default=0x7f060013;
+        public static final int common_signin_btn_light_text_disabled=0x7f060014;
+        public static final int common_signin_btn_light_text_focused=0x7f060015;
+        public static final int common_signin_btn_light_text_pressed=0x7f060016;
+        public static final int common_signin_btn_text_dark=0x7f060024;
+        public static final int common_signin_btn_text_light=0x7f060025;
+        public static final int wallet_bright_foreground_disabled_holo_light=0x7f060017;
+        public static final int wallet_bright_foreground_holo_dark=0x7f060018;
+        public static final int wallet_bright_foreground_holo_light=0x7f060019;
+        public static final int wallet_dim_foreground_disabled_holo_dark=0x7f06001a;
+        public static final int wallet_dim_foreground_holo_dark=0x7f06001b;
+        public static final int wallet_dim_foreground_inverse_disabled_holo_dark=0x7f06001c;
+        public static final int wallet_dim_foreground_inverse_holo_dark=0x7f06001d;
+        public static final int wallet_highlighted_text_holo_dark=0x7f06001e;
+        public static final int wallet_highlighted_text_holo_light=0x7f06001f;
+        public static final int wallet_hint_foreground_holo_dark=0x7f060020;
+        public static final int wallet_hint_foreground_holo_light=0x7f060021;
+        public static final int wallet_holo_blue_light=0x7f060022;
+        public static final int wallet_link_text_light=0x7f060023;
+        public static final int wallet_primary_text_holo_light=0x7f060026;
+        public static final int wallet_secondary_text_holo_dark=0x7f060027;
     }
     public static final class dimen {
         public static final int activity_horizontal_margin=0x7f070000;
         public static final int activity_vertical_margin=0x7f070001;
+        public static final int com_facebook_likeboxcountview_border_radius=0x7f070002;
+        public static final int com_facebook_likeboxcountview_border_width=0x7f070003;
+        public static final int com_facebook_likeboxcountview_caret_height=0x7f070004;
+        public static final int com_facebook_likeboxcountview_caret_width=0x7f070005;
+        public static final int com_facebook_likeboxcountview_text_padding=0x7f070006;
+        public static final int com_facebook_likeboxcountview_text_size=0x7f070007;
+        public static final int com_facebook_likeview_edge_padding=0x7f070008;
+        public static final int com_facebook_likeview_internal_padding=0x7f070009;
+        public static final int com_facebook_likeview_text_size=0x7f07000a;
+        public static final int com_facebook_profilepictureview_preset_size_large=0x7f07000b;
+        public static final int com_facebook_profilepictureview_preset_size_normal=0x7f07000c;
+        public static final int com_facebook_profilepictureview_preset_size_small=0x7f07000d;
+        public static final int com_facebook_share_button_compound_drawable_padding=0x7f07000e;
+        public static final int com_facebook_share_button_padding_bottom=0x7f07000f;
+        public static final int com_facebook_share_button_padding_left=0x7f070010;
+        public static final int com_facebook_share_button_padding_right=0x7f070011;
+        public static final int com_facebook_share_button_padding_top=0x7f070012;
+        public static final int com_facebook_share_button_text_size=0x7f070013;
+        public static final int com_facebook_tooltip_horizontal_padding=0x7f070014;
     }
     public static final class drawable {
-        public static final int asaf_m=0x7f020000;
-        public static final int asaf_s=0x7f020001;
-        public static final int aviv_m=0x7f020002;
-        public static final int aviv_s=0x7f020003;
-        public static final int common_full_open_on_phone=0x7f020004;
-        public static final int common_ic_googleplayservices=0x7f020005;
-        public static final int common_signin_btn_icon_dark=0x7f020006;
-        public static final int common_signin_btn_icon_disabled_dark=0x7f020007;
-        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020008;
-        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020009;
-        public static final int common_signin_btn_icon_disabled_light=0x7f02000a;
-        public static final int common_signin_btn_icon_focus_dark=0x7f02000b;
-        public static final int common_signin_btn_icon_focus_light=0x7f02000c;
-        public static final int common_signin_btn_icon_light=0x7f02000d;
-        public static final int common_signin_btn_icon_normal_dark=0x7f02000e;
-        public static final int common_signin_btn_icon_normal_light=0x7f02000f;
-        public static final int common_signin_btn_icon_pressed_dark=0x7f020010;
-        public static final int common_signin_btn_icon_pressed_light=0x7f020011;
-        public static final int common_signin_btn_text_dark=0x7f020012;
-        public static final int common_signin_btn_text_disabled_dark=0x7f020013;
-        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020014;
-        public static final int common_signin_btn_text_disabled_focus_light=0x7f020015;
-        public static final int common_signin_btn_text_disabled_light=0x7f020016;
-        public static final int common_signin_btn_text_focus_dark=0x7f020017;
-        public static final int common_signin_btn_text_focus_light=0x7f020018;
-        public static final int common_signin_btn_text_light=0x7f020019;
-        public static final int common_signin_btn_text_normal_dark=0x7f02001a;
-        public static final int common_signin_btn_text_normal_light=0x7f02001b;
-        public static final int common_signin_btn_text_pressed_dark=0x7f02001c;
-        public static final int common_signin_btn_text_pressed_light=0x7f02001d;
-        public static final int ic_launcher=0x7f02001e;
-        public static final int ic_plusone_medium_off_client=0x7f02001f;
-        public static final int ic_plusone_small_off_client=0x7f020020;
-        public static final int ic_plusone_standard_off_client=0x7f020021;
-        public static final int ic_plusone_tall_off_client=0x7f020022;
-        public static final int omri_m=0x7f020023;
-        public static final int omri_s=0x7f020024;
-        public static final int oren_m=0x7f020025;
-        public static final int oren_s=0x7f020026;
-        public static final int powered_by_google_dark=0x7f020027;
-        public static final int powered_by_google_light=0x7f020028;
-        public static final int rotem_m=0x7f020029;
-        public static final int rotem_s=0x7f02002a;
-        public static final int yuval_m=0x7f02002b;
-        public static final int yuval_s=0x7f02002c;
+        public static final int apple_icon=0x7f020000;
+        public static final int asaf=0x7f020001;
+        public static final int aviv=0x7f020002;
+        public static final int com_facebook_button_background=0x7f020003;
+        public static final int com_facebook_button_icon=0x7f020004;
+        public static final int com_facebook_button_like_background=0x7f020005;
+        public static final int com_facebook_button_like_icon_selected=0x7f020006;
+        public static final int com_facebook_button_login_silver_background=0x7f020007;
+        public static final int com_facebook_button_send_background=0x7f020008;
+        public static final int com_facebook_button_send_icon=0x7f020009;
+        public static final int com_facebook_close=0x7f02000a;
+        public static final int com_facebook_profile_picture_blank_portrait=0x7f02000b;
+        public static final int com_facebook_profile_picture_blank_square=0x7f02000c;
+        public static final int com_facebook_tooltip_black_background=0x7f02000d;
+        public static final int com_facebook_tooltip_black_bottomnub=0x7f02000e;
+        public static final int com_facebook_tooltip_black_topnub=0x7f02000f;
+        public static final int com_facebook_tooltip_black_xout=0x7f020010;
+        public static final int com_facebook_tooltip_blue_background=0x7f020011;
+        public static final int com_facebook_tooltip_blue_bottomnub=0x7f020012;
+        public static final int com_facebook_tooltip_blue_topnub=0x7f020013;
+        public static final int com_facebook_tooltip_blue_xout=0x7f020014;
+        public static final int common_full_open_on_phone=0x7f020015;
+        public static final int common_ic_googleplayservices=0x7f020016;
+        public static final int common_signin_btn_icon_dark=0x7f020017;
+        public static final int common_signin_btn_icon_disabled_dark=0x7f020018;
+        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f020019;
+        public static final int common_signin_btn_icon_disabled_focus_light=0x7f02001a;
+        public static final int common_signin_btn_icon_disabled_light=0x7f02001b;
+        public static final int common_signin_btn_icon_focus_dark=0x7f02001c;
+        public static final int common_signin_btn_icon_focus_light=0x7f02001d;
+        public static final int common_signin_btn_icon_light=0x7f02001e;
+        public static final int common_signin_btn_icon_normal_dark=0x7f02001f;
+        public static final int common_signin_btn_icon_normal_light=0x7f020020;
+        public static final int common_signin_btn_icon_pressed_dark=0x7f020021;
+        public static final int common_signin_btn_icon_pressed_light=0x7f020022;
+        public static final int common_signin_btn_text_dark=0x7f020023;
+        public static final int common_signin_btn_text_disabled_dark=0x7f020024;
+        public static final int common_signin_btn_text_disabled_focus_dark=0x7f020025;
+        public static final int common_signin_btn_text_disabled_focus_light=0x7f020026;
+        public static final int common_signin_btn_text_disabled_light=0x7f020027;
+        public static final int common_signin_btn_text_focus_dark=0x7f020028;
+        public static final int common_signin_btn_text_focus_light=0x7f020029;
+        public static final int common_signin_btn_text_light=0x7f02002a;
+        public static final int common_signin_btn_text_normal_dark=0x7f02002b;
+        public static final int common_signin_btn_text_normal_light=0x7f02002c;
+        public static final int common_signin_btn_text_pressed_dark=0x7f02002d;
+        public static final int common_signin_btn_text_pressed_light=0x7f02002e;
+        public static final int ic_launcher=0x7f02002f;
+        public static final int ic_plusone_medium_off_client=0x7f020030;
+        public static final int ic_plusone_small_off_client=0x7f020031;
+        public static final int ic_plusone_standard_off_client=0x7f020032;
+        public static final int ic_plusone_tall_off_client=0x7f020033;
+        public static final int messenger_bubble_large_blue=0x7f020034;
+        public static final int messenger_bubble_large_white=0x7f020035;
+        public static final int messenger_bubble_small_blue=0x7f020036;
+        public static final int messenger_bubble_small_white=0x7f020037;
+        public static final int messenger_button_blue_bg_round=0x7f020038;
+        public static final int messenger_button_blue_bg_selector=0x7f020039;
+        public static final int messenger_button_send_round_shadow=0x7f02003a;
+        public static final int messenger_button_white_bg_round=0x7f02003b;
+        public static final int messenger_button_white_bg_selector=0x7f02003c;
+        public static final int omri=0x7f02003d;
+        public static final int oren=0x7f02003e;
+        public static final int powered_by_google_dark=0x7f02003f;
+        public static final int powered_by_google_light=0x7f020040;
+        public static final int rotem=0x7f020041;
+        public static final int yuval=0x7f020042;
     }
     public static final class id {
-        public static final int MyScore=0x7f0c001f;
-        public static final int action_settings=0x7f0c0028;
+        public static final int MyScore=0x7f0c0034;
+        public static final int action_settings=0x7f0c0045;
         public static final int adjust_height=0x7f0c0002;
         public static final int adjust_width=0x7f0c0003;
         public static final int book_now=0x7f0c0011;
-        public static final int button_done=0x7f0c0025;
-        public static final int button_me=0x7f0c0021;
-        public static final int button_minus=0x7f0c0022;
-        public static final int button_new_prize=0x7f0c001c;
-        public static final int button_plus=0x7f0c0023;
+        public static final int bottom=0x7f0c001e;
+        public static final int box_count=0x7f0c001b;
+        public static final int button=0x7f0c001c;
+        public static final int button_done=0x7f0c003a;
+        public static final int button_me=0x7f0c0036;
+        public static final int button_minus=0x7f0c0037;
+        public static final int button_new_prize=0x7f0c0031;
+        public static final int button_plus=0x7f0c0038;
         public static final int buyButton=0x7f0c000d;
         public static final int buy_now=0x7f0c0012;
         public static final int buy_with_google=0x7f0c0013;
+        public static final int center=0x7f0c0021;
         public static final int classic=0x7f0c0015;
+        public static final int clockTextView=0x7f0c0033;
+        public static final int com_facebook_body_frame=0x7f0c003d;
+        public static final int com_facebook_button_xout=0x7f0c003f;
+        public static final int com_facebook_fragment_container=0x7f0c003b;
+        public static final int com_facebook_login_activity_progress_bar=0x7f0c003c;
+        public static final int com_facebook_tooltip_bubble_view_bottom_pointer=0x7f0c0041;
+        public static final int com_facebook_tooltip_bubble_view_text_body=0x7f0c0040;
+        public static final int com_facebook_tooltip_bubble_view_top_pointer=0x7f0c003e;
         public static final int donate_with_google=0x7f0c0014;
         public static final int grayscale=0x7f0c0016;
         public static final int holo_dark=0x7f0c0008;
         public static final int holo_light=0x7f0c0009;
         public static final int hybrid=0x7f0c0004;
-        public static final int imageView=0x7f0c0026;
-        public static final int map=0x7f0c0018;
+        public static final int imageView=0x7f0c0042;
+        public static final int inline=0x7f0c001f;
+        public static final int large=0x7f0c0024;
+        public static final int left=0x7f0c0022;
+        public static final int map=0x7f0c002d;
         public static final int match_parent=0x7f0c000f;
+        public static final int messenger_send_button=0x7f0c0044;
         public static final int monochrome=0x7f0c0017;
-        public static final int myImage=0x7f0c001e;
+        public static final int myImage=0x7f0c002c;
+        public static final int myName=0x7f0c0026;
+        public static final int myScore=0x7f0c0028;
+        public static final int newGameButton=0x7f0c002a;
         public static final int none=0x7f0c0000;
         public static final int normal=0x7f0c0005;
-        public static final int opponentImg=0x7f0c0019;
-        public static final int opponentName=0x7f0c001a;
-        public static final int opponentScore=0x7f0c001b;
+        public static final int open_graph=0x7f0c0018;
+        public static final int oppImage=0x7f0c002b;
+        public static final int oppName=0x7f0c0027;
+        public static final int oppScore=0x7f0c0029;
+        public static final int opponentImg=0x7f0c002e;
+        public static final int opponentName=0x7f0c002f;
+        public static final int opponentScore=0x7f0c0030;
+        public static final int page=0x7f0c0019;
         public static final int production=0x7f0c000a;
+        public static final int right=0x7f0c0023;
         public static final int sandbox=0x7f0c000b;
         public static final int satellite=0x7f0c0006;
         public static final int selectionDetails=0x7f0c000e;
         public static final int slide=0x7f0c0001;
+        public static final int small=0x7f0c0025;
+        public static final int standard=0x7f0c001d;
         public static final int strict_sandbox=0x7f0c000c;
         public static final int terrain=0x7f0c0007;
-        public static final int textDebugDist=0x7f0c001d;
-        public static final int textView=0x7f0c0027;
-        public static final int textView_size_arena=0x7f0c0024;
-        public static final int text_instructions=0x7f0c0020;
+        public static final int textDebugDist=0x7f0c0032;
+        public static final int textView=0x7f0c0043;
+        public static final int textView_size_arena=0x7f0c0039;
+        public static final int text_instructions=0x7f0c0035;
+        public static final int top=0x7f0c0020;
+        public static final int unknown=0x7f0c001a;
         public static final int wrap_content=0x7f0c0010;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;
     }
     public static final class layout {
-        public static final int activity_friend_choosing=0x7f030000;
-        public static final int activity_game=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int friends_list_item=0x7f030003;
+        public static final int activity_end_game=0x7f030000;
+        public static final int activity_friend_choosing=0x7f030001;
+        public static final int activity_game=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int com_facebook_activity_layout=0x7f030004;
+        public static final int com_facebook_login_fragment=0x7f030005;
+        public static final int com_facebook_tooltip_bubble=0x7f030006;
+        public static final int friends_list_item=0x7f030007;
+        public static final int messenger_button_send_blue_large=0x7f030008;
+        public static final int messenger_button_send_blue_round=0x7f030009;
+        public static final int messenger_button_send_blue_small=0x7f03000a;
+        public static final int messenger_button_send_white_large=0x7f03000b;
+        public static final int messenger_button_send_white_round=0x7f03000c;
+        public static final int messenger_button_send_white_small=0x7f03000d;
     }
     public static final class menu {
-        public static final int menu_friend_choosing=0x7f0b0000;
+        public static final int menu_end_game=0x7f0b0000;
+        public static final int menu_friend_choosing=0x7f0b0001;
+        public static final int menu_launch=0x7f0b0002;
+        public static final int menu_sign_in=0x7f0b0003;
+        public static final int menu_sign_up=0x7f0b0004;
     }
     public static final class raw {
         public static final int gtm_analytics=0x7f040000;
@@ -497,46 +703,68 @@ containing a value of this type.
         public static final int accept=0x7f090000;
         public static final int action_settings=0x7f090001;
         public static final int app_name=0x7f090002;
-        public static final int common_android_wear_notification_needs_update_text=0x7f090003;
-        public static final int common_android_wear_update_text=0x7f090004;
-        public static final int common_android_wear_update_title=0x7f090005;
-        public static final int common_google_play_services_enable_button=0x7f090006;
-        public static final int common_google_play_services_enable_text=0x7f090007;
-        public static final int common_google_play_services_enable_title=0x7f090008;
-        public static final int common_google_play_services_error_notification_requested_by_msg=0x7f090009;
-        public static final int common_google_play_services_install_button=0x7f09000a;
-        public static final int common_google_play_services_install_text_phone=0x7f09000b;
-        public static final int common_google_play_services_install_text_tablet=0x7f09000c;
-        public static final int common_google_play_services_install_title=0x7f09000d;
-        public static final int common_google_play_services_invalid_account_text=0x7f09000e;
-        public static final int common_google_play_services_invalid_account_title=0x7f09000f;
-        public static final int common_google_play_services_needs_enabling_title=0x7f090010;
-        public static final int common_google_play_services_network_error_text=0x7f090011;
-        public static final int common_google_play_services_network_error_title=0x7f090012;
-        public static final int common_google_play_services_notification_needs_installation_title=0x7f090013;
-        public static final int common_google_play_services_notification_needs_update_title=0x7f090014;
-        public static final int common_google_play_services_notification_ticker=0x7f090015;
-        public static final int common_google_play_services_sign_in_failed_text=0x7f090016;
-        public static final int common_google_play_services_sign_in_failed_title=0x7f090017;
-        public static final int common_google_play_services_unknown_issue=0x7f090018;
-        public static final int common_google_play_services_unsupported_text=0x7f090019;
-        public static final int common_google_play_services_unsupported_title=0x7f09001a;
-        public static final int common_google_play_services_update_button=0x7f09001b;
-        public static final int common_google_play_services_update_text=0x7f09001c;
-        public static final int common_google_play_services_update_title=0x7f09001d;
-        public static final int common_open_on_phone=0x7f09001e;
-        public static final int common_signin_button_text=0x7f09001f;
-        public static final int common_signin_button_text_long=0x7f090020;
-        public static final int commono_google_play_services_api_unavailable_text=0x7f090021;
-        public static final int create_calendar_message=0x7f090022;
-        public static final int create_calendar_title=0x7f090023;
-        public static final int decline=0x7f090024;
-        public static final int hello_world=0x7f090025;
-        public static final int store_picture_message=0x7f090026;
-        public static final int store_picture_title=0x7f090027;
-        public static final int title_activity_friend_choosing=0x7f090028;
-        public static final int title_activity_game=0x7f090029;
-        public static final int wallet_buy_button_place_holder=0x7f09002a;
+        public static final int com_facebook_image_download_unknown_error=0x7f090003;
+        public static final int com_facebook_internet_permission_error_message=0x7f090004;
+        public static final int com_facebook_internet_permission_error_title=0x7f090005;
+        public static final int com_facebook_like_button_liked=0x7f090006;
+        public static final int com_facebook_like_button_not_liked=0x7f090007;
+        public static final int com_facebook_loading=0x7f090008;
+        public static final int com_facebook_loginview_cancel_action=0x7f090009;
+        public static final int com_facebook_loginview_log_in_button=0x7f09000a;
+        public static final int com_facebook_loginview_log_in_button_long=0x7f09000b;
+        public static final int com_facebook_loginview_log_out_action=0x7f09000c;
+        public static final int com_facebook_loginview_log_out_button=0x7f09000d;
+        public static final int com_facebook_loginview_logged_in_as=0x7f09000e;
+        public static final int com_facebook_loginview_logged_in_using_facebook=0x7f09000f;
+        public static final int com_facebook_send_button_text=0x7f090010;
+        public static final int com_facebook_share_button_text=0x7f090011;
+        public static final int com_facebook_tooltip_default=0x7f090012;
+        public static final int common_android_wear_notification_needs_update_text=0x7f090013;
+        public static final int common_android_wear_update_text=0x7f090014;
+        public static final int common_android_wear_update_title=0x7f090015;
+        public static final int common_google_play_services_enable_button=0x7f090016;
+        public static final int common_google_play_services_enable_text=0x7f090017;
+        public static final int common_google_play_services_enable_title=0x7f090018;
+        public static final int common_google_play_services_error_notification_requested_by_msg=0x7f090019;
+        public static final int common_google_play_services_install_button=0x7f09001a;
+        public static final int common_google_play_services_install_text_phone=0x7f09001b;
+        public static final int common_google_play_services_install_text_tablet=0x7f09001c;
+        public static final int common_google_play_services_install_title=0x7f09001d;
+        public static final int common_google_play_services_invalid_account_text=0x7f09001e;
+        public static final int common_google_play_services_invalid_account_title=0x7f09001f;
+        public static final int common_google_play_services_needs_enabling_title=0x7f090020;
+        public static final int common_google_play_services_network_error_text=0x7f090021;
+        public static final int common_google_play_services_network_error_title=0x7f090022;
+        public static final int common_google_play_services_notification_needs_installation_title=0x7f090023;
+        public static final int common_google_play_services_notification_needs_update_title=0x7f090024;
+        public static final int common_google_play_services_notification_ticker=0x7f090025;
+        public static final int common_google_play_services_sign_in_failed_text=0x7f090026;
+        public static final int common_google_play_services_sign_in_failed_title=0x7f090027;
+        public static final int common_google_play_services_unknown_issue=0x7f090028;
+        public static final int common_google_play_services_unsupported_text=0x7f090029;
+        public static final int common_google_play_services_unsupported_title=0x7f09002a;
+        public static final int common_google_play_services_update_button=0x7f09002b;
+        public static final int common_google_play_services_update_text=0x7f09002c;
+        public static final int common_google_play_services_update_title=0x7f09002d;
+        public static final int common_open_on_phone=0x7f09002e;
+        public static final int common_signin_button_text=0x7f09002f;
+        public static final int common_signin_button_text_long=0x7f090030;
+        public static final int commono_google_play_services_api_unavailable_text=0x7f090031;
+        public static final int create_calendar_message=0x7f090032;
+        public static final int create_calendar_title=0x7f090033;
+        public static final int decline=0x7f090034;
+        public static final int facebook_app_id=0x7f090035;
+        public static final int hello_world=0x7f090036;
+        public static final int messenger_send_button_text=0x7f090037;
+        public static final int store_picture_message=0x7f090038;
+        public static final int store_picture_title=0x7f090039;
+        public static final int title_activity_end_game=0x7f09003a;
+        public static final int title_activity_friend_choosing=0x7f09003b;
+        public static final int title_activity_game=0x7f09003c;
+        public static final int title_activity_launch=0x7f09003d;
+        public static final int title_activity_sign_in=0x7f09003e;
+        public static final int title_activity_sign_up=0x7f09003f;
+        public static final int wallet_buy_button_place_holder=0x7f090040;
     }
     public static final class style {
         /** 
@@ -551,11 +779,32 @@ containing a value of this type.
         /**  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0a0001;
-        public static final int Theme_IAPTheme=0x7f0a0002;
-        public static final int WalletFragmentDefaultButtonTextAppearance=0x7f0a0003;
-        public static final int WalletFragmentDefaultDetailsHeaderTextAppearance=0x7f0a0004;
-        public static final int WalletFragmentDefaultDetailsTextAppearance=0x7f0a0005;
-        public static final int WalletFragmentDefaultStyle=0x7f0a0006;
+        public static final int MessengerButton=0x7f0a0002;
+        public static final int MessengerButton_Blue=0x7f0a0003;
+        public static final int MessengerButton_Blue_Large=0x7f0a0004;
+        public static final int MessengerButton_Blue_Small=0x7f0a0005;
+        public static final int MessengerButton_White=0x7f0a0006;
+        public static final int MessengerButton_White_Large=0x7f0a0007;
+        public static final int MessengerButton_White_Small=0x7f0a0008;
+        public static final int MessengerButtonText=0x7f0a0009;
+        public static final int MessengerButtonText_Blue=0x7f0a000a;
+        public static final int MessengerButtonText_Blue_Large=0x7f0a000b;
+        public static final int MessengerButtonText_Blue_Small=0x7f0a000c;
+        public static final int MessengerButtonText_White=0x7f0a000d;
+        public static final int MessengerButtonText_White_Large=0x7f0a000e;
+        public static final int MessengerButtonText_White_Small=0x7f0a000f;
+        public static final int Theme_IAPTheme=0x7f0a0010;
+        public static final int WalletFragmentDefaultButtonTextAppearance=0x7f0a0011;
+        public static final int WalletFragmentDefaultDetailsHeaderTextAppearance=0x7f0a0012;
+        public static final int WalletFragmentDefaultDetailsTextAppearance=0x7f0a0013;
+        public static final int WalletFragmentDefaultStyle=0x7f0a0014;
+        public static final int com_facebook_button=0x7f0a0015;
+        public static final int com_facebook_button_like=0x7f0a0016;
+        public static final int com_facebook_button_send=0x7f0a0017;
+        public static final int com_facebook_button_share=0x7f0a0018;
+        public static final int com_facebook_loginview_default_style=0x7f0a0019;
+        public static final int com_facebook_loginview_silver_style=0x7f0a001a;
+        public static final int tooltip_bubble_text=0x7f0a001b;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.
@@ -564,9 +813,9 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AdsAttrs_adSize Team2.urbanrun:adSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #AdsAttrs_adSizes Team2.urbanrun:adSizes}</code></td><td></td></tr>
-           <tr><td><code>{@link #AdsAttrs_adUnitId Team2.urbanrun:adUnitId}</code></td><td></td></tr>
+           <tr><td><code>{@link #AdsAttrs_adSize team2.urbanrun:adSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #AdsAttrs_adSizes team2.urbanrun:adSizes}</code></td><td></td></tr>
+           <tr><td><code>{@link #AdsAttrs_adUnitId team2.urbanrun:adUnitId}</code></td><td></td></tr>
            </table>
            @see #AdsAttrs_adSize
            @see #AdsAttrs_adSizes
@@ -576,7 +825,7 @@ containing a value of this type.
             0x7f010000, 0x7f010001, 0x7f010002
         };
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#adSize}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#adSize}
           attribute's value can be found in the {@link #AdsAttrs} array.
 
 
@@ -586,11 +835,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:adSize
+          @attr name team2.urbanrun:adSize
         */
         public static final int AdsAttrs_adSize = 0;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#adSizes}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#adSizes}
           attribute's value can be found in the {@link #AdsAttrs} array.
 
 
@@ -600,11 +849,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:adSizes
+          @attr name team2.urbanrun:adSizes
         */
         public static final int AdsAttrs_adSizes = 1;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#adUnitId}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#adUnitId}
           attribute's value can be found in the {@link #AdsAttrs} array.
 
 
@@ -614,7 +863,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:adUnitId
+          @attr name team2.urbanrun:adUnitId
         */
         public static final int AdsAttrs_adUnitId = 2;
         /** Attributes that can be used with a CustomWalletTheme.
@@ -623,7 +872,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CustomWalletTheme_windowTransitionStyle Team2.urbanrun:windowTransitionStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #CustomWalletTheme_windowTransitionStyle team2.urbanrun:windowTransitionStyle}</code></td><td></td></tr>
            </table>
            @see #CustomWalletTheme_windowTransitionStyle
          */
@@ -631,7 +880,7 @@ containing a value of this type.
             0x7f010003
         };
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#windowTransitionStyle}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#windowTransitionStyle}
           attribute's value can be found in the {@link #CustomWalletTheme} array.
 
 
@@ -644,7 +893,7 @@ containing a value of this type.
 <tr><td><code>slide</code></td><td>1</td><td></td></tr>
 <tr><td><code>none</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:windowTransitionStyle
+          @attr name team2.urbanrun:windowTransitionStyle
         */
         public static final int CustomWalletTheme_windowTransitionStyle = 0;
         /** Attributes that can be used with a LoadingImageView.
@@ -653,9 +902,9 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #LoadingImageView_circleCrop Team2.urbanrun:circleCrop}</code></td><td></td></tr>
-           <tr><td><code>{@link #LoadingImageView_imageAspectRatio Team2.urbanrun:imageAspectRatio}</code></td><td></td></tr>
-           <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust Team2.urbanrun:imageAspectRatioAdjust}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_circleCrop team2.urbanrun:circleCrop}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatio team2.urbanrun:imageAspectRatio}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust team2.urbanrun:imageAspectRatioAdjust}</code></td><td></td></tr>
            </table>
            @see #LoadingImageView_circleCrop
            @see #LoadingImageView_imageAspectRatio
@@ -665,7 +914,7 @@ containing a value of this type.
             0x7f010004, 0x7f010005, 0x7f010006
         };
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#circleCrop}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#circleCrop}
           attribute's value can be found in the {@link #LoadingImageView} array.
 
 
@@ -675,11 +924,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:circleCrop
+          @attr name team2.urbanrun:circleCrop
         */
         public static final int LoadingImageView_circleCrop = 2;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#imageAspectRatio}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#imageAspectRatio}
           attribute's value can be found in the {@link #LoadingImageView} array.
 
 
@@ -689,11 +938,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:imageAspectRatio
+          @attr name team2.urbanrun:imageAspectRatio
         */
         public static final int LoadingImageView_imageAspectRatio = 1;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#imageAspectRatioAdjust}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#imageAspectRatioAdjust}
           attribute's value can be found in the {@link #LoadingImageView} array.
 
 
@@ -707,7 +956,7 @@ containing a value of this type.
 <tr><td><code>adjust_width</code></td><td>1</td><td></td></tr>
 <tr><td><code>adjust_height</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:imageAspectRatioAdjust
+          @attr name team2.urbanrun:imageAspectRatioAdjust
         */
         public static final int LoadingImageView_imageAspectRatioAdjust = 0;
         /** Attributes that can be used with a MapAttrs.
@@ -716,22 +965,22 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #MapAttrs_cameraBearing Team2.urbanrun:cameraBearing}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLat Team2.urbanrun:cameraTargetLat}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTargetLng Team2.urbanrun:cameraTargetLng}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraTilt Team2.urbanrun:cameraTilt}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_cameraZoom Team2.urbanrun:cameraZoom}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_liteMode Team2.urbanrun:liteMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_mapType Team2.urbanrun:mapType}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiCompass Team2.urbanrun:uiCompass}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiMapToolbar Team2.urbanrun:uiMapToolbar}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiRotateGestures Team2.urbanrun:uiRotateGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiScrollGestures Team2.urbanrun:uiScrollGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiTiltGestures Team2.urbanrun:uiTiltGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomControls Team2.urbanrun:uiZoomControls}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_uiZoomGestures Team2.urbanrun:uiZoomGestures}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_useViewLifecycle Team2.urbanrun:useViewLifecycle}</code></td><td></td></tr>
-           <tr><td><code>{@link #MapAttrs_zOrderOnTop Team2.urbanrun:zOrderOnTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraBearing team2.urbanrun:cameraBearing}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLat team2.urbanrun:cameraTargetLat}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLng team2.urbanrun:cameraTargetLng}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTilt team2.urbanrun:cameraTilt}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraZoom team2.urbanrun:cameraZoom}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_liteMode team2.urbanrun:liteMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_mapType team2.urbanrun:mapType}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiCompass team2.urbanrun:uiCompass}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiMapToolbar team2.urbanrun:uiMapToolbar}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiRotateGestures team2.urbanrun:uiRotateGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiScrollGestures team2.urbanrun:uiScrollGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiTiltGestures team2.urbanrun:uiTiltGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomControls team2.urbanrun:uiZoomControls}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomGestures team2.urbanrun:uiZoomGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_useViewLifecycle team2.urbanrun:useViewLifecycle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_zOrderOnTop team2.urbanrun:zOrderOnTop}</code></td><td></td></tr>
            </table>
            @see #MapAttrs_cameraBearing
            @see #MapAttrs_cameraTargetLat
@@ -757,7 +1006,7 @@ containing a value of this type.
             0x7f010013, 0x7f010014, 0x7f010015, 0x7f010016
         };
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#cameraBearing}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#cameraBearing}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -767,11 +1016,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:cameraBearing
+          @attr name team2.urbanrun:cameraBearing
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#cameraTargetLat}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#cameraTargetLat}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -781,11 +1030,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:cameraTargetLat
+          @attr name team2.urbanrun:cameraTargetLat
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#cameraTargetLng}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#cameraTargetLng}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -795,11 +1044,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:cameraTargetLng
+          @attr name team2.urbanrun:cameraTargetLng
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#cameraTilt}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#cameraTilt}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -809,11 +1058,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:cameraTilt
+          @attr name team2.urbanrun:cameraTilt
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#cameraZoom}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#cameraZoom}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -823,11 +1072,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:cameraZoom
+          @attr name team2.urbanrun:cameraZoom
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#liteMode}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#liteMode}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -837,11 +1086,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:liteMode
+          @attr name team2.urbanrun:liteMode
         */
         public static final int MapAttrs_liteMode = 6;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#mapType}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#mapType}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -857,11 +1106,11 @@ containing a value of this type.
 <tr><td><code>terrain</code></td><td>3</td><td></td></tr>
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:mapType
+          @attr name team2.urbanrun:mapType
         */
         public static final int MapAttrs_mapType = 0;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#uiCompass}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#uiCompass}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -871,11 +1120,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:uiCompass
+          @attr name team2.urbanrun:uiCompass
         */
         public static final int MapAttrs_uiCompass = 7;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#uiMapToolbar}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#uiMapToolbar}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -885,11 +1134,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:uiMapToolbar
+          @attr name team2.urbanrun:uiMapToolbar
         */
         public static final int MapAttrs_uiMapToolbar = 15;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#uiRotateGestures}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#uiRotateGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -899,11 +1148,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:uiRotateGestures
+          @attr name team2.urbanrun:uiRotateGestures
         */
         public static final int MapAttrs_uiRotateGestures = 8;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#uiScrollGestures}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#uiScrollGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -913,11 +1162,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:uiScrollGestures
+          @attr name team2.urbanrun:uiScrollGestures
         */
         public static final int MapAttrs_uiScrollGestures = 9;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#uiTiltGestures}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#uiTiltGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -927,11 +1176,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:uiTiltGestures
+          @attr name team2.urbanrun:uiTiltGestures
         */
         public static final int MapAttrs_uiTiltGestures = 10;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#uiZoomControls}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#uiZoomControls}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -941,11 +1190,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:uiZoomControls
+          @attr name team2.urbanrun:uiZoomControls
         */
         public static final int MapAttrs_uiZoomControls = 11;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#uiZoomGestures}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#uiZoomGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -955,11 +1204,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:uiZoomGestures
+          @attr name team2.urbanrun:uiZoomGestures
         */
         public static final int MapAttrs_uiZoomGestures = 12;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#useViewLifecycle}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#useViewLifecycle}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -969,11 +1218,11 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:useViewLifecycle
+          @attr name team2.urbanrun:useViewLifecycle
         */
         public static final int MapAttrs_useViewLifecycle = 13;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#zOrderOnTop}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#zOrderOnTop}
           attribute's value can be found in the {@link #MapAttrs} array.
 
 
@@ -983,7 +1232,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:zOrderOnTop
+          @attr name team2.urbanrun:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 14;
         /** Attributes that can be used with a WalletFragmentOptions.
@@ -992,10 +1241,10 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #WalletFragmentOptions_appTheme Team2.urbanrun:appTheme}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentOptions_environment Team2.urbanrun:environment}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentOptions_fragmentMode Team2.urbanrun:fragmentMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentOptions_fragmentStyle Team2.urbanrun:fragmentStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentOptions_appTheme team2.urbanrun:appTheme}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentOptions_environment team2.urbanrun:environment}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentOptions_fragmentMode team2.urbanrun:fragmentMode}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentOptions_fragmentStyle team2.urbanrun:fragmentStyle}</code></td><td></td></tr>
            </table>
            @see #WalletFragmentOptions_appTheme
            @see #WalletFragmentOptions_environment
@@ -1006,7 +1255,7 @@ containing a value of this type.
             0x7f010017, 0x7f010018, 0x7f010019, 0x7f01001a
         };
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#appTheme}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#appTheme}
           attribute's value can be found in the {@link #WalletFragmentOptions} array.
 
 
@@ -1019,11 +1268,11 @@ containing a value of this type.
 <tr><td><code>holo_dark</code></td><td>0</td><td></td></tr>
 <tr><td><code>holo_light</code></td><td>1</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:appTheme
+          @attr name team2.urbanrun:appTheme
         */
         public static final int WalletFragmentOptions_appTheme = 0;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#environment}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#environment}
           attribute's value can be found in the {@link #WalletFragmentOptions} array.
 
 
@@ -1037,11 +1286,11 @@ containing a value of this type.
 <tr><td><code>sandbox</code></td><td>0</td><td></td></tr>
 <tr><td><code>strict_sandbox</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:environment
+          @attr name team2.urbanrun:environment
         */
         public static final int WalletFragmentOptions_environment = 1;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#fragmentMode}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#fragmentMode}
           attribute's value can be found in the {@link #WalletFragmentOptions} array.
 
 
@@ -1054,17 +1303,17 @@ containing a value of this type.
 <tr><td><code>buyButton</code></td><td>1</td><td></td></tr>
 <tr><td><code>selectionDetails</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:fragmentMode
+          @attr name team2.urbanrun:fragmentMode
         */
         public static final int WalletFragmentOptions_fragmentMode = 3;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#fragmentStyle}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#fragmentStyle}
           attribute's value can be found in the {@link #WalletFragmentOptions} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Team2.urbanrun:fragmentStyle
+          @attr name team2.urbanrun:fragmentStyle
         */
         public static final int WalletFragmentOptions_fragmentStyle = 2;
         /** Attributes that can be used with a WalletFragmentStyle.
@@ -1073,17 +1322,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_buyButtonAppearance Team2.urbanrun:buyButtonAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_buyButtonHeight Team2.urbanrun:buyButtonHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_buyButtonText Team2.urbanrun:buyButtonText}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_buyButtonWidth Team2.urbanrun:buyButtonWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsBackground Team2.urbanrun:maskedWalletDetailsBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonBackground Team2.urbanrun:maskedWalletDetailsButtonBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance Team2.urbanrun:maskedWalletDetailsButtonTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance Team2.urbanrun:maskedWalletDetailsHeaderTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoImageType Team2.urbanrun:maskedWalletDetailsLogoImageType}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoTextColor Team2.urbanrun:maskedWalletDetailsLogoTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsTextAppearance Team2.urbanrun:maskedWalletDetailsTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_buyButtonAppearance team2.urbanrun:buyButtonAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_buyButtonHeight team2.urbanrun:buyButtonHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_buyButtonText team2.urbanrun:buyButtonText}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_buyButtonWidth team2.urbanrun:buyButtonWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsBackground team2.urbanrun:maskedWalletDetailsBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonBackground team2.urbanrun:maskedWalletDetailsButtonBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance team2.urbanrun:maskedWalletDetailsButtonTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance team2.urbanrun:maskedWalletDetailsHeaderTextAppearance}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoImageType team2.urbanrun:maskedWalletDetailsLogoImageType}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsLogoTextColor team2.urbanrun:maskedWalletDetailsLogoTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #WalletFragmentStyle_maskedWalletDetailsTextAppearance team2.urbanrun:maskedWalletDetailsTextAppearance}</code></td><td></td></tr>
            </table>
            @see #WalletFragmentStyle_buyButtonAppearance
            @see #WalletFragmentStyle_buyButtonHeight
@@ -1103,7 +1352,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f010023, 0x7f010024, 0x7f010025
         };
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#buyButtonAppearance}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#buyButtonAppearance}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1117,11 +1366,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>grayscale</code></td><td>2</td><td></td></tr>
 <tr><td><code>monochrome</code></td><td>3</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:buyButtonAppearance
+          @attr name team2.urbanrun:buyButtonAppearance
         */
         public static final int WalletFragmentStyle_buyButtonAppearance = 3;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#buyButtonHeight}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#buyButtonHeight}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1142,11 +1391,11 @@ containing a value of this type.
 <tr><td><code>match_parent</code></td><td>-1</td><td></td></tr>
 <tr><td><code>wrap_content</code></td><td>-2</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:buyButtonHeight
+          @attr name team2.urbanrun:buyButtonHeight
         */
         public static final int WalletFragmentStyle_buyButtonHeight = 0;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#buyButtonText}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#buyButtonText}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1161,11 +1410,11 @@ containing a value of this type.
 <tr><td><code>book_now</code></td><td>3</td><td></td></tr>
 <tr><td><code>donate_with_google</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:buyButtonText
+          @attr name team2.urbanrun:buyButtonText
         */
         public static final int WalletFragmentStyle_buyButtonText = 2;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#buyButtonWidth}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#buyButtonWidth}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1186,11 +1435,11 @@ containing a value of this type.
 <tr><td><code>match_parent</code></td><td>-1</td><td></td></tr>
 <tr><td><code>wrap_content</code></td><td>-2</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:buyButtonWidth
+          @attr name team2.urbanrun:buyButtonWidth
         */
         public static final int WalletFragmentStyle_buyButtonWidth = 1;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#maskedWalletDetailsBackground}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#maskedWalletDetailsBackground}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1198,11 +1447,11 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name Team2.urbanrun:maskedWalletDetailsBackground
+          @attr name team2.urbanrun:maskedWalletDetailsBackground
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsBackground = 6;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#maskedWalletDetailsButtonBackground}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#maskedWalletDetailsButtonBackground}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1210,31 +1459,31 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name Team2.urbanrun:maskedWalletDetailsButtonBackground
+          @attr name team2.urbanrun:maskedWalletDetailsButtonBackground
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsButtonBackground = 8;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#maskedWalletDetailsButtonTextAppearance}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#maskedWalletDetailsButtonTextAppearance}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Team2.urbanrun:maskedWalletDetailsButtonTextAppearance
+          @attr name team2.urbanrun:maskedWalletDetailsButtonTextAppearance
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsButtonTextAppearance = 7;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#maskedWalletDetailsHeaderTextAppearance}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#maskedWalletDetailsHeaderTextAppearance}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Team2.urbanrun:maskedWalletDetailsHeaderTextAppearance
+          @attr name team2.urbanrun:maskedWalletDetailsHeaderTextAppearance
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsHeaderTextAppearance = 5;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#maskedWalletDetailsLogoImageType}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#maskedWalletDetailsLogoImageType}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1247,11 +1496,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>classic</code></td><td>1</td><td></td></tr>
 <tr><td><code>monochrome</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name Team2.urbanrun:maskedWalletDetailsLogoImageType
+          @attr name team2.urbanrun:maskedWalletDetailsLogoImageType
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsLogoImageType = 10;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#maskedWalletDetailsLogoTextColor}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#maskedWalletDetailsLogoTextColor}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
@@ -1262,18 +1511,249 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name Team2.urbanrun:maskedWalletDetailsLogoTextColor
+          @attr name team2.urbanrun:maskedWalletDetailsLogoTextColor
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsLogoTextColor = 9;
         /**
-          <p>This symbol is the offset where the {@link Team2.urbanrun.R.attr#maskedWalletDetailsTextAppearance}
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#maskedWalletDetailsTextAppearance}
           attribute's value can be found in the {@link #WalletFragmentStyle} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name Team2.urbanrun:maskedWalletDetailsTextAppearance
+          @attr name team2.urbanrun:maskedWalletDetailsTextAppearance
         */
         public static final int WalletFragmentStyle_maskedWalletDetailsTextAppearance = 4;
+        /** Attributes that can be used with a com_facebook_like_view.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #com_facebook_like_view_auxiliary_view_position team2.urbanrun:auxiliary_view_position}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_facebook_like_view_foreground_color team2.urbanrun:foreground_color}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_facebook_like_view_horizontal_alignment team2.urbanrun:horizontal_alignment}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_facebook_like_view_object_id team2.urbanrun:object_id}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_facebook_like_view_object_type team2.urbanrun:object_type}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_facebook_like_view_style team2.urbanrun:style}</code></td><td></td></tr>
+           </table>
+           @see #com_facebook_like_view_auxiliary_view_position
+           @see #com_facebook_like_view_foreground_color
+           @see #com_facebook_like_view_horizontal_alignment
+           @see #com_facebook_like_view_object_id
+           @see #com_facebook_like_view_object_type
+           @see #com_facebook_like_view_style
+         */
+        public static final int[] com_facebook_like_view = {
+            0x7f010026, 0x7f010027, 0x7f010028, 0x7f010029,
+            0x7f01002a, 0x7f01002b
+        };
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#auxiliary_view_position}
+          attribute's value can be found in the {@link #com_facebook_like_view} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>bottom</code></td><td>0</td><td></td></tr>
+<tr><td><code>inline</code></td><td>1</td><td></td></tr>
+<tr><td><code>top</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name team2.urbanrun:auxiliary_view_position
+        */
+        public static final int com_facebook_like_view_auxiliary_view_position = 4;
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#foreground_color}
+          attribute's value can be found in the {@link #com_facebook_like_view} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name team2.urbanrun:foreground_color
+        */
+        public static final int com_facebook_like_view_foreground_color = 0;
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#horizontal_alignment}
+          attribute's value can be found in the {@link #com_facebook_like_view} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>center</code></td><td>0</td><td></td></tr>
+<tr><td><code>left</code></td><td>1</td><td></td></tr>
+<tr><td><code>right</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name team2.urbanrun:horizontal_alignment
+        */
+        public static final int com_facebook_like_view_horizontal_alignment = 5;
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#object_id}
+          attribute's value can be found in the {@link #com_facebook_like_view} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name team2.urbanrun:object_id
+        */
+        public static final int com_facebook_like_view_object_id = 1;
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#object_type}
+          attribute's value can be found in the {@link #com_facebook_like_view} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>unknown</code></td><td>0</td><td></td></tr>
+<tr><td><code>open_graph</code></td><td>1</td><td></td></tr>
+<tr><td><code>page</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name team2.urbanrun:object_type
+        */
+        public static final int com_facebook_like_view_object_type = 2;
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#style}
+          attribute's value can be found in the {@link #com_facebook_like_view} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>standard</code></td><td>0</td><td></td></tr>
+<tr><td><code>button</code></td><td>1</td><td></td></tr>
+<tr><td><code>box_count</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name team2.urbanrun:style
+        */
+        public static final int com_facebook_like_view_style = 3;
+        /** Attributes that can be used with a com_facebook_login_view.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #com_facebook_login_view_confirm_logout team2.urbanrun:confirm_logout}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_facebook_login_view_login_text team2.urbanrun:login_text}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_facebook_login_view_logout_text team2.urbanrun:logout_text}</code></td><td></td></tr>
+           </table>
+           @see #com_facebook_login_view_confirm_logout
+           @see #com_facebook_login_view_login_text
+           @see #com_facebook_login_view_logout_text
+         */
+        public static final int[] com_facebook_login_view = {
+            0x7f01002c, 0x7f01002d, 0x7f01002e
+        };
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#confirm_logout}
+          attribute's value can be found in the {@link #com_facebook_login_view} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name team2.urbanrun:confirm_logout
+        */
+        public static final int com_facebook_login_view_confirm_logout = 0;
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#login_text}
+          attribute's value can be found in the {@link #com_facebook_login_view} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name team2.urbanrun:login_text
+        */
+        public static final int com_facebook_login_view_login_text = 1;
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#logout_text}
+          attribute's value can be found in the {@link #com_facebook_login_view} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name team2.urbanrun:logout_text
+        */
+        public static final int com_facebook_login_view_logout_text = 2;
+        /** Attributes that can be used with a com_facebook_profile_picture_view.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #com_facebook_profile_picture_view_is_cropped team2.urbanrun:is_cropped}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_facebook_profile_picture_view_preset_size team2.urbanrun:preset_size}</code></td><td></td></tr>
+           </table>
+           @see #com_facebook_profile_picture_view_is_cropped
+           @see #com_facebook_profile_picture_view_preset_size
+         */
+        public static final int[] com_facebook_profile_picture_view = {
+            0x7f01002f, 0x7f010030
+        };
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#is_cropped}
+          attribute's value can be found in the {@link #com_facebook_profile_picture_view} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name team2.urbanrun:is_cropped
+        */
+        public static final int com_facebook_profile_picture_view_is_cropped = 1;
+        /**
+          <p>This symbol is the offset where the {@link team2.urbanrun.R.attr#preset_size}
+          attribute's value can be found in the {@link #com_facebook_profile_picture_view} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>small</code></td><td>-2</td><td></td></tr>
+<tr><td><code>normal</code></td><td>-3</td><td></td></tr>
+<tr><td><code>large</code></td><td>-4</td><td></td></tr>
+</table>
+          @attr name team2.urbanrun:preset_size
+        */
+        public static final int com_facebook_profile_picture_view_preset_size = 0;
     };
 }

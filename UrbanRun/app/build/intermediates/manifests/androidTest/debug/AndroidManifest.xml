@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="Team2.urbanrun.test">
+    package="team2.urbanrun.test">
 
     <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="17" />
 
@@ -9,8 +9,8 @@
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="Team2.urbanrun"
+                     android:targetPackage="team2.urbanrun"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for Team2.urbanrun"/>
+                     android:label="Tests for team2.urbanrun"/>
 </manifest>

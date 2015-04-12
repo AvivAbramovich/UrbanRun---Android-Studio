@@ -10,6 +10,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -31,15 +32,20 @@ public class ServletPostAsyncTask extends AsyncTask<Pair<Context, String>, Void,
         String name = params[0].second;
 
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://1-dot-team2urban.appspot.com/team2urban");
+        HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/team2urban");
+        //HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/randApple");
         try {
             // Add name data to request
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-            nameValuePairs.add(new BasicNameValuePair("Name", "Aviv"));
-            httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            //List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+            nameValuePairs.add(new BasicNameValuePair("username", "Aviv"));
+            //nameValuePairs.add(new BasicNameValuePair("centerX","0"));
+            //nameValuePairs.add(new BasicNameValuePair("centerY", "0"));
+            //nameValuePairs.add(new BasicNameValuePair("radius", "100"));
+            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             // Execute HTTP Post Request
-            HttpResponse response = httpClient.execute(httpPost);
+            HttpResponse response = httpClient.execute(request);
             if (response.getStatusLine().getStatusCode() == 200) {
                 return EntityUtils.toString(response.getEntity());
             }
