@@ -89,12 +89,6 @@ public class MainActivity extends Activity {
 		oppImage= (Bitmap)getIntent().getExtras().getParcelable("oppImage");
         myIcon = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.aviv),50,50,false);
         usersLoc.setIcon(BitmapDescriptorFactory.fromBitmap(myIcon));
-
-		//oppName = "Oren";
-        //oppImage = BitmapFactory.decodeResource(getResources(),R.drawable.oren);
-
-        //((ImageView)findViewById(R.id.opponentImg)).setImageDrawable(oppImage);
-		//end of the fixing
 		
 		//settings
 		UiSettings settings = map.getUiSettings();
@@ -178,11 +172,12 @@ public class MainActivity extends Activity {
 				map.animateCamera(CameraUpdateFactory.newLatLngZoom(usersLoc.getPosition(), 16));
 			}
 		});
-				
+
 		map.setOnMapLongClickListener(new OnMapLongClickListener() {
-					
+
 					@Override
 					public void onMapLongClick(LatLng point) {
+                        center.setPosition(point);
 						cir.setCenter(point);
 					}
 				});
@@ -215,13 +210,6 @@ public class MainActivity extends Activity {
 	protected void onResume(){
 		super.onResume();
 		Log.d("Aviv", "MainActivity - onResume");
-		
-		/*
-		AlertDialog.Builder buil = new AlertDialog.Builder(MainActivity.this);
-		buil.setMessage("onResume!");
-		AlertDialog alert = buil.create();
-		alert.show();
-		*/
 	}
 	
 	@Override

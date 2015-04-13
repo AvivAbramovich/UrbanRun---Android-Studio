@@ -110,13 +110,13 @@ ADDED from AndroidManifest.xml:11:5
 		ADDED from AndroidManifest.xml:12:9
 	android:required
 		ADDED from AndroidManifest.xml:13:9
-permission#com.Aviv.mapapp.permission.MAPS_RECEIVE
+permission#android.permission.MAPS_RECEIVE
 ADDED from AndroidManifest.xml:15:5
 	android:protectionLevel
 		ADDED from AndroidManifest.xml:17:9
 	android:name
 		ADDED from AndroidManifest.xml:16:9
-uses-permission#com.Aviv.mapapp.permission.MAPS_RECEIVE
+uses-permission#android.permission.MAPS_RECEIVE
 ADDED from AndroidManifest.xml:19:5
 	android:name
 		ADDED from AndroidManifest.xml:19:22

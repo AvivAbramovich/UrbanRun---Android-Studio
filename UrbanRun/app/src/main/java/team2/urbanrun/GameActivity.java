@@ -199,36 +199,6 @@ public class GameActivity extends Activity {
                     prize.setPosition(generateNewCoin());
             }
         });
-        /*
-        //sending servlet
-        HttpClient httpClient = new DefaultHttpClient();
-        HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/team2urban");
-        try {
-            // Add name data to request
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-            nameValuePairs.add(new BasicNameValuePair("username", "Aviv"));
-            //nameValuePairs.add(new BasicNameValuePair("centerX","0"));
-            //nameValuePairs.add(new BasicNameValuePair("centerY", "0"));
-            //nameValuePairs.add(new BasicNameValuePair("radius", "100"));
-            request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-            // Execute HTTP Post Request
-            Log.d("Aviv", "hello");
-            HttpResponse response = httpClient.execute(request);
-            //Log.d("Aviv", response.toString());
-
-            if (response.getStatusLine().getStatusCode() == 200) {
-                Log.d("Aviv",EntityUtils.toString(response.getEntity()));
-            }
-            Log.d("Aviv","Error: " + response.getStatusLine().getStatusCode() + " " + response.getStatusLine().getReasonPhrase());
-
-        } catch (ClientProtocolException e) {
-            Log.d("Aviv",e.getMessage());
-        } catch (IOException e) {
-            Log.d("Aviv",e.getMessage());
-        }
-        */
-
     }
 
     LatLng generateNewCoin()

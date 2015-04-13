@@ -9,6 +9,6 @@ package team2.urbanrun;
 
 public final class Manifest {
     public static final class permission {
-        public static final String MAPS_RECEIVE="com.Aviv.mapapp.permission.MAPS_RECEIVE";
+        public static final String MAPS_RECEIVE="android.permission.MAPS_RECEIVE";
     }
 }

@@ -13,10 +13,10 @@
         android:required="true" />
 
     <permission
-        android:name="com.Aviv.mapapp.permission.MAPS_RECEIVE"
+        android:name="android.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.Aviv.mapapp.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -64,8 +64,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA3weSJpr0JspP4rqo9mgBMmBRB8oz2e_0" />
-        <!--<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>-->
-
     </application>
 
 </manifest>

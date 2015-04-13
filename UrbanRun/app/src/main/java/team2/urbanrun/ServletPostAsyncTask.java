@@ -2,6 +2,7 @@ package team2.urbanrun;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.util.Pair;
 import android.widget.Toast;
 
@@ -10,7 +11,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -30,6 +30,7 @@ public class ServletPostAsyncTask extends AsyncTask<Pair<Context, String>, Void,
     protected String doInBackground(Pair<Context, String>... params) {
         context = params[0].first;
         String name = params[0].second;
+        Log.d("Aviv","name is: "+name);
 
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/team2urban");
@@ -37,11 +38,7 @@ public class ServletPostAsyncTask extends AsyncTask<Pair<Context, String>, Void,
         try {
             // Add name data to request
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-            //List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
             nameValuePairs.add(new BasicNameValuePair("username", "Aviv"));
-            //nameValuePairs.add(new BasicNameValuePair("centerX","0"));
-            //nameValuePairs.add(new BasicNameValuePair("centerY", "0"));
-            //nameValuePairs.add(new BasicNameValuePair("radius", "100"));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             // Execute HTTP Post Request
