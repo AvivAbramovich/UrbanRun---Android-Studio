@@ -43,11 +43,6 @@
         <activity
             android:name="team2.urbanrun.FriendChoosingActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="team2.urbanrun.MainActivity"
@@ -65,6 +60,26 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA3weSJpr0JspP4rqo9mgBMmBRB8oz2e_0" />
+
+        <!-- for facebook -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="team2.urbanrun.LaunchActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
