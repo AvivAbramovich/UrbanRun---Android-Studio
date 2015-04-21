@@ -3,12 +3,11 @@
     <!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/src/main/res/values/FriendsList.xml -->
     <eat-comment/>
     <string-array name="friendsList">
-        <item name="Aviv">Aviv Abramovich</item>
-        <item name="Oren">Oren Tvila</item>
-        <item name="Omri">Omri Cohen</item>
-        <item name="Asaf">Asaf Slilat</item>
-        <item name="Yuval">Yuval Brave</item>
-        <item name="Rotem">Rotem Klorin</item>
+        <item name="Aviv">Aviv</item>
+        <item name="Oren">Oren</item>
+        <item name="Omri">Omri</item>
+        <item name="Asaf">Asaf</item>
+        <item name="Rotem">Rotem</item>
     </string-array>
     <!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values/values.xml -->
     <eat-comment/>
@@ -170,6 +169,7 @@ available. Please contact the developer for assistance.</string>
     <string name="title_activity_friend_choosing">FriendChoosingActivity</string>
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_launch">LaunchActivity</string>
+    <string name="title_activity_player_choosing">PlayerChoosingActivity</string>
     <string name="title_activity_sign_in">SignInActivity</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.0.0/res/values/wallet_strings.xml -->

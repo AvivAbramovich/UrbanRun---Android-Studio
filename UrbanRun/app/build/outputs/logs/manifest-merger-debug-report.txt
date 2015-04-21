@@ -335,3 +335,9 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:80:17
 	android:name
 		ADDED from AndroidManifest.xml:80:27
+activity#team2.urbanrun.PlayerChoosingActivity
+ADDED from AndroidManifest.xml:83:9
+	android:label
+		ADDED from AndroidManifest.xml:85:13
+	android:name
+		ADDED from AndroidManifest.xml:84:13

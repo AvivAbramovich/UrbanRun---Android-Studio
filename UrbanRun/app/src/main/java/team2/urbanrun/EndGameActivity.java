@@ -22,6 +22,8 @@ public class EndGameActivity extends Activity {
         ((TextView)findViewById(R.id.oppName)).setText(getIntent().getExtras().getString("oppName"));
         ((TextView)findViewById(R.id.myScore)).setText(Integer.toString(getIntent().getExtras().getInt("myScore")));
         ((TextView)findViewById(R.id.oppScore)).setText(Integer.toString(getIntent().getExtras().getInt("oppScore")));
+
+        ((ImageView)findViewById(R.id.myImage)).setImageBitmap((Bitmap)getIntent().getExtras().getParcelable("myImage"));
         ((ImageView)findViewById(R.id.oppImage)).setImageBitmap((Bitmap)getIntent().getExtras().getParcelable("oppImage"));
 
         ((Button)findViewById(R.id.newGameButton)).setOnClickListener(new View.OnClickListener() {

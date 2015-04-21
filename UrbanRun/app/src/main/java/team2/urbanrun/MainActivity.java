@@ -47,6 +47,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends Activity {
 
@@ -67,10 +68,7 @@ public class MainActivity extends Activity {
 
         Log.d("Aviv", "MainActivity - onCreate");
 
-        //sending http post servlet
-        new ServletPostAsyncTask().execute(new Pair<Context, String>(this, "Aviv"));
-		
-		map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
+        map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
 		
 		CircleOptions circOp = new CircleOptions();
 		center = map.addMarker(new MarkerOptions().position(new LatLng(32.761872,35.018299)));   //HAIFA UNIV.
@@ -87,7 +85,8 @@ public class MainActivity extends Activity {
 
 		oppName = getIntent().getExtras().getString("oppName");
 		oppImage= (Bitmap)getIntent().getExtras().getParcelable("oppImage");
-        myIcon = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.aviv),50,50,false);
+        //myIcon = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.aviv),50,50,false);
+        myIcon = Bitmap.createScaledBitmap((Bitmap)getIntent().getExtras().getParcelable("myImage"),50,50,false);
         usersLoc.setIcon(BitmapDescriptorFactory.fromBitmap(myIcon));
 		
 		//settings
@@ -186,12 +185,35 @@ public class MainActivity extends Activity {
 					
 			@Override
 			public void onClick(View v) {
+                String myName, oppName, radius, centerLat, centerLng,type,limit;
+                myName= getIntent().getExtras().getString("myName");
+                oppName = getIntent().getExtras().getString("oppName");
+                radius = Integer.toString((int)cir.getRadius());
+                centerLat = Double.toString(cir.getCenter().latitude);
+                centerLng = Double.toString(cir.getCenter().longitude);
+                type = "0";
+                limit = "180000";   //3 minutes TODO: choosing game limit
+                //first - send servlet for open a game and get a gameID
+                String GameID = "";
+                try {
+                    GameID = (new ServletInitGame().execute(myName,oppName,radius,centerLat,centerLng,type,limit)).get();
+                    Log.d("Aviv","Game ID: "+GameID);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+                //intent to the game activity
 				Intent intent = new Intent(MainActivity.this, GameActivity.class);
 				intent.putExtra("Radius", cir.getRadius());
 				intent.putExtra("CenterLat", center.getPosition().latitude);
 				intent.putExtra("CenterLng", center.getPosition().longitude);
+                intent.putExtra("myName", myName);			//from the former activity intent
+                intent.putExtra("myImage", getIntent().getExtras().getParcelable("myImage")); 	//from the former activity intent
 				intent.putExtra("oppName", oppName);			//from the former activity intent
 				intent.putExtra("oppImage", (android.os.Parcelable) oppImage); 	//from the former activity intent
+                intent.putExtra("GameID",GameID);
 				startActivity(intent);
                 finish();
 			}
@@ -210,7 +232,7 @@ public class MainActivity extends Activity {
 	protected void onResume(){
 		super.onResume();
 		Log.d("Aviv", "MainActivity - onResume");
-	}
+    }
 	
 	@Override
 	protected void onDestroy()

@@ -8,9 +8,10 @@
 
     <ListView android:id="@android:id/list"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
 </LinearLayout>
 <!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/src/main/res/layout/activity_friend_choosing.xml -->

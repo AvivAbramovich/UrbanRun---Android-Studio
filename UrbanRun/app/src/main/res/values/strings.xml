@@ -10,4 +10,5 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_sign_in">SignInActivity</string>
     <string name="facebook_app_id">381953765339426</string>
+    <string name="title_activity_player_choosing">PlayerChoosingActivity</string>
 </resources>

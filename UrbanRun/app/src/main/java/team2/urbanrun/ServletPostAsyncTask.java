@@ -30,11 +30,9 @@ public class ServletPostAsyncTask extends AsyncTask<Pair<Context, String>, Void,
     protected String doInBackground(Pair<Context, String>... params) {
         context = params[0].first;
         String name = params[0].second;
-        Log.d("Aviv","name is: "+name);
 
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/team2urban");
-        //HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/randApple");
+        HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/urbanrun");
         try {
             // Add name data to request
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);

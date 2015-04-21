@@ -26,7 +26,7 @@ public class LaunchActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LaunchActivity.this, FriendChoosingActivity.class);
+                Intent intent = new Intent(LaunchActivity.this, PlayerChoosingActivity.class);
                 startActivity(intent);
             }
         });
