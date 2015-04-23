@@ -18,8 +18,8 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Aviv" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: team2.urbanrun" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85e86327-161c-460f-aeea-a4a1f54a0e66" name="Default" comment="" />
@@ -80,7 +80,7 @@
                 <favorite_root url="file://$PROJECT_DIR$/app/src/main/java/Team2/urbanrun" module="app" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
                   <favorite_root url="file://$PROJECT_DIR$/app/src/main/java/Team2/urbanrun/AppConstants.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
                   <favorite_root url="file://$PROJECT_DIR$/app/src/main/java/Team2/urbanrun/GameActivity.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
-                  <favorite_root url="file://$PROJECT_DIR$/app/src/main/java/Team2/urbanrun/MainActivity.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ArenaChoosingActivity.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
                 </favorite_root>
               </favorite_root>
             </favorite_root>
@@ -3750,63 +3750,10 @@
       <file leaf-file-name="GameActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/GameActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6062847" vertical-offset="3888" max-vertical-offset="5474">
-              <caret line="319" column="40" selection-start-line="319" selection-start-column="40" selection-end-line="319" selection-end-column="40" />
+            <state vertical-scroll-proportion="1.1530613" vertical-offset="737" max-vertical-offset="4709">
+              <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
               <folding>
-                <element signature="method#onLocationChanged#0;class#5676:7052" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServletDeclined.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletDeclined.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1020">
-              <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3570" max-vertical-offset="4556">
-              <caret line="210" column="77" selection-start-line="208" selection-start-column="16" selection-end-line="210" selection-end-column="77" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServletSendLocation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletSendLocation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1173">
-              <caret line="44" column="48" selection-start-line="44" selection-start-column="48" selection-end-line="44" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FriendChoosingActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/FriendChoosingActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="664" max-vertical-offset="2584">
-              <caret line="85" column="38" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServletInitGame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletInitGame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="488" max-vertical-offset="1173">
-              <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1259#1274#0" expanded="true" />
+                <element signature="class#5748:6449" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -5442,7 +5389,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/CounterClock.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-v17/activity_game.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_end_game.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/friends_list_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_up.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml" />
@@ -5459,18 +5405,26 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_player_choosing.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_friend_choosing.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/PlayerChoosingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/LaunchActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/EndGameActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletPlayerUnavailable.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletAmIInvited.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletInitGame.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGameStart.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletSendLocation.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletDeclined.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/GameActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/CheckInvtations.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGameStart.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MyLocationListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGameScores.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ArenaChoosingActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/DownloadImageTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/EndGameActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGetUsers.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/PlayerChoosingActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/FriendChoosingActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGetGameProperties.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/team2/urbanrun/GameActivity.java" />
       </list>
     </option>
   </component>
@@ -5506,7 +5460,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -5527,6 +5480,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -5633,7 +5588,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="raw" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -5662,14 +5617,9 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="urbanrun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -5691,6 +5641,8 @@
     <property name="ExportApk.ApkPath" value="C:\Users\Aviv\Documents\GitHub\UrbanRun---Android-Studio\UrbanRun\app" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.BuildType" value="release" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -5698,10 +5650,12 @@
       <recent name="Team2.urbanrun" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Aviv\Documents\GitHub\UrbanRun---Android-Studio\UrbanRun\app\src\main\res\raw" />
       <recent name="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\src\main\res\drawable-hdpi" />
       <recent name="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\src\main\res\drawable-ldpi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aviv\Documents\GitHub\UrbanRun---Android-Studio\UrbanRun\app\src\main\res\raw" />
       <recent name="C:\Users\Aviv\AndroidStudioProjects\UrbanRun\app\src\main\res\drawable-hdpi" />
     </key>
     <key name="android.template.parentActivityClass">
@@ -5901,7 +5855,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994923" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -5909,21 +5863,21 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25302115" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.016920473" sideWeight="0.10876133" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6903553" sideWeight="0.1102719" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29780033" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33913043" sideWeight="0.16131498" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.016920473" sideWeight="0.8912387" order="7" side_tool="false" content_ui="tabs" x="12" y="102" width="1153" height="557" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33840948" sideWeight="0.16087614" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.76649743" sideWeight="0.88972807" order="7" side_tool="false" content_ui="tabs" x="12" y="102" width="1153" height="557" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41455162" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24848942" sideWeight="0.49554896" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25151056" sideWeight="0.4918919" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2326284" sideWeight="0.50445104" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29984894" sideWeight="0.5027027" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -5951,27 +5905,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/AppConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/GameActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3485">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding>
-            <element signature="method#onLocationChanged#0;class#5676:7052" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1173">
@@ -5980,39 +5917,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="3349">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/AppConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/GameActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3485">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding>
-            <element signature="method#onLocationChanged#0;class#5676:7052" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1173">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ArenaChoosingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="3417">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
@@ -6031,7 +5936,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="3485">
           <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
           <folding>
-            <element signature="method#onLocationChanged#0;class#5676:7052" expanded="false" />
+            <element signature="class#5748:6449" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6044,7 +5949,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ArenaChoosingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2417" max-vertical-offset="3349">
           <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
@@ -6063,7 +5968,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3485">
           <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
           <folding>
-            <element signature="method#onLocationChanged#0;class#5676:7052" expanded="false" />
+            <element signature="class#5748:6449" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -6076,7 +5981,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ArenaChoosingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="3026">
           <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
@@ -6095,12 +6000,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3485">
           <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
           <folding>
-            <element signature="method#onLocationChanged#0;class#5676:7052" expanded="false" />
+            <element signature="class#5748:6449" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ArenaChoosingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2890" max-vertical-offset="3026">
           <caret line="223" column="4" selection-start-line="223" selection-start-column="4" selection-end-line="223" selection-end-column="4" />
@@ -6119,16 +6024,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1479">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/apple_icon.png">
@@ -6202,13 +6097,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/FriendsList.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22201492" vertical-offset="0" max-vertical-offset="536">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/friends_list_item.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="425">
@@ -6264,13 +6152,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/PlayerChoosingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1972">
-          <caret line="80" column="39" selection-start-line="80" selection-start-column="39" selection-end-line="80" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_end_game.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="628" max-vertical-offset="1513">
@@ -6279,13 +6160,6 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/EndGameActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="935">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletPlayerUnavailable.java">
@@ -6302,62 +6176,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGameStart.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletInitGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11824324" vertical-offset="169" max-vertical-offset="833">
-          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2295" max-vertical-offset="3366">
-          <caret line="210" column="77" selection-start-line="208" selection-start-column="16" selection-end-line="210" selection-end-column="77" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1173">
+          <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletSendLocation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="256" max-vertical-offset="833">
-          <caret line="44" column="48" selection-start-line="44" selection-start-column="48" selection-end-line="44" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.8521739" vertical-offset="148" max-vertical-offset="833">
+          <caret line="46" column="72" selection-start-line="46" selection-start-column="72" selection-end-line="46" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGameStart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="833">
+          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/MyLocationListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="869" max-vertical-offset="2618">
+          <caret line="63" column="96" selection-start-line="63" selection-start-column="96" selection-end-line="63" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1462">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGameScores.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8987069" vertical-offset="484" max-vertical-offset="1003">
+          <caret line="53" column="0" selection-start-line="21" selection-start-column="31" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/FriendsList.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25646552" vertical-offset="0" max-vertical-offset="464">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/DownloadImageTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16488223" vertical-offset="144" max-vertical-offset="612">
+          <caret line="13" column="65" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletDeclined.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1020">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="782">
+          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/PlayerChoosingActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1683">
+          <caret line="40" column="76" selection-start-line="40" selection-start-column="76" selection-end-line="40" selection-end-column="76" />
+          <folding>
+            <element signature="method#onOptionsItemSelected#0;class#PlayerChoosingActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGetUsers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.039906103" vertical-offset="493" max-vertical-offset="1020">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ArenaChoosingActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2049" max-vertical-offset="2601">
+          <caret line="172" column="25" selection-start-line="172" selection-start-column="25" selection-end-line="172" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletGetGameProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="697">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/FriendChoosingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="664" max-vertical-offset="2584">
-          <caret line="85" column="38" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="805" max-vertical-offset="2703">
+          <caret line="43" column="61" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
+          <folding>
+            <element signature="method#onOptionsItemSelected#0;class#FriendChoosingActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/EndGameActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1309">
+          <caret line="44" column="59" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/ServletInitGame.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/coach_whistle.mp3">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1173">
-          <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1259#1274#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2533">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/team2/urbanrun/GameActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6062847" vertical-offset="3888" max-vertical-offset="5474">
-          <caret line="319" column="40" selection-start-line="319" selection-start-column="40" selection-end-line="319" selection-end-column="40" />
+        <state vertical-scroll-proportion="1.1530613" vertical-offset="737" max-vertical-offset="4709">
+          <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
           <folding>
-            <element signature="method#onLocationChanged#0;class#5676:7052" expanded="false" />
+            <element signature="class#5748:6449" expanded="false" />
           </folding>
         </state>
       </provider>

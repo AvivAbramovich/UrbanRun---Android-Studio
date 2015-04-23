@@ -45,7 +45,7 @@
             android:label="Choose Your Opponent" >
         </activity>
         <activity
-            android:name="team2.urbanrun.MainActivity"
+            android:name="team2.urbanrun.ArenaChoosingActivity"
             android:label="@string/app_name" >
         </activity>
         <activity

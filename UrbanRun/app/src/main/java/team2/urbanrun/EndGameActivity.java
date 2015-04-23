@@ -4,12 +4,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.CookieSyncManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 
 public class EndGameActivity extends Activity {
@@ -19,12 +27,34 @@ public class EndGameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game);
 
-        ((TextView)findViewById(R.id.oppName)).setText(getIntent().getExtras().getString("oppName"));
-        ((TextView)findViewById(R.id.myScore)).setText(Integer.toString(getIntent().getExtras().getInt("myScore")));
-        ((TextView)findViewById(R.id.oppScore)).setText(Integer.toString(getIntent().getExtras().getInt("oppScore")));
+        try {
+            String res=(new ServletGameScores().execute(getIntent().getExtras().getString("GameID")).get());
+            Log.d("Aviv", "Response from servlet: " + res);
+            JSONArray array = new JSONArray(res);
+            for(int i=0;i<array.length();i++) {
+                JSONObject player = (JSONObject) array.get(i);
+                if (player.getString("Username").equals(getIntent().getExtras().getString("myName"))) {
+                    ((TextView) findViewById(R.id.myScore)).setText(Integer.toString(player.getInt("score")));
+                    ((ImageView)findViewById(R.id.myImage)).setImageBitmap((new DownloadImageTask()
+                            .execute(player.getString("ImageURL"))).get());
+                    ((TextView) findViewById(R.id.myName)).setText(player.getString("FullName"));
+                }
+                else{
+                    ((TextView) findViewById(R.id.oppScore)).setText(Integer.toString(player.getInt("score")));
+                    ((ImageView)findViewById(R.id.oppImage)).setImageBitmap((new DownloadImageTask()
+                            .execute(player.getString("ImageURL"))).get());
+                    ((TextView) findViewById(R.id.oppName)).setText(player.getString("FullName"));
+                }
+            }
 
-        ((ImageView)findViewById(R.id.myImage)).setImageBitmap((Bitmap)getIntent().getExtras().getParcelable("myImage"));
-        ((ImageView)findViewById(R.id.oppImage)).setImageBitmap((Bitmap)getIntent().getExtras().getParcelable("oppImage"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
         ((Button)findViewById(R.id.newGameButton)).setOnClickListener(new View.OnClickListener() {
             @Override
