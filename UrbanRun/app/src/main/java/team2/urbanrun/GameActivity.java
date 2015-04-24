@@ -103,9 +103,20 @@ public class GameActivity extends Activity {
         double centerLat=0,centerLng=0;
         try {
             JSONObject json = new JSONObject((new ServletGetGameProperties().execute(GameID)).get());
+            Log.d("Aviv","json: "+json.toString());
             Radius = json.getInt("Radius");
             centerLat = json.getDouble("centerLat");
             centerLng = json.getDouble("centerLng");
+
+            LatLng loc = new LatLng(centerLat,centerLng);
+            CircleOptions circOp = new CircleOptions();
+            circOp.center(loc);
+            circOp.radius(Radius);
+
+            Arena = map.addCircle(circOp);
+
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(circOp.getCenter(), 16));
+
             players = json.getJSONArray("Players");
 
             //TEMPORARY FOR 1vs1
@@ -158,15 +169,6 @@ public class GameActivity extends Activity {
 
         oppScoreTV.setText("0");
         myScoreTV.setText("0");
-
-        LatLng loc = new LatLng(centerLat,centerLng);
-        CircleOptions circOp = new CircleOptions();
-        circOp.center(loc);
-        circOp.radius(Radius);
-
-        Arena = map.addCircle(circOp);
-
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16));
 
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 2, new LocationListener() {
