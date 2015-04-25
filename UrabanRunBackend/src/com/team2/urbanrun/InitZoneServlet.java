@@ -105,10 +105,10 @@ public class InitZoneServlet extends HttpServlet {
 	          String createElementsTable = "CREATE TABLE ElementsTable? ("
 						
 	    			  	+ "ID INT PRIMARY KEY,"
-						+ "Lat DOUBLE NOT NULL,"
-						+ "Lng DOUBLE NOT NULL,"
+						+ "Lat DOUBLE,"
+						+ "Lng DOUBLE,"
 						+ "type INT,"
-						+ "terminates INT)";
+						+ "terminates LONG)";
 						
 	    	 stmt = conn.prepareStatement(createElementsTable );
 	    	 stmt.setInt(1, gameID);

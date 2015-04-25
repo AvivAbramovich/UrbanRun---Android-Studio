@@ -95,7 +95,6 @@ public class FriendChoosingActivity extends ListActivity {
                                             intent.putExtra("GameID",GameID);
                                             dialog.cancel();
                                             startActivity(intent);
-                                            finish();
                                         }
                                     });
                                     builder.setNegativeButton("Decline",new DialogInterface.OnClickListener() {
@@ -149,7 +148,7 @@ public class FriendChoosingActivity extends ListActivity {
        public View getView(final int position, View convertView, ViewGroup parent) {
            LayoutInflater inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
            View  row = inflator.inflate(R.layout.friends_list_item, parent, false);
-           final ImageView iv = (ImageView) row.findViewById(R.id.imageView);
+           final ImageView iv = (ImageView) row.findViewById(R.id.userImage);
            final TextView tv = (TextView) row.findViewById(R.id.textView);
            tv.setText(names[position]);
            try {

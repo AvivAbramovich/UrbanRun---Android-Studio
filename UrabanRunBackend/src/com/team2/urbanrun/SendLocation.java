@@ -5,11 +5,17 @@ import java.io.*;
 import javax.servlet.http.*;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import com.google.appengine.api.utils.SystemProperty;
+import com.google.gson.Gson;
 import com.team2.urbanrun.AppConstants;
+import com.team2.urbanrun.Classes.MyElements;
+import com.team2.urbanrun.Classes.Opponent;
+import com.team2.urbanrun.Classes.Player;
 
 @SuppressWarnings("serial")
 public class SendLocation extends HttpServlet {
@@ -49,6 +55,8 @@ public class SendLocation extends HttpServlet {
 				String gameid = req.getParameter("GameID");
 				double myLat = Double.parseDouble(req.getParameter("mylat"));
 				double myLng = Double.parseDouble(req.getParameter("mylng"));
+				Calendar calendar = Calendar.getInstance();
+				Timestamp currentTimestamp = new java.sql.Timestamp(calendar.getTime().getTime());
 				
 				log(username+" game: "+gameid+"lat: "+myLat+", my Lng: "+myLng);
 				
@@ -65,6 +73,20 @@ public class SendLocation extends HttpServlet {
 					}
 				}
 				
+				/*more than 1 player STILL NOT IN USE
+				List<Opponent> playersList = new ArrayList<Opponent>();
+				while(rs.next())
+				{
+					if(!rs.getString("username").equals(username)){
+						playersList.add(new Opponent(rs.getString("username"),rs.getDouble("Lat"),rs.getDouble("Lng"),rs.getInt("score")));
+					}
+					else{
+						myScore=rs.getInt("score");
+					}
+				}
+				END*/
+				
+				
 				pstmt = conn.prepareStatement(AppConstants.GET_GAME_INFO);
 				pstmt.setString(1, gameid);
 				rs=pstmt.executeQuery();
@@ -72,8 +94,6 @@ public class SendLocation extends HttpServlet {
 					centerLat=rs.getDouble("centerLat");
 					centerLng=rs.getDouble("centerLng");
 					radius=rs.getInt("radius");
-					Calendar calendar = Calendar.getInstance();
-					Timestamp currentTimestamp = new java.sql.Timestamp(calendar.getTime().getTime());
 					timeLeft=(rs.getLong("gameLimit") - currentTimestamp.getTime())/1000;
 					
 					if(timeLeft<=0)
@@ -86,57 +106,62 @@ public class SendLocation extends HttpServlet {
 				
 				pstmt = conn.prepareStatement("select * from ElementsTable"+gameid);
 				rs=pstmt.executeQuery();
-				//TODO: Convert to While loop for all prizes.
-				if(rs.next()){
-					prizeLat=rs.getDouble("Lat");
-					prizeLng=rs.getDouble("Lng");
-					double dist = diff_in_meters_between_two_points(prizeLat, prizeLng, myLat, myLng);
-					log("distance from the apple is "+dist);
-					if (dist<AppConstants.MIN_RADIUS){
-						//update score 100
-						int  prizeID=rs.getInt("ID");
-						log("got_an_apple"+prizeID);
-						myScore+=100; //score updating in the wnd of the servlet with the user's location
-						
-						//delete prize
-						log("check1");
+				int countElements = 0;
+				List<MyElements> elementsList = new ArrayList<MyElements>();
+				while(rs.next())
+				{
+					if((currentTimestamp.getTime())>rs.getLong("terminates")){	//remove the item
 						pstmt = conn.prepareStatement("delete from ElementsTable"+gameid+" where ID=?");
-						pstmt.setInt(1, prizeID); //get the original element ID
+						pstmt.setInt(1, rs.getInt("ID"));
 						pstmt.executeUpdate();
-						log("check2");
-						
-						generateNewCoin(radius, centerLat, centerLng);
-						
-						//insert new prize
-						pstmt = conn.prepareStatement("insert into ElementsTable"+gameid+" values(?,?,?,?,?)");
-						pstmt.setInt(1,(int)(Math.random()*1000000));
-						pstmt.setDouble(2, plat);
-						pstmt.setDouble(3, plng);
-						pstmt.setInt(4, 0); //temporary
-						pstmt.setInt(5, 30);
-						pstmt.executeUpdate();
-						log("check3");
-						sound=1; //get prize sound
+					}
+					else
+					{
+						//first, check if i too close to it and got it
+						double lat=rs.getDouble("Lat"),lng=rs.getDouble("Lng");
+						int type = rs.getInt("type");
+						if(diff_in_meters_between_two_points(lat, lng, myLat, myLng)<AppConstants.MIN_RADIUS){
+							if(type==0)
+								myScore+=50;
+							if(type==1)
+								myScore+=200;
+							if(type==2)
+								myScore+=1000;
+							pstmt = conn.prepareStatement("delete from ElementsTable"+gameid+" where ID=?");
+							pstmt.setInt(1, rs.getInt("ID"));
+							pstmt.executeUpdate();
+						}
+						else	//if not, add to the list off elements
+						{
+							elementsList.add(new MyElements(lat,lng, type));
+							countElements++;
+						}
 					}
 				}
-				else{
-					
-					generateNewCoin(radius, centerLat, centerLng);
-					prizeLat=plat;
-					prizeLng=plng;
-					log("check4");
-					pstmt.close();
-					pstmt = conn.prepareStatement("insert into ElementsTable"+gameid+" values (?,?,?,?,?)");
-					pstmt.setInt(1, ((int)(Math.random()*100000)));
+				if(countElements<AppConstants.NUM_ELEMENTS)	
+					//add 1 item if there's less than should be
+					//if need to add more than 1, adding it in the next servlet so it be faster response
+				{
+					pstmt = conn.prepareStatement("insert into ElementsTable"+gameid+" values(?,?,?,?,?)");
+					pstmt.setInt(1,(int)(Math.random()*100000));
+					generateNewElement(radius, centerLat, centerLng);
 					pstmt.setDouble(2, plat);
 					pstmt.setDouble(3, plng);
-					pstmt.setInt(4, 0);	//TODO: generate constants for each type of element
-					pstmt.setInt(5, 30);
-					
+					int rnd = (int)(Math.random()*20), type;
+					if(rnd<=10)
+						type=0;	//bronzeCoin (0-10)
+					else{
+						if(rnd<=17) //silver coin (11-17)
+							type=1;
+						else
+							type=2; //goldCoin (18-19)
+					}
+					pstmt.setInt(4, type);
+					pstmt.setLong(5, currentTimestamp.getTime()+AppConstants.ELEMENT_LIFETIME);
 					pstmt.executeUpdate();
-					log("check5");
+					elementsList.add(new MyElements(plat, plng, type));
 				}
-				log("check6");
+				
 				//updating the table (my location and score)
 				pstmt = conn.prepareStatement("update SingleGameTable"+gameid+" set score=?, Lat=?, Lng=? where username=?");
 				pstmt.setInt(1, myScore);
@@ -145,10 +170,12 @@ public class SendLocation extends HttpServlet {
 				pstmt.setString(4, username);
 				pstmt.executeUpdate();
 				
-				log("check7");
+				Gson gson = new Gson();
+				String ElementsListJson = gson.toJson(elementsList);
+				
 				//return these values
 				out.print("{\"oppLat\":"+oppLat+", \"oppLng\":"+oppLng+", \"myScore\":"+myScore+", \"oppScore\": "+oppScore+""
-						+ ", \"prizeLat\": "+prizeLat+", \"prizeLng\": "+prizeLng+", \"timeLeft\": "+timeLeft+", \"sound\":"+sound+"}"); 
+						+ ", \"Elements\": "+ElementsListJson+", \"timeLeft\": "+timeLeft+", \"sound\":"+sound+"}"); 
 				
 				
 			} finally {
@@ -161,7 +188,7 @@ public class SendLocation extends HttpServlet {
 		}
 	}
 	
-	void generateNewCoin(int radius, double centerLat, double centerLng)
+	void generateNewElement(int radius, double centerLat, double centerLng)
     {
 
         //PROBLEM: not mach between LatLng to meters, don't know how to do this conversation

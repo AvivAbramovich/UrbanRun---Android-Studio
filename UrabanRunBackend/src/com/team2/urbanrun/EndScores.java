@@ -27,7 +27,6 @@ public class EndScores extends HttpServlet {
 			throws IOException {
 		
 		String gameID = req.getParameter("GameID");
-		log("GameID"+gameID);
 		String url = null;
 		PrintWriter out = resp.getWriter();
 	    try {
@@ -52,7 +51,7 @@ public class EndScores extends HttpServlet {
 	    	  
 	  		  List<Player> userscores = new ArrayList<Player>();
 	          String statement = "select U.username, U.fullname, U.image, S.score from SingleGameTable"+gameID+" S, Users U"
-	          		+ " where U.username=S.username";
+	          		+ " where U.username=S.username order by S.score DESC";
 	          PreparedStatement stmt = conn.prepareStatement(statement);
 	          ResultSet res = stmt.executeQuery();
 	          while (res.next()) {
@@ -65,7 +64,6 @@ public class EndScores extends HttpServlet {
 				
 				Gson gson = new Gson();
 				String userJsonResult = gson.toJson(userscores);
-				log("res: "+userJsonResult);
 				out.print(userJsonResult);
 				out.close();
 				

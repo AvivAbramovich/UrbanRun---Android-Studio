@@ -46,13 +46,11 @@ public class GameActivity extends Activity {
 
     JSONArray players;
     //JSONObject[] opps;
-    //temporar
+    //temporary
     JSONObject opp,me;
 
-    String isCreator;
-
     //prize location
-    Marker prize;
+    Marker[] elements = new Marker[AppConstants.MAX_ELEMENTS];
 
     //scores
     int oppScore;
@@ -63,7 +61,6 @@ public class GameActivity extends Activity {
     Marker oppLoc;
 
     //temporary
-    boolean flag;
     boolean endGame = true;
 
     //TextViews
@@ -77,11 +74,10 @@ public class GameActivity extends Activity {
     long secondsLeft;
 
     //Markers icons
-    Bitmap appleIcon;
+    Bitmap goldCoin, silverCoin, bronzeCoin;
 
     //sounds
     MediaPlayer CoinsSound;
-    //MediaPlayer TimeUpSound = MediaPlayer.create(GameActivity.this,R.raw.multimedia_tone_signifies_end);
     MediaPlayer whistle;
 
     String res;
@@ -96,7 +92,6 @@ public class GameActivity extends Activity {
 
         map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
         myName = getIntent().getExtras().getString("myName");
-        flag = false;
 
         GameID= getIntent().getExtras().getString("GameID");
         int Radius=0;
@@ -108,11 +103,7 @@ public class GameActivity extends Activity {
             centerLat = json.getDouble("centerLat");
             centerLng = json.getDouble("centerLng");
 
-            LatLng loc = new LatLng(centerLat,centerLng);
-            CircleOptions circOp = new CircleOptions();
-            circOp.center(loc);
-            circOp.radius(Radius);
-
+            CircleOptions circOp = new CircleOptions().center(new LatLng(centerLat,centerLng)).radius(Radius);
             Arena = map.addCircle(circOp);
 
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(circOp.getCenter(), 16));
@@ -135,7 +126,10 @@ public class GameActivity extends Activity {
             e.printStackTrace();
         }
 
-        appleIcon = BitmapFactory.decodeResource(getResources(), R.drawable.apple_icon);
+        //appleIcon = BitmapFactory.decodeResource(getResources(), R.drawable.apple_icon);
+        goldCoin = BitmapFactory.decodeResource(getResources(), R.drawable.gold_coin);
+        silverCoin = BitmapFactory.decodeResource(getResources(), R.drawable.silver_coin);
+        bronzeCoin = BitmapFactory.decodeResource(getResources(), R.drawable.bronze_coin);
 
         //settings
         UiSettings settings = map.getUiSettings();
@@ -169,6 +163,13 @@ public class GameActivity extends Activity {
 
         oppScoreTV.setText("0");
         myScoreTV.setText("0");
+
+        //initialize elements array
+        for(int i=0; i<AppConstants.MAX_ELEMENTS; i++)
+        {
+            elements[i] = map.addMarker(new MarkerOptions().position(new LatLng(0,0)));
+            elements[i].setVisible(false);
+        }
 
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 2, new LocationListener() {
@@ -210,13 +211,13 @@ public class GameActivity extends Activity {
                             String str;
                             try {
                                 str = (new ServletSendLocation().execute(myName, GameID, Double.toString(myLoc.getPosition().latitude), Double.toString(myLoc.getPosition().longitude))).get();
+                                Log.d("Aviv",str);
                                 JSONObject object = new JSONObject(str);
                                 double oppLat,oppLng,prizeLat,prizeLng;
                                 int myScore, oppScore, sound;
                                 oppLat = object.getDouble("oppLat");
                                 oppLng = object.getDouble("oppLng");
-                                prizeLat =object.getDouble("prizeLat");
-                                prizeLng =object.getDouble("prizeLng");
+                                JSONArray elementsArr = object.getJSONArray("Elements");
                                 myScore = object.getInt("myScore");
                                 oppScore = object.getInt("oppScore");
                                 secondsLeft = object.getLong("timeLeft");
@@ -234,14 +235,25 @@ public class GameActivity extends Activity {
 
                                 oppLoc.setPosition(new LatLng(oppLat,oppLng));
 
-                                if(flag)
-                                    prize.setPosition(new LatLng(prizeLat,prizeLng));
-                                else
+                                int i=0, type;
+                                JSONObject elem;
+                                for(; i<elementsArr.length(); i++)
                                 {
-                                    flag=true;
-                                    prize = map.addMarker(new MarkerOptions().position(new LatLng(prizeLat,prizeLng)));
-                                    prize.setIcon(BitmapDescriptorFactory.fromBitmap(appleIcon));
+                                    elem = (JSONObject) elementsArr.get(i);
+                                    type = elem.getInt("type");
+                                    elements[i].setPosition(new LatLng(elem.getDouble("Lat"),elem.getDouble("Lng")));
+                                    if(type==0) //bronze coin
+                                        elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(bronzeCoin));
+                                    else if(type==1)    //silver coin
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(silverCoin));
+                                         else   //gold coin
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                    //TODO: weapons
+                                    elements[i].setVisible(true);
                                 }
+                                for(;i<AppConstants.MAX_ELEMENTS;i++)   //hide all the unused elements
+                                    elements[i].setVisible(false);
+
                                 setTime(secondsLeft);
 
                             } catch (InterruptedException e) {
@@ -295,7 +307,8 @@ public class GameActivity extends Activity {
                 });
             }
         };
-        CoinsSound = MediaPlayer.create(GameActivity.this,R.raw.eating_an_apple_loudly_);
+        //CoinsSound = MediaPlayer.create(GameActivity.this,R.raw.eating_an_apple_loudly_);
+        CoinsSound = MediaPlayer.create(GameActivity.this, R.raw.coins);
         whistle = MediaPlayer.create(GameActivity.this,R.raw.coach_whistle);
 
         timer = new Timer();
@@ -331,7 +344,6 @@ public class GameActivity extends Activity {
             whistle.start();
             Intent intent = new Intent(GameActivity.this, EndGameActivity.class);
             intent.putExtra("myName", myName);
-            intent.putExtra("myImage", getIntent().getExtras().getParcelable("myImage"));
             intent.putExtra("GameID", GameID);
             startActivity(intent);
             finish();

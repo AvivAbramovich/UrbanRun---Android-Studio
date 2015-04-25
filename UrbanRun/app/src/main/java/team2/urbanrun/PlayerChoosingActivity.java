@@ -1,14 +1,11 @@
 package team2.urbanrun;
 
-import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,8 +21,6 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
 public class PlayerChoosingActivity extends ListActivity {
@@ -82,7 +77,7 @@ public class PlayerChoosingActivity extends ListActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             LayoutInflater inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View  row = inflator.inflate(R.layout.friends_list_item, parent, false);
-            final ImageView iv = (ImageView) row.findViewById(R.id.imageView);
+            final ImageView iv = (ImageView) row.findViewById(R.id.userImage);
             final TextView tv = (TextView) row.findViewById(R.id.textView);
             tv.setText(names[position]);
             try {
