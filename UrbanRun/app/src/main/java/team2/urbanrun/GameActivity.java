@@ -312,23 +312,18 @@ public class GameActivity extends Activity {
         whistle = MediaPlayer.create(GameActivity.this,R.raw.coach_whistle);
 
         timer = new Timer();
-    }
-
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
         timer.scheduleAtFixedRate(task,0,1000);
     }
 
     @Override
-    protected void onPause()
+    protected void onDestroy()
     {
-        super.onPause();
-        Log.d("Aviv","GameActivity - onPause");
+        super.onDestroy();
+        Log.d("Aviv","GameActivity - onDestroy");
         //TODO: sending servlet to the server that user left the game or unavailable... (What do we do when user get phone call?)
         timer.cancel();
     }
+
 
     void setTime(long secondsLeft)
     {

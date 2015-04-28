@@ -34,7 +34,8 @@ public class EndGameActivity extends ListActivity {
         int myIndex=0;
         String[] names={},images={};
         try {
-            String res=(new ServletGameScores().execute(getIntent().getExtras().getString("GameID")).get());
+            String res=(new ServletGameScores().execute(getIntent().getExtras().getString("GameID"),
+                    getIntent().getExtras().getString("myName")).get());
             Log.d("Aviv", "Response from servlet: " + res);
             JSONArray array = new JSONArray(res);
 
