@@ -72,6 +72,7 @@ public class getUsers extends HttpServlet {
 	        conn.close();
 	      }
 	    } catch (SQLException e) {
+	      log("fuck");
 	      e.printStackTrace();
 	      log(e.toString());
 	    }

@@ -25,8 +25,8 @@ public class SendLocation extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		String url = null;
-		double oppLat=0, oppLng=0, prizeLat=0, prizeLng=0, centerLat=0, centerLng=0;
-		int oppScore=0,myScore=0,radius=0, sound=0;
+		double centerLat=0, centerLng=0;
+		int radius=0, sound=0;
 		long timeLeft=0;
 		PrintWriter out = resp.getWriter();
 		try {
@@ -51,6 +51,7 @@ public class SendLocation extends HttpServlet {
 		try {
 			Connection conn = DriverManager.getConnection(url);
 			try {
+				int myScore=0;
 				String username = req.getParameter("username");
 				String gameid = req.getParameter("GameID");
 				double myLat = Double.parseDouble(req.getParameter("mylat"));
@@ -58,33 +59,16 @@ public class SendLocation extends HttpServlet {
 				Calendar calendar = Calendar.getInstance();
 				Timestamp currentTimestamp = new java.sql.Timestamp(calendar.getTime().getTime());
 				
-				log(username+" game: "+gameid+"lat: "+myLat+", my Lng: "+myLng);
 				
 				PreparedStatement pstmt = conn.prepareStatement("Select * from SingleGameTable"+gameid);
 				ResultSet rs=pstmt.executeQuery();
-				while(rs.next()){
-					if(!rs.getString("username").equals(username)){
-						oppLat=rs.getDouble("Lat");
-						oppLng=rs.getDouble("Lng");
-						oppScore=rs.getInt("score");
-					}
-					else{
-						myScore=rs.getInt("score");
-					}
-				}
-				
-				/*more than 1 player STILL NOT IN USE
 				List<Opponent> playersList = new ArrayList<Opponent>();
 				while(rs.next())
 				{
-					if(!rs.getString("username").equals(username)){
 						playersList.add(new Opponent(rs.getString("username"),rs.getDouble("Lat"),rs.getDouble("Lng"),rs.getInt("score")));
-					}
-					else{
-						myScore=rs.getInt("score");
-					}
+						if(rs.getString("username").equals(username))
+							myScore = rs.getInt("score");
 				}
-				END*/
 				
 				
 				pstmt = conn.prepareStatement(AppConstants.GET_GAME_INFO);
@@ -172,10 +156,10 @@ public class SendLocation extends HttpServlet {
 				
 				Gson gson = new Gson();
 				String ElementsListJson = gson.toJson(elementsList);
+				String PlayersListJson = gson.toJson(playersList);
 				
 				//return these values
-				out.print("{\"oppLat\":"+oppLat+", \"oppLng\":"+oppLng+", \"myScore\":"+myScore+", \"oppScore\": "+oppScore+""
-						+ ", \"Elements\": "+ElementsListJson+", \"timeLeft\": "+timeLeft+", \"sound\":"+sound+"}"); 
+				out.print("{\"Players\":"+PlayersListJson+ ", \"Elements\": "+ElementsListJson+", \"timeLeft\": "+timeLeft+", \"sound\":"+sound+"}"); 
 				
 				
 			} finally {

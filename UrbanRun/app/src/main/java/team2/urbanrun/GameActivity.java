@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,24 +42,22 @@ public class GameActivity extends Activity {
     GoogleMap map;
     Circle Arena;
     String GameID; //TODO: send servlet in the begining of the game that gives you the GameID
+    int numPlayers;
 
     String myName;
 
-    JSONArray players;
-    //JSONObject[] opps;
-    //temporary
-    JSONObject opp,me;
+    /* Multiplayer start*/
+    int myIndex; //user's index in the players array from the server
+    String[] firstNames;
+    Bitmap[] icons;
+    Marker[] players;
+    /* Multiplayer end*/
 
     //prize location
     Marker[] elements = new Marker[AppConstants.MAX_ELEMENTS];
 
     //scores
-    int oppScore;
-    int myScore;
-
-    //my and opponent locations
-    Marker myLoc;
-    Marker oppLoc;
+    int scores[];
 
     //temporary
     boolean endGame = true;
@@ -66,7 +65,8 @@ public class GameActivity extends Activity {
     //TextViews
     TextView countDown;
     TextView myScoreTV;
-    TextView oppScoreTV;
+    TextView opp1scoreTV, opp1nameTV, opp2scoreTV, opp2nameTV, opp3scoreTV, opp3nameTV;
+    ImageView opp1img, opp2img, opp3img;
 
     //clock
     Timer timer;
@@ -106,16 +106,24 @@ public class GameActivity extends Activity {
             CircleOptions circOp = new CircleOptions().center(new LatLng(centerLat,centerLng)).radius(Radius);
             Arena = map.addCircle(circOp);
 
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(circOp.getCenter(), 16));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(circOp.getCenter(), 18));
 
-            players = json.getJSONArray("Players");
+            JSONArray playersInfo = json.getJSONArray("Players");
 
+            numPlayers = playersInfo.length();
+            players = new Marker[numPlayers];
+            firstNames = new String[numPlayers];
+            scores = new int[numPlayers];
+            icons = new Bitmap[numPlayers];
             //TEMPORARY FOR 1vs1
-            for(int i=0; i<players.length();i++) {
-                if(((JSONObject)players.get(i)).getString("Username").equals(myName))
-                    me = (JSONObject) players.get(i);
-                else
-                    opp = (JSONObject) players.get(i);
+            for(int i=0; i<playersInfo.length();i++) {
+                players[i] = map.addMarker(new MarkerOptions().position(new LatLng(0,0)));
+                firstNames[i] = ((JSONObject)playersInfo.get(i)).getString("FirstName");
+                icons[i] =  new DownloadImageTask().execute(((JSONObject)playersInfo.get(i)).getString("ImageURL")).get();
+                players[i].setIcon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(icons[i],50,50,false)));
+                if(((JSONObject)playersInfo.get(i)).getString("Username").equals(myName))
+                    myIndex = i;
+                scores[i] = 0;
             }
 
         } catch (InterruptedException e) {
@@ -126,7 +134,6 @@ public class GameActivity extends Activity {
             e.printStackTrace();
         }
 
-        //appleIcon = BitmapFactory.decodeResource(getResources(), R.drawable.apple_icon);
         goldCoin = BitmapFactory.decodeResource(getResources(), R.drawable.gold_coin);
         silverCoin = BitmapFactory.decodeResource(getResources(), R.drawable.silver_coin);
         bronzeCoin = BitmapFactory.decodeResource(getResources(), R.drawable.bronze_coin);
@@ -136,33 +143,34 @@ public class GameActivity extends Activity {
         settings.setZoomControlsEnabled(true);
         settings.setMyLocationButtonEnabled(true);
 
-        oppScore = 0;
-        myScore = 0;
-        oppLoc = map.addMarker(new MarkerOptions().position(new LatLng(0,0)));
-        myLoc = map.addMarker(new MarkerOptions().position(new LatLng(0,0)));
-        try {
-            ((TextView)findViewById(R.id.opponentName)).setText(opp.getString("FirstName"));
-            Bitmap oppImg = new DownloadImageTask().execute(opp.getString("ImageURL")).get();
-            Bitmap myImg = new DownloadImageTask().execute(me.getString("ImageURL")).get();
-            oppLoc.setIcon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(oppImg,50,50,false)));
-            myLoc.setIcon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(myImg,50,50,false)));
-            ((ImageView)findViewById(R.id.opponentImg)).setImageBitmap(oppImg);
-            ((ImageView)findViewById(R.id.myImage)).setImageBitmap(myImg);
-            countDown = (TextView)findViewById(R.id.clockTextView);
-            countDown.setText("Waiting for "+opp.getString("FirstName")+"...");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+        countDown = (TextView)findViewById(R.id.clockTextView);
+        countDown.setText("Waiting for "+firstNames[1-myIndex]+"...");                  //TEMPORARY
 
-        oppScoreTV = (TextView)findViewById(R.id.opponentScore);
+        ((ImageView)findViewById(R.id.myImage)).setImageBitmap(icons[myIndex]);
         myScoreTV = (TextView)findViewById(R.id.MyScore);
 
-        oppScoreTV.setText("0");
-        myScoreTV.setText("0");
+        opp1scoreTV = (TextView)findViewById(R.id.opp1score);
+        opp2scoreTV = (TextView)findViewById(R.id.opp2score);
+        opp3scoreTV = (TextView)findViewById(R.id.opp3score);
+
+        opp1nameTV = (TextView)findViewById(R.id.opp1name);
+        opp2nameTV = (TextView)findViewById(R.id.opp2name);
+        opp3nameTV = (TextView)findViewById(R.id.opp3name);
+
+        opp1img = (ImageView)findViewById(R.id.opp1img);
+        opp2img = (ImageView)findViewById(R.id.opp2img);
+        opp3img = (ImageView)findViewById(R.id.opp3img);
+
+        //hide everything until the game starts
+        opp1nameTV.setVisibility(View.INVISIBLE);
+        opp2nameTV.setVisibility(View.INVISIBLE);
+        opp3nameTV.setVisibility(View.INVISIBLE);
+        opp1img.setVisibility(View.INVISIBLE);
+        opp2img.setVisibility(View.INVISIBLE);
+        opp3img.setVisibility(View.INVISIBLE);
+        opp1scoreTV.setVisibility(View.INVISIBLE);
+        opp2scoreTV.setVisibility(View.INVISIBLE);
+        opp3scoreTV.setVisibility(View.INVISIBLE);
 
         //initialize elements array
         for(int i=0; i<AppConstants.MAX_ELEMENTS; i++)
@@ -194,7 +202,7 @@ public class GameActivity extends Activity {
 
             @Override
             public void onLocationChanged(Location location) {
-                myLoc.setPosition(new LatLng(location.getLatitude(),location.getLongitude()));
+                players[myIndex].setPosition(new LatLng(location.getLatitude(),location.getLongitude()));
             }
         });
 
@@ -210,16 +218,14 @@ public class GameActivity extends Activity {
                             //sending to the server the location
                             String str;
                             try {
-                                str = (new ServletSendLocation().execute(myName, GameID, Double.toString(myLoc.getPosition().latitude), Double.toString(myLoc.getPosition().longitude))).get();
+                                str = (new ServletSendLocation().execute(myName, GameID, Double.toString(
+                                        players[myIndex].getPosition().latitude),
+                                        Double.toString(players[myIndex].getPosition().longitude))).get();
                                 Log.d("Aviv",str);
                                 JSONObject object = new JSONObject(str);
-                                double oppLat,oppLng,prizeLat,prizeLng;
                                 int myScore, oppScore, sound;
-                                oppLat = object.getDouble("oppLat");
-                                oppLng = object.getDouble("oppLng");
+                                JSONArray playersJson = object.getJSONArray("Players");
                                 JSONArray elementsArr = object.getJSONArray("Elements");
-                                myScore = object.getInt("myScore");
-                                oppScore = object.getInt("oppScore");
                                 secondsLeft = object.getLong("timeLeft");
                                 sound = object.getInt("sound");
 
@@ -230,15 +236,78 @@ public class GameActivity extends Activity {
                                     stage = 3;  //so won't call EndOfGame twice (async shit...)
                                     EndOfGame();
                                 }
-                                myScoreTV.setText(Integer.toString(myScore));
-                                oppScoreTV.setText(Integer.toString(oppScore));
 
-                                oppLoc.setPosition(new LatLng(oppLat,oppLng));
+                                //DEBUG
+                                if(numPlayers!=playersJson.length())
+                                    Log.e("Aviv","Num players form json ("+Integer.toString(playersJson.length())+
+                                            ") not equal to numPlayer from the game propoerties ("+Integer.toString(numPlayers)+")");
 
+                                //PLAYERS
+                                for(int i = 0; i<numPlayers; i++)
+                                {
+                                    JSONObject obj = (JSONObject) playersJson.get(i);
+                                    scores[i] = obj.getInt("score");
+                                    if(i != myIndex)
+                                        players[i].setPosition(new LatLng(obj.getDouble("Lat"), obj.getDouble("Lng")));
+                                }
+
+                                //find best 3 opponents
+                                int firstIndex=-1, secondIndex=-1, thirdIndex=-1, firstScore=0, secondScore=0, thirdScore=0;
+                                for(int i = playersJson.length()-1 ; i>=0 ; i--)
+                                {
+                                    if(i!=myIndex)
+                                    {
+                                        if(scores[i] >= firstScore)
+                                        {
+                                            thirdScore = secondScore;
+                                            secondScore = firstScore;
+                                            firstScore = scores[i];
+
+                                            thirdIndex = secondIndex;
+                                            secondIndex = firstIndex;
+                                            firstIndex = i;
+                                        }
+                                        else{
+                                            if(scores[i] >= secondScore)
+                                            {
+                                                thirdScore = secondScore;
+                                                secondScore = scores[i];
+
+                                                thirdIndex = secondIndex;
+                                                secondIndex = i;
+                                            }
+                                            else if(scores[i] >= thirdScore)
+                                            {
+                                                thirdScore = scores[i];
+                                                thirdIndex = i;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                myScoreTV.setText(Integer.toString(scores[myIndex]));
+                                opp1nameTV.setText(firstNames[firstIndex]);
+                                opp1img.setImageBitmap(icons[firstIndex]);
+                                opp1scoreTV.setText(Integer.toString(scores[firstIndex]));
+
+                                if(numPlayers>2)
+                                {
+                                    opp2nameTV.setText(firstNames[secondIndex]);
+                                    opp2img.setImageBitmap(icons[secondIndex]);
+                                    opp2scoreTV.setText(Integer.toString(scores[secondIndex]));
+                                }
+
+                                if(numPlayers>3){
+                                    opp3nameTV.setText(firstNames[thirdIndex]);
+                                    opp3img.setImageBitmap(icons[thirdIndex]);
+                                    opp3scoreTV.setText(Integer.toString(scores[thirdIndex]));
+                                }
+
+                                //ELEMENTS
                                 int i=0, type;
-                                JSONObject elem;
                                 for(; i<elementsArr.length(); i++)
                                 {
+                                    JSONObject elem;
                                     elem = (JSONObject) elementsArr.get(i);
                                     type = elem.getInt("type");
                                     elements[i].setPosition(new LatLng(elem.getDouble("Lat"),elem.getDouble("Lng")));
@@ -269,11 +338,49 @@ public class GameActivity extends Activity {
                                 res = (new ServletGameStart().execute(myName, GameID)).get();
                                 if (res.equals("Wait"))   //still wait to the opp...
                                 {
-                                    Log.d("Aviv", "still waiting for " + opp.getString("FirstName"));
+                                    Log.d("Aviv", "still waiting for " + firstNames[1-myIndex]);
                                     //TODO: waiting "circle" (like in YouTube) and message to the user, meanwhile in the counterClock TextView
                                 } else if (res.equals("Declined")) {
                                     stage=2;
                                 } else {               //opponent is ready, starting the gmae
+                                    if(numPlayers == 2)
+                                    {
+                                        opp1img.setVisibility(View.VISIBLE);
+                                        opp1nameTV.setVisibility(View.VISIBLE);
+                                        opp1scoreTV.setVisibility(View.VISIBLE);
+
+                                        opp2nameTV.setVisibility(View.GONE);
+                                        opp2scoreTV.setVisibility(View.GONE);
+                                        opp2img.setVisibility(View.GONE);
+                                        opp3nameTV.setVisibility(View.GONE);
+                                        opp3scoreTV.setVisibility(View.GONE);
+                                        opp3img.setVisibility(View.GONE);
+                                    }else{
+                                        if(numPlayers == 3){
+                                            opp1img.setVisibility(View.VISIBLE);
+                                            opp1nameTV.setVisibility(View.VISIBLE);
+                                            opp1scoreTV.setVisibility(View.VISIBLE);
+                                            opp2nameTV.setVisibility(View.VISIBLE);
+                                            opp2scoreTV.setVisibility(View.VISIBLE);
+                                            opp2img.setVisibility(View.VISIBLE);
+
+                                            opp3nameTV.setVisibility(View.GONE);
+                                            opp3scoreTV.setVisibility(View.GONE);
+                                            opp3img.setVisibility(View.GONE);
+                                        }
+                                        else{
+                                            opp1img.setVisibility(View.VISIBLE);
+                                            opp1nameTV.setVisibility(View.VISIBLE);
+                                            opp1scoreTV.setVisibility(View.VISIBLE);
+                                            opp2nameTV.setVisibility(View.VISIBLE);
+                                            opp2scoreTV.setVisibility(View.VISIBLE);
+                                            opp2img.setVisibility(View.VISIBLE);
+                                            opp3nameTV.setVisibility(View.VISIBLE);
+                                            opp3scoreTV.setVisibility(View.VISIBLE);
+                                            opp3img.setVisibility(View.VISIBLE);
+                                        }
+                                    }
+
                                     whistle.start();
                                     stage=1;
                                 }
@@ -281,18 +388,12 @@ public class GameActivity extends Activity {
                                 e.printStackTrace();
                             } catch (ExecutionException e) {
                                 e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
                         }
                        if(stage==2) //opp declined
                        {
                            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
-                           try {
-                               builder.setMessage(opp.getString("FirstName") + " declined your invitation to play :(");
-                           } catch (JSONException e) {
-                               e.printStackTrace();
-                           }
+                           builder.setMessage(firstNames[1-myIndex]+ " declined your invitation to play :(");
                            builder.setCancelable(false);
                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                @Override
@@ -307,7 +408,7 @@ public class GameActivity extends Activity {
                 });
             }
         };
-        //CoinsSound = MediaPlayer.create(GameActivity.this,R.raw.eating_an_apple_loudly_);
+
         CoinsSound = MediaPlayer.create(GameActivity.this, R.raw.coins);
         whistle = MediaPlayer.create(GameActivity.this,R.raw.coach_whistle);
 
@@ -324,6 +425,21 @@ public class GameActivity extends Activity {
         timer.cancel();
     }
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+        builder.setMessage("Are you sure you want to quit the game?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                GameActivity.super.onBackPressed();                    //TODO: sending to the servlet that i left the game
+            }
+        });
+        builder.setNegativeButton("Stay", null);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
     void setTime(long secondsLeft)
     {

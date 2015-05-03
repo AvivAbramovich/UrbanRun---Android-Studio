@@ -50,7 +50,8 @@
         </activity>
         <activity
             android:name="team2.urbanrun.GameActivity"
-            android:label="@string/title_activity_game" >
+            android:label="@string/title_activity_game"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="team2.urbanrun.EndGameActivity"

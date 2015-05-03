@@ -135,6 +135,7 @@ public class InitZoneServlet extends HttpServlet {
 	      }
 	    } catch (SQLException e) {
 	      e.printStackTrace();
+	      log("fuck");
 	      log(e.toString());
 	    }
 	    //resp.setHeader("Refresh", "3; url=/guestbook.jsp");

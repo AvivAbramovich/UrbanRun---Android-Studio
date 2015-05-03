@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,6 +60,18 @@ public class PlayerChoosingActivity extends ListActivity {
     }
 
     @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        try {
+            Log.d("Aviv",(new SrevletLogOut().execute()).get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     protected void onPause()
     {
         super.onPause();
@@ -95,6 +108,14 @@ public class PlayerChoosingActivity extends ListActivity {
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    try {
+                        Log.d("Aviv",(new ServletLogin().execute(usernames[position],
+                                names[position], names[position], images[position])).get());    //TODO: send the first name instead fullname twice
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
                     Intent intent = new Intent(PlayerChoosingActivity.this, FriendChoosingActivity.class);
                     intent.putExtra("myName",usernames[position]);
                     intent.putExtra("myImage", ((BitmapDrawable)iv.getDrawable()).getBitmap());
@@ -128,5 +149,6 @@ public class PlayerChoosingActivity extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
 
 
