@@ -131,7 +131,8 @@ public class SendLocation extends HttpServlet {
 						}
 					}
 				}
-				if (Math.random()*100<=AppConstants.PERCENT_FOR_NEW_ELEMENT){
+				if (playersList.size()*AppConstants.Max_Elements_Per_User < countElements &&
+						Math.random()*100<=AppConstants.PERCENT_FOR_NEW_ELEMENT){
 					//add 1 element in probability P. 
 					countElements=0;
 				}

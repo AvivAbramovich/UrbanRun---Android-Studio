@@ -8,20 +8,22 @@ public interface AppConstants {
 	public final String GET_GAME_INFO="Select * from Games where GameID=?";
 	public final String ADD_NEW_PRIZE="insert into ElementsTable? values (?,?,?,?,?)";
 	public final double NUM_ELEMENTS_PER_PLAYER = 0.5;
-	public final double PERCENT_FOR_NEW_ELEMENT = 5; // %(0-100)
+	public final int Max_Elements_Per_User = 5;
+	public final double PERCENT_FOR_NEW_ELEMENT = 3; // %(0-100)
 
 	public final int NUM_OF_ELEMENT_TYPE = 8;
 	public enum Element {
 	//	name   	   type score   %  timeLife(1000*sec) radius 
-		diamond		(0,	1000,	2,		1000*120,		5),		//"public"		//2%
-		stink		(1,	 -10,	7,		1000*20,		50),	//"public"		//5%
-		smoke		(2,	   0,	16,		1000*10,		50),					//9%
-		gold		(3,  500,	26,		1000*20,		5),						//10%
-		takeThorns	(4,	   0,	36,		1000*20,		5),  	//kochim		//10%
-		takeMine	(5,	   0,	50,		1000*30,		5), 	//mokash		//14%
-		silver		(6,	 250,	70,		1000*30,		5),						//20%					
-		bronze		(7,	 100,	100,	1000*40,		5),						//30%
+		diamond		(0,	1000,	1,		1000*120,		5),		//"public"		//1%
+		stink		(1,	 -10,	1,		1000*20,		50),	//"public"		//
+		smoke		(2,	   0,	1,		1000*10,		50),					//
+		gold		(3,  500,	10,		1000*20,		5),						//9%
+		takeThorns	(4,	   0,	10,		1000*20,		5),  	//kochim		//
+		takeMine	(5,	   0,	10,		1000*30,		5), 	//mokash		//
+		silver		(6,	 250,	45,		1000*30,		5),						//35%					
+		bronze		(7,	 100,	100,	1000*40,		5),						//55%
 		//--------this is not element, this is HIT!-----------------------//
+		
 		hitThorns	(8,	-100,	-1,		1000*180,		15),
 		hitMine		(9,	-100,	-1,		1000*180,		 6);
 		

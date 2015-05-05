@@ -54,7 +54,7 @@ public class GameActivity extends Activity {
     /* Multiplayer end*/
 
     //prize location
-    Marker[] elements = new Marker[AppConstants.MAX_ELEMENTS];
+    Marker[] elements;
 
     //scores
     int scores[];
@@ -74,7 +74,7 @@ public class GameActivity extends Activity {
     long secondsLeft;
 
     //Markers icons
-    Bitmap goldCoin, silverCoin, bronzeCoin;
+    Bitmap goldCoin, silverCoin, bronzeCoin, diamond, box;
 
     //sounds
     MediaPlayer CoinsSound;
@@ -115,6 +115,7 @@ public class GameActivity extends Activity {
             firstNames = new String[numPlayers];
             scores = new int[numPlayers];
             icons = new Bitmap[numPlayers];
+            elements = new Marker[AppConstants.MAX_ELEMENTS*numPlayers];
             //TEMPORARY FOR 1vs1
             for(int i=0; i<playersInfo.length();i++) {
                 players[i] = map.addMarker(new MarkerOptions().position(new LatLng(0,0)));
@@ -134,9 +135,11 @@ public class GameActivity extends Activity {
             e.printStackTrace();
         }
 
-        goldCoin = BitmapFactory.decodeResource(getResources(), R.drawable.gold_coin);
-        silverCoin = BitmapFactory.decodeResource(getResources(), R.drawable.silver_coin);
-        bronzeCoin = BitmapFactory.decodeResource(getResources(), R.drawable.bronze_coin);
+        goldCoin = (BitmapFactory.decodeResource(getResources(), R.drawable.gold40));
+        silverCoin = (BitmapFactory.decodeResource(getResources(), R.drawable.silver40));
+        bronzeCoin = (BitmapFactory.decodeResource(getResources(), R.drawable.bronze40));
+        diamond = (BitmapFactory.decodeResource(getResources(), R.drawable.diamond40));
+        box = (BitmapFactory.decodeResource(getResources(), R.drawable.box40));
 
         //settings
         UiSettings settings = map.getUiSettings();
@@ -311,39 +314,34 @@ public class GameActivity extends Activity {
                                     elem = (JSONObject) elementsArr.get(i);
                                     type = elem.getInt("type");
                                     elements[i].setPosition(new LatLng(elem.getDouble("Lat"),elem.getDouble("Lng")));
-                                    /*
-                                    if(type==0) //bronze coin
-                                        elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(bronzeCoin));
-                                    else if(type==1)    //silver coin
-                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(silverCoin));
-                                         else   //gold coin
-                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
-                                    */
 
                                     switch(type) {
                                         case 0:
-                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(diamond));
                                             break;
                                         case 1:
-                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(box));
                                             break;
                                         case 2:
-                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(box));
                                             break;
                                         case 3:
                                             elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
                                             break;
                                         case 4:
-                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(box));
                                             break;
                                         case 5:
-                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(box));
                                             break;
                                         case 6:
                                             elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(silverCoin));
                                             break;
                                         case 7:
                                             elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(bronzeCoin));
+                                            break;
+                                        default:
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(box));
                                             break;
                                     }
                                     elements[i].setVisible(true);

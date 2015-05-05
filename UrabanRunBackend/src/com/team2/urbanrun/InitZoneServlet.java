@@ -53,10 +53,17 @@ public class InitZoneServlet extends HttpServlet {
 	      return;
 	    }
 	    
+	    HttpSession session = req.getSession(false);
+		if (session == null) {
+			log("session in null");
+			return ;
+		}
+		String player1=(String) session.getAttribute("username");
+	    
 	    int radius = Integer.parseInt(req.getParameter("radius")); 			//radius
 		Double centerLat = Double.parseDouble(req.getParameter("centerLat"));	//centerLat
 		Double centerLng = Double.parseDouble(req.getParameter("centerLng"));	//centerLng
-		String player1 = req.getParameter("username");						//username
+		//String player1 = req.getParameter("username");						//username
 		String player2 = req.getParameter("oppName");						//oppName
 		String type = req.getParameter("type");							//type
 		int limit = Integer.parseInt(req.getParameter("limit"));			//limit (sec)
