@@ -311,13 +311,41 @@ public class GameActivity extends Activity {
                                     elem = (JSONObject) elementsArr.get(i);
                                     type = elem.getInt("type");
                                     elements[i].setPosition(new LatLng(elem.getDouble("Lat"),elem.getDouble("Lng")));
+                                    /*
                                     if(type==0) //bronze coin
                                         elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(bronzeCoin));
                                     else if(type==1)    //silver coin
                                             elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(silverCoin));
                                          else   //gold coin
                                             elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
-                                    //TODO: weapons
+                                    */
+
+                                    switch(type) {
+                                        case 0:
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            break;
+                                        case 1:
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            break;
+                                        case 2:
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            break;
+                                        case 3:
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            break;
+                                        case 4:
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            break;
+                                        case 5:
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(goldCoin));
+                                            break;
+                                        case 6:
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(silverCoin));
+                                            break;
+                                        case 7:
+                                            elements[i].setIcon(BitmapDescriptorFactory.fromBitmap(bronzeCoin));
+                                            break;
+                                    }
                                     elements[i].setVisible(true);
                                 }
                                 for(;i<AppConstants.MAX_ELEMENTS;i++)   //hide all the unused elements

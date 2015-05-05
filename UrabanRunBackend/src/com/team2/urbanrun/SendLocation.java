@@ -13,6 +13,7 @@ import java.util.List;
 import com.google.appengine.api.utils.SystemProperty;
 import com.google.gson.Gson;
 import com.team2.urbanrun.AppConstants;
+import com.team2.urbanrun.AppConstants.Element;
 import com.team2.urbanrun.Classes.MyElements;
 import com.team2.urbanrun.Classes.Opponent;
 import com.team2.urbanrun.Classes.Player;
@@ -21,6 +22,7 @@ import com.team2.urbanrun.Classes.Player;
 public class SendLocation extends HttpServlet {
 	
 	private double plat, plng;
+	private int elementType;
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
@@ -102,48 +104,52 @@ public class SendLocation extends HttpServlet {
 					else
 					{
 						//first, check if i too close to it and got it
+						Element  element= intToElement(rs.getInt("type"));
 						double lat=rs.getDouble("Lat"),lng=rs.getDouble("Lng");
-						int type = rs.getInt("type");
-						if(diff_in_meters_between_two_points(lat, lng, myLat, myLng)<AppConstants.MIN_RADIUS){
-							if(type==0)
-								myScore+=50;
-							if(type==1)
-								myScore+=200;
-							if(type==2)
-								myScore+=1000;
+						if(diff_in_meters_between_two_points(lat, lng, myLat, myLng)<element.getRadius()){
+							myScore+=element.getScore();
+														
+							int type =element.getType();
+													
+							if(type==2){ // if smoke
+								boolean smoke=true;
+							}
+							//delete the element from the DB (if it isn't stink/smoke/hitThorns)
+							if(type!=1 && type!=2 && type!=8){
 							pstmt = conn.prepareStatement("delete from ElementsTable"+gameid+" where ID=?");
 							pstmt.setInt(1, rs.getInt("ID"));
 							pstmt.executeUpdate();
+							}
 						}
 						else	//if not, add to the list off elements
 						{
-							elementsList.add(new MyElements(lat,lng, type));
-							countElements++;
+							int type = element.getType();
+							elementsList.add(new MyElements(lat,lng,type));
+							if(type!=1 && type!=2 && type!=8 && type!=9){
+								countElements++;
+							}
 						}
 					}
 				}
-				if(countElements<AppConstants.NUM_ELEMENTS)	
-					//add 1 item if there's less than should be
-					//if need to add more than 1, adding it in the next servlet so it be faster response
+				if (Math.random()*100<=AppConstants.PERCENT_FOR_NEW_ELEMENT){
+					//add 1 element in probability P. 
+					countElements=0;
+				}
+				if(countElements<(AppConstants.NUM_ELEMENTS_PER_PLAYER/playersList.size()))
+				//add 1 item if there's less than should be
+				//if need to add more than 1, adding it in the next servlet so it be faster response
 				{
 					pstmt = conn.prepareStatement("insert into ElementsTable"+gameid+" values(?,?,?,?,?)");
 					pstmt.setInt(1,(int)(Math.random()*100000));
 					generateNewElement(radius, centerLat, centerLng);
 					pstmt.setDouble(2, plat);
 					pstmt.setDouble(3, plng);
-					int rnd = (int)(Math.random()*20), type;
-					if(rnd<=10)
-						type=0;	//bronzeCoin (0-10)
-					else{
-						if(rnd<=17) //silver coin (11-17)
-							type=1;
-						else
-							type=2; //goldCoin (18-19)
-					}
-					pstmt.setInt(4, type);
-					pstmt.setLong(5, currentTimestamp.getTime()+AppConstants.ELEMENT_LIFETIME);
+					pstmt.setInt(4, elementType);
+					Element element=intToElement(elementType);
+					pstmt.setLong(5, currentTimestamp.getTime()+element.getLifeTime());
+				
 					pstmt.executeUpdate();
-					elementsList.add(new MyElements(plat, plng, type));
+					elementsList.add(new MyElements(plat, plng, elementType));
 				}
 				
 				//updating the table (my location and score)
@@ -193,6 +199,18 @@ public class SendLocation extends HttpServlet {
 
         plat=centerLat+b;
         plng=centerLng+a;
+        
+      //Lottery type element
+        int lottery = (int) (Math.random()*100);
+        Element element;
+        
+        for(int i=0;i<AppConstants.NUM_OF_ELEMENT_TYPE;i++){
+        	element=intToElement(i);
+        	if(lottery<element.getProb()){
+        		elementType=element.getType();
+        		break;
+        	}
+        }
     }
 	
 	double diff_in_meters_between_two_points(double pointlat1, double pointlng1, double pointlat2, double pointlng2)
@@ -209,4 +227,30 @@ public class SendLocation extends HttpServlet {
         return R * c;
     }
 	
+	public Element intToElement(int num){
+		Element element;
+		switch(num){
+		case 0: 
+			return element=Element.diamond;
+		case 1: 
+			return element=Element.stink;
+		case 2: 
+			return element=Element.smoke;
+		case 3:
+			return element=Element.gold;
+		case 4:
+			return element=Element.takeThorns;
+		case 5:
+			return element=Element.takeMine;
+		case 6:
+			return element=Element.silver;
+		case 7:
+			return element=Element.bronze;
+		case 8:
+			return element=Element.hitThorns;
+		case 9:
+			return element=Element.hitMine;
+		}
+		return null;
+	}
 }
