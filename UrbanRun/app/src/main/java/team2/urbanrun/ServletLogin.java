@@ -35,9 +35,9 @@ public class ServletLogin extends AsyncTask<String,String,String> {
         try {
             // Add name data to request
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
-            nameValuePairs.add(new BasicNameValuePair("username",username));
-            nameValuePairs.add(new BasicNameValuePair("fullname",fullName));
-            nameValuePairs.add(new BasicNameValuePair("firstname",firstName));
+            nameValuePairs.add(new BasicNameValuePair("ID",username));
+            nameValuePairs.add(new BasicNameValuePair("FirstName",fullName));
+            nameValuePairs.add(new BasicNameValuePair("LastName",firstName));
             nameValuePairs.add(new BasicNameValuePair("imageURL",image));
 
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));

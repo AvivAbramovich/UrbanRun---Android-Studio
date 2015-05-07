@@ -36,38 +36,31 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 
-		String username = req.getParameter("username");
-		String fullname = req.getParameter("fullname");
-		String firstname = req.getParameter("firstname");
-		String imageURL = req.getParameter("imageURL");
-		log(username);
+		String ID = req.getParameter("ID");
 
 		try {
 			Connection conn = DriverManager.getConnection(url);
 			try {
-				String statement = "select username from Users where username=?";
-				PreparedStatement stmt = conn.prepareStatement(statement);
-				stmt.setString(1, username);
+				PreparedStatement stmt = conn.prepareStatement("select ID from Users where ID="+ID);
 				ResultSet res = stmt.executeQuery();
 				if (!res.next()) {
-					statement = "insert into Users values (?,?,?,?,0,0)";
-					stmt=conn.prepareStatement(statement);
-					stmt.setString(1, username);
-					stmt.setString(2, fullname);
-					stmt.setString(3, firstname);
+					String firstName = req.getParameter("FirstName");
+					String lastName = req.getParameter("LastName");
+					String imageURL = req.getParameter("imageURL");
+					stmt=conn.prepareStatement("insert into Users values (?,?,?,?,0,0)");
+					stmt.setString(1, ID);
+					stmt.setString(2, firstName);
+					stmt.setString(3, lastName);
 					stmt.setString(4, imageURL);
-					log("user " + username + " added!");
+					stmt.executeUpdate();
+					log("user " + firstName+" "+ lastName + " added!");
+					out.print("User " + firstName+" "+ lastName + " successfuly added to the database");
 				}
 				else{
-					log("user " + username + " already exsits!");
+					log("user already exsits!");
+					out.print("Welcome Back ");
 				}
 				
-				HttpSession session=req.getSession();
-				session.setAttribute("username",username);
-				session.setAttribute("gameID",-1);
-				session.setMaxInactiveInterval(60*120);
-				
-				out.print("user logged in");
 				res.close();
 				stmt.close();
 				out.close();
@@ -77,6 +70,8 @@ public class LoginServlet extends HttpServlet {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log("fuck");
+			out.print(e.toString());
 			log(e.toString());
 		}
 	}

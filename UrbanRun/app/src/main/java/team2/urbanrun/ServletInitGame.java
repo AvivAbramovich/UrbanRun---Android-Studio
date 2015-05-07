@@ -22,28 +22,20 @@ import java.util.List;
 public class ServletInitGame extends AsyncTask<String,String,String> {
 
     @Override
-    protected String doInBackground(String...params) {
-        String username = params[0];
-        String oppName = params[1];
-        String radius = params[2];
-        String centerLat = params[3];
-        String centerLng = params[4];
-        String type = params[5];
-        String limit = params[6];
+    protected String doInBackground(String ... params) {
 
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/initZone");
 
         try {
             // Add name data to request
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(7);
-            nameValuePairs.add(new BasicNameValuePair("username",username));
-            nameValuePairs.add(new BasicNameValuePair("oppName",oppName));
-            nameValuePairs.add(new BasicNameValuePair("radius",radius));
-            nameValuePairs.add(new BasicNameValuePair("centerLat",centerLat));
-            nameValuePairs.add(new BasicNameValuePair("centerLng",centerLng));
-            nameValuePairs.add(new BasicNameValuePair("type",type));
-            nameValuePairs.add(new BasicNameValuePair("limit",limit));
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(6);
+            nameValuePairs.add(new BasicNameValuePair("Creator",params[0]));
+            nameValuePairs.add(new BasicNameValuePair("Players",params[1]));
+            nameValuePairs.add(new BasicNameValuePair("Radius",params[2]));
+            nameValuePairs.add(new BasicNameValuePair("CenterLat",params[3]));
+            nameValuePairs.add(new BasicNameValuePair("CenterLng", params[4]));
+            nameValuePairs.add(new BasicNameValuePair("limit",params[5]));
 
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 

@@ -7,16 +7,13 @@ import javax.servlet.http.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-import com.google.appengine.api.utils.SystemProperty;
 import com.google.gson.Gson;
 import com.team2.urbanrun.AppConstants;
 import com.team2.urbanrun.AppConstants.Element;
 import com.team2.urbanrun.Classes.MyElements;
 import com.team2.urbanrun.Classes.Opponent;
-import com.team2.urbanrun.Classes.Player;
 
 @SuppressWarnings("serial")
 public class SendLocation extends HttpServlet {
@@ -32,19 +29,8 @@ public class SendLocation extends HttpServlet {
 		long timeLeft=0;
 		PrintWriter out = resp.getWriter();
 		try {
-			if (SystemProperty.environment.value() == SystemProperty.Environment.Value.Production) {
-				// Load the class that provides the new "jdbc:google:mysql://"
-				// prefix.
 				Class.forName("com.mysql.jdbc.GoogleDriver");
 				url = "jdbc:google:mysql://team2urban:team2db/team2db?user=root";
-			} else {
-				// Local MySQL instance to use during development.
-				Class.forName("com.mysql.jdbc.Driver");
-				url = "jdbc:mysql://127.0.0.1:3306/guestbook?user=root";
-
-				// Alternatively, connect to a Google Cloud SQL instance using:
-				// jdbc:mysql://ip-address-of-google-cloud-sql-instance:3306/guestbook?user=root
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
@@ -54,7 +40,7 @@ public class SendLocation extends HttpServlet {
 			Connection conn = DriverManager.getConnection(url);
 			try {
 				int myScore=0;
-				String username = req.getParameter("username");
+				String ID = req.getParameter("ID");
 				String gameid = req.getParameter("GameID");
 				double myLat = Double.parseDouble(req.getParameter("mylat"));
 				double myLng = Double.parseDouble(req.getParameter("mylng"));
@@ -67,8 +53,8 @@ public class SendLocation extends HttpServlet {
 				List<Opponent> playersList = new ArrayList<Opponent>();
 				while(rs.next())
 				{
-						playersList.add(new Opponent(rs.getString("username"),rs.getDouble("Lat"),rs.getDouble("Lng"),rs.getInt("score")));
-						if(rs.getString("username").equals(username))
+						playersList.add(new Opponent(rs.getString("ID"),rs.getDouble("Lat"),rs.getDouble("Lng"),rs.getInt("score")));
+						if(rs.getString("ID").equals(ID))
 							myScore = rs.getInt("score");
 				}
 				
@@ -154,11 +140,11 @@ public class SendLocation extends HttpServlet {
 				}
 				
 				//updating the table (my location and score)
-				pstmt = conn.prepareStatement("update SingleGameTable"+gameid+" set score=?, Lat=?, Lng=? where username=?");
+				pstmt = conn.prepareStatement("update SingleGameTable"+gameid+" set score=?, Lat=?, Lng=? where ID=?");
 				pstmt.setInt(1, myScore);
 				pstmt.setDouble(2, myLat);
 				pstmt.setDouble(3, myLng);
-				pstmt.setString(4, username);
+				pstmt.setString(4, ID);
 				pstmt.executeUpdate();
 				
 				Gson gson = new Gson();
@@ -229,28 +215,27 @@ public class SendLocation extends HttpServlet {
     }
 	
 	public Element intToElement(int num){
-		Element element;
 		switch(num){
 		case 0: 
-			return element=Element.diamond;
+			return Element.diamond;
 		case 1: 
-			return element=Element.stink;
+			return Element.stink;
 		case 2: 
-			return element=Element.smoke;
+			return Element.smoke;
 		case 3:
-			return element=Element.gold;
+			return Element.gold;
 		case 4:
-			return element=Element.takeThorns;
+			return Element.takeThorns;
 		case 5:
-			return element=Element.takeMine;
+			return Element.takeMine;
 		case 6:
-			return element=Element.silver;
+			return Element.silver;
 		case 7:
-			return element=Element.bronze;
+			return Element.bronze;
 		case 8:
-			return element=Element.hitThorns;
+			return Element.hitThorns;
 		case 9:
-			return element=Element.hitMine;
+			return Element.hitMine;
 		}
 		return null;
 	}

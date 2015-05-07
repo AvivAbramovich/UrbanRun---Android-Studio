@@ -60,18 +60,6 @@ public class PlayerChoosingActivity extends ListActivity {
     }
 
     @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        try {
-            Log.d("Aviv",(new SrevletLogOut().execute()).get());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
     protected void onPause()
     {
         super.onPause();

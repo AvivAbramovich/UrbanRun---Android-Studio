@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal" >
+
+<LinearLayout
+    android:id="@+id/linearLayout1"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_weight="1" >
+    
+    <CheckBox
+        android:id="@+id/cbBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:checked="false"
+        android:onClick="checkFriend"
+        android:clickable="false">
+    </CheckBox>
+
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_launcher"
+        android:contentDescription="@string/app_name" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text=""
+        android:textSize="30sp">
+    </TextView>
+
+</LinearLayout>
+</LinearLayout>
+
+    <!--<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:weightSum="1">
 
@@ -16,4 +60,4 @@
         android:text="Large Text"
         android:id="@+id/textView"
         android:layout_marginTop="15dp" />
-</LinearLayout>
+</LinearLayout> -->

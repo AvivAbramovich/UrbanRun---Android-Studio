@@ -35,10 +35,7 @@ public class ArenaChoosingActivity extends Activity {
 	Marker usersLoc;
 	Marker center;
 	TextView tv;
-	
-	String oppName;
     Bitmap myIcon;
-	Bitmap oppImage;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +58,15 @@ public class ArenaChoosingActivity extends Activity {
 		update_game_size_text(tv,cir.getRadius());
 
 		//from the previous intent, right now, this is the launched intent, so we use in Oren's image and name
-        myIcon = Bitmap.createScaledBitmap((Bitmap)getIntent().getExtras().getParcelable("myImage"),50,50,false);
+        Bitmap myImage=null;
+        try {
+            myImage = (new DownloadImageTask().execute(getIntent().getExtras().getString("pic"))).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        myIcon = Bitmap.createScaledBitmap(myImage,50,50,false);
         usersLoc.setIcon(BitmapDescriptorFactory.fromBitmap(myIcon));
 		
 		//settings
@@ -160,29 +165,13 @@ public class ArenaChoosingActivity extends Activity {
 					
 			@Override
 			public void onClick(View v) {
-                String myName, oppName, radius, centerLat, centerLng,type,limit;
-                myName= getIntent().getExtras().getString("myName");
-                radius = Integer.toString((int)cir.getRadius());
-                centerLat = Double.toString(cir.getCenter().latitude);
-                centerLng = Double.toString(cir.getCenter().longitude);
-                type = "0";
-                limit = "180000";   //3 minutes TODO: choosing game limit
-                //first - send servlet for open a game and get a gameID
-                String GameID = "";
-                try {
-                    GameID = (new ServletInitGame().execute(myName,getIntent().getExtras().getString("oppName"),radius,centerLat,centerLng,type,limit)).get();
-                    Log.d("Aviv","Game ID: "+GameID);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-
-                //intent to the game activity
-				Intent intent = new Intent(ArenaChoosingActivity.this, GameActivity.class);
-                intent.putExtra("myName", myName);			//from the former activity intent
-                intent.putExtra("myImage", getIntent().getExtras().getParcelable("myImage")); 	//from the former activity intent
-                intent.putExtra("GameID",GameID);
+                 //intent to the friends choosing activity
+				Intent intent = new Intent(ArenaChoosingActivity.this, FriendChoosingActivity.class);
+                intent.putExtra("myName", getIntent().getExtras().getString("myName"));			//from the former activity intent
+                intent.putExtra("Radius", cir.getRadius());
+                intent.putExtra("CenterLat", center.getPosition().latitude);
+                intent.putExtra("CenterLng", center.getPosition().longitude);
+                intent.putExtra("friends", getIntent().getExtras().getString("friends"));
 				startActivity(intent);
                 finish();
 			}

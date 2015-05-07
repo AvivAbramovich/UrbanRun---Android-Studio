@@ -1,13 +1,15 @@
 package team2.urbanrun;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -18,7 +20,16 @@ import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.ExecutionException;
+
+
 public class LaunchActivity extends Activity {
     private CallbackManager mCallBack;
     private FacebookCallback<LoginResult> mResultFromFaceBook = new FacebookCallback<LoginResult>() {
@@ -33,14 +44,38 @@ public class LaunchActivity extends Activity {
                         public void onCompleted(
                                 JSONObject object,
                                 GraphResponse response) {
-                            Log.d("hello", object.toString());
-                            Intent intent = new Intent(LaunchActivity.this, FriendChoosingActivity.class);
-                            intent.putExtra("json", object.toString());
-                            startActivity(intent);
+
+                            try {
+                                String id = object.getString("id");
+                                String firstName = object.getString("first_name");
+                                String lastName = object.getString("last_name");
+                                String pic = object.getJSONObject("picture").getJSONObject("data").getString("url");
+
+                                JSONObject temp = new JSONObject(object.getString("friends"));
+                                Log.d("Aviv","Players: "+temp.toString());
+
+                                String res = (new ServletLogin().execute(id, firstName, lastName, pic)).get();
+                                Log.d("Aviv", "Result from loggin "+res);
+                                Intent intent = new Intent(LaunchActivity.this, ArenaChoosingActivity.class);
+                                intent.putExtra("firstName", firstName);
+                                intent.putExtra("lastName", lastName);
+                                intent.putExtra("id", id);
+                                intent.putExtra("pic", pic);
+                                intent.putExtra("friends", temp.toString());
+                                startActivity(intent);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            }
+
                         }
                     });
             Bundle parameters = new Bundle();
-            parameters.putString("fields", "id,name,friends{name,picture,id}");
+            parameters.putString("fields", "id,first_name,picture,last_name,friends{id,first_name,last_name,picture}");
             request.setParameters(parameters);
             request.executeAsync();
         }
@@ -56,21 +91,26 @@ public class LaunchActivity extends Activity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_launch);
+
+        try {
+            /* PRINT TO THE LOG THIS COMPUTER HASH KEY _ ADD IT TO FACEBOOK DEVELOPER APP PAGE! */
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "team2.urbanrun", PackageManager.GET_SIGNATURES); //Your            package name here
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("Aviv:", "Your Computer Facebook's Hash key: "+Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                Log.d("Aviv", "If you cant connect to facebook, go to the developers site and add it to the hash keys");
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+        } catch (NoSuchAlgorithmException e) {
+        }
+
         JSONObject friendsList = new JSONObject();
         mCallBack = CallbackManager.Factory.create();
         LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
         loginButton.setReadPermissions("user_friends");
         loginButton.registerCallback(mCallBack,mResultFromFaceBook);
-
-        ((Button)findViewById(R.id.cont_button)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LaunchActivity.this, PlayerChoosingActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
