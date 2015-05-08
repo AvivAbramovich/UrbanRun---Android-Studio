@@ -85,6 +85,16 @@
             android:label="Choose Player (You)" >
         </activity>
 
+        <activity
+            android:name=".MainScreen"
+            android:label="MainScreen" >
+        </activity>
+
+        <activity
+            android:name=".SetTime"
+            android:label="Set Time" >
+        </activity>
+
 
     </application>
 

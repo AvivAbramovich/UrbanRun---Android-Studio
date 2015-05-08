@@ -85,6 +85,14 @@
             android:name="team2.urbanrun.PlayerChoosingActivity"
             android:label="Choose Player (You)" >
         </activity>
+        <activity
+            android:name="team2.urbanrun.MainScreen"
+            android:label="MainScreen" >
+        </activity>
+        <activity
+            android:name="team2.urbanrun.SetTime"
+            android:label="Set Time" >
+        </activity>
     </application>
 
 </manifest>

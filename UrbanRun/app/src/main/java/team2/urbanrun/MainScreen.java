@@ -2,7 +2,9 @@ package team2.urbanrun;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,11 +18,20 @@ public class MainScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+        SharedPreferences prefs = getSharedPreferences("Prefs", 0);
+        Log.d("Aviv", "Main Screen: " + prefs.getString("ID", "null"));
 
         ((ImageButton)findViewById(R.id.PlayBut)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainScreen.this, SetTime.class);
+
+                //passing the parameters from the prev activity, TODO: using SharedPrefrences
+                intent.putExtra("firstName", getIntent().getExtras().getString("firstName"));
+                intent.putExtra("lastName", getIntent().getExtras().getString("lasttName"));
+                intent.putExtra("id", getIntent().getExtras().getString("id"));
+                intent.putExtra("pic", getIntent().getExtras().getString("pic"));
+                intent.putExtra("friends", getIntent().getExtras().getString("friends"));
                 startActivity(intent);
             }
         });

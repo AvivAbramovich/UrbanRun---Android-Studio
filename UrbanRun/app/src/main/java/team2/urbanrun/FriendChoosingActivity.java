@@ -52,7 +52,7 @@ public class FriendChoosingActivity extends ListActivity {
         try {
             JSONObject temp = new JSONObject(getIntent().getExtras().getString("friends"));
             friends = temp.getJSONArray("data");
-            myName = getIntent().getExtras().getString("myName");
+            myName = getIntent().getExtras().getString("id");
 
             //String response = (new ServletGetUsers().execute(myName)).get(); TODO: replace it with get the friends from the Facebook/server instead all users
             images = new String[friends.length()];
@@ -150,14 +150,16 @@ public class FriendChoosingActivity extends ListActivity {
         opponents+=friendChosen.get(friendChosen.size()-1)+"]";
         //Arena properties
         String radius = Integer.toString(getIntent().getExtras().getInt("Radius"));
-        String CentarLat = Double.toString(getIntent().getExtras().getInt("CenterLat"));
-        String CentarLng = Double.toString(getIntent().getExtras().getInt("CenterLng"));
-        String TimeInSeconds = "180";   //TODO: take it from the user
-        String res = (new ServletInitGame().execute(myID, opponents, radius, CentarLat, CentarLng, TimeInSeconds)).get();
+        String CenterLat = Double.toString(getIntent().getExtras().getDouble("CenterLat"));
+        String CenterLng = Double.toString(getIntent().getExtras().getDouble("CenterLng"));
+        String TimeInSeconds = getIntent().getExtras().getString("Time");
+        Log.d("Aviv","Game properties: radius: "+getIntent().getExtras().getInt("Radius")+", x: "+getIntent().getExtras().getDouble("CenterLat")+", y: "+getIntent().getExtras().getDouble("CenterLng"));
+        Log.d("Aviv","Game properties: radius: "+radius+", x: "+CenterLat+", y: "+CenterLng+", myID: "+myID+", opps: "+opponents);
+        String res = (new ServletInitGame().execute(myID, opponents, radius, CenterLat, CenterLng, TimeInSeconds)).get();
         Log.d("Aviv", "GameID: "+res); //TODO: check the answer from the post request
 
         Intent intent = new Intent(FriendChoosingActivity.this, ArenaChoosingActivity.class);
-        intent.putExtra("myName",myID);
+        intent.putExtra("id",myID);
         intent.putExtra("GameID",Integer.parseInt(res));
         startActivity(intent);
     }

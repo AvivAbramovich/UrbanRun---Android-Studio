@@ -28,14 +28,12 @@ public class ServletAmIInvited extends AsyncTask<String,String,String>
 
     @Override
     protected String doInBackground(String...params) {
-        myName = params[0];
-
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/CheckIfInvited");
         try {
             // Add name data to request
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-            nameValuePairs.add(new BasicNameValuePair("username",myName));
+            nameValuePairs.add(new BasicNameValuePair("ID",params[0]));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             // Execute HTTP Post Request

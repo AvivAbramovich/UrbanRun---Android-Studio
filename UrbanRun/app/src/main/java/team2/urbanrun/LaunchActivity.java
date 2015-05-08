@@ -1,6 +1,7 @@
 package team2.urbanrun;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -35,7 +36,7 @@ public class LaunchActivity extends Activity {
     private FacebookCallback<LoginResult> mResultFromFaceBook = new FacebookCallback<LoginResult>() {
         @Override
         public void onSuccess(LoginResult loginResult) {
-            AccessToken AcToekn = loginResult.getAccessToken();
+            final AccessToken AcToekn = loginResult.getAccessToken();
             Profile profile = Profile.getCurrentProfile();
             GraphRequest request = GraphRequest.newMeRequest(
                     AcToekn,
@@ -46,17 +47,27 @@ public class LaunchActivity extends Activity {
                                 GraphResponse response) {
 
                             try {
+                                Log.d("Aviv","Token: "+AcToekn.toString());
                                 String id = object.getString("id");
                                 String firstName = object.getString("first_name");
                                 String lastName = object.getString("last_name");
                                 String pic = object.getJSONObject("picture").getJSONObject("data").getString("url");
+
+                                SharedPreferences prefs = getSharedPreferences("Prefs", 0);
+                                SharedPreferences.Editor editor = prefs.edit();
+                                editor.putString("FacebookToken",AcToekn.toString());
+                                editor.putString("ID", id);
+                                editor.putString("FirstName",firstName);
+                                editor.putString("LastName",lastName);
+                                editor.putString("imageURL", pic);
 
                                 JSONObject temp = new JSONObject(object.getString("friends"));
                                 Log.d("Aviv","Players: "+temp.toString());
 
                                 String res = (new ServletLogin().execute(id, firstName, lastName, pic)).get();
                                 Log.d("Aviv", "Result from loggin "+res);
-                                Intent intent = new Intent(LaunchActivity.this, ArenaChoosingActivity.class);
+                                Intent intent = new Intent(LaunchActivity.this, MainScreen.class);
+                                //TODO: remove it for the shared preffrences
                                 intent.putExtra("firstName", firstName);
                                 intent.putExtra("lastName", lastName);
                                 intent.putExtra("id", id);
@@ -92,6 +103,17 @@ public class LaunchActivity extends Activity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_launch);
 
+        SharedPreferences prefs = getSharedPreferences("Prefs", 0);
+        String ID = prefs.getString("ID","null");
+        Log.d("Aviv", "ID: "+ID);
+        if(!ID.equals("null"))  //user already logged in
+        {
+            Log.d("Aviv","Already logged in");
+            Intent intent = new Intent(LaunchActivity.this, MainScreen.class);
+            startActivity(intent);
+            finish();
+        }
+
         try {
             /* PRINT TO THE LOG THIS COMPUTER HASH KEY _ ADD IT TO FACEBOOK DEVELOPER APP PAGE! */
             PackageInfo info = getPackageManager().getPackageInfo(
@@ -103,10 +125,11 @@ public class LaunchActivity extends Activity {
                 Log.d("Aviv", "If you cant connect to facebook, go to the developers site and add it to the hash keys");
             }
         } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
 
-        JSONObject friendsList = new JSONObject();
         mCallBack = CallbackManager.Factory.create();
         LoginButton loginButton = (LoginButton)findViewById(R.id.login_button);
         loginButton.setReadPermissions("user_friends");

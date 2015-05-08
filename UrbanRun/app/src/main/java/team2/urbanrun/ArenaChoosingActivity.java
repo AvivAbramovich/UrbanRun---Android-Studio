@@ -167,11 +167,16 @@ public class ArenaChoosingActivity extends Activity {
 			public void onClick(View v) {
                  //intent to the friends choosing activity
 				Intent intent = new Intent(ArenaChoosingActivity.this, FriendChoosingActivity.class);
-                intent.putExtra("myName", getIntent().getExtras().getString("myName"));			//from the former activity intent
-                intent.putExtra("Radius", cir.getRadius());
+                intent.putExtra("firstName", getIntent().getExtras().getString("firstName"));
+                intent.putExtra("lastName", getIntent().getExtras().getString("lasttName"));
+                intent.putExtra("id",  getIntent().getExtras().getString("id"));
+                intent.putExtra("pic", getIntent().getExtras().getString("pic"));
+                intent.putExtra("Radius", (int)cir.getRadius());
                 intent.putExtra("CenterLat", center.getPosition().latitude);
                 intent.putExtra("CenterLng", center.getPosition().longitude);
+                intent.putExtra("Time", getIntent().getExtras().getString("Time"));
                 intent.putExtra("friends", getIntent().getExtras().getString("friends"));
+                Log.d("Aviv", "Arena: radius: "+cir.getRadius()+", x: "+center.getPosition().latitude+", y: "+center.getPosition().longitude+", Time: "+getIntent().getExtras().getString("Time"));
 				startActivity(intent);
                 finish();
 			}

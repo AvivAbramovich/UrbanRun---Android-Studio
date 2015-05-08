@@ -35,7 +35,7 @@ public class ServletInitGame extends AsyncTask<String,String,String> {
             nameValuePairs.add(new BasicNameValuePair("Radius",params[2]));
             nameValuePairs.add(new BasicNameValuePair("CenterLat",params[3]));
             nameValuePairs.add(new BasicNameValuePair("CenterLng", params[4]));
-            nameValuePairs.add(new BasicNameValuePair("limit",params[5]));
+            nameValuePairs.add(new BasicNameValuePair("Time",params[5]));
 
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
