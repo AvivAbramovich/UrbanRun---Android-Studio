@@ -27,11 +27,6 @@ public class SetTime extends Activity {
 
                 Intent intent = new Intent(SetTime.this, ArenaChoosingActivity.class);
                 intent.putExtra("Time",time.getText().toString());
-                intent.putExtra("firstName", getIntent().getExtras().getString("firstName"));
-                intent.putExtra("lastName", getIntent().getExtras().getString("lasttName"));
-                intent.putExtra("id",  getIntent().getExtras().getString("id"));
-                intent.putExtra("pic", getIntent().getExtras().getString("pic"));
-                intent.putExtra("friends",  getIntent().getExtras().getString("friends"));
                 startActivity(intent);
             }
         });

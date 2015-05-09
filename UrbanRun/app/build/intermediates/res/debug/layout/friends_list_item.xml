@@ -40,25 +40,4 @@ android:orientation="horizontal" >
     </TextView>
 
 </LinearLayout>
-</LinearLayout>
-
-    <!--<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:weightSum="1">
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/userImage"
-        />
-
-    <TextView
-        android:layout_width="256dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/textView"
-        android:layout_marginTop="15dp" />
-</LinearLayout> -->
-<!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/src/main/res/layout/friends_list_item.xml -->
+</LinearLayout><!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/src/main/res/layout/friends_list_item.xml -->

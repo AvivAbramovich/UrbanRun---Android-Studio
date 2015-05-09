@@ -24,18 +24,14 @@ public class ServletDeclined extends AsyncTask<String,String,String> {
 
     @Override
     protected String doInBackground(String... params) {
-        name = params[0];
-        GameID = params[1];
-
-
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/DeclineInvitation");
 
         try {
             // Add name data to request
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("username", name));
-            nameValuePairs.add(new BasicNameValuePair("gameID", GameID));
+            nameValuePairs.add(new BasicNameValuePair("ID", params[0]));
+            nameValuePairs.add(new BasicNameValuePair("GameID", params[1]));
 
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 

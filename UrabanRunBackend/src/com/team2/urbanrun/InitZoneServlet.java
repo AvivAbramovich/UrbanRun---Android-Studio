@@ -63,7 +63,7 @@ public class InitZoneServlet extends HttpServlet {
 	    	  while(true){
 		    	  gameID = (int)(Math.random()*10000);
 		    	  stmt = conn.prepareStatement("select GameID from Games where GameID=?");
-		    	  stmt.setInt(0, gameID);
+		    	  stmt.setInt(1, gameID);
 		    	  rs = stmt.executeQuery();
 		    	  if(!rs.next())	//ID is free
 		    		  break;

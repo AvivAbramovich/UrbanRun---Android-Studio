@@ -1,5 +1,6 @@
 package team2.urbanrun;
 
+import com.facebook.Profile;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
@@ -16,6 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
@@ -41,8 +43,8 @@ public class ArenaChoosingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-        Log.d("Aviv", "MainActivity - onCreate");
+        Log.d("Aviv","arena choosing create");
+        Profile myProfile = Profile.getCurrentProfile();
 
         map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
 		
@@ -60,12 +62,13 @@ public class ArenaChoosingActivity extends Activity {
 		//from the previous intent, right now, this is the launched intent, so we use in Oren's image and name
         Bitmap myImage=null;
         try {
-            myImage = (new DownloadImageTask().execute(getIntent().getExtras().getString("pic"))).get();
+             myImage = (new DownloadImageTask().execute(myProfile.getProfilePictureUri(50,50).toString())).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
         myIcon = Bitmap.createScaledBitmap(myImage,50,50,false);
         usersLoc.setIcon(BitmapDescriptorFactory.fromBitmap(myIcon));
 		
@@ -167,17 +170,11 @@ public class ArenaChoosingActivity extends Activity {
 			public void onClick(View v) {
                  //intent to the friends choosing activity
 				Intent intent = new Intent(ArenaChoosingActivity.this, FriendChoosingActivity.class);
-                intent.putExtra("firstName", getIntent().getExtras().getString("firstName"));
-                intent.putExtra("lastName", getIntent().getExtras().getString("lasttName"));
-                intent.putExtra("id",  getIntent().getExtras().getString("id"));
-                intent.putExtra("pic", getIntent().getExtras().getString("pic"));
                 intent.putExtra("Radius", (int)cir.getRadius());
                 intent.putExtra("CenterLat", center.getPosition().latitude);
                 intent.putExtra("CenterLng", center.getPosition().longitude);
                 intent.putExtra("Time", getIntent().getExtras().getString("Time"));
-                intent.putExtra("friends", getIntent().getExtras().getString("friends"));
-                Log.d("Aviv", "Arena: radius: "+cir.getRadius()+", x: "+center.getPosition().latitude+", y: "+center.getPosition().longitude+", Time: "+getIntent().getExtras().getString("Time"));
-				startActivity(intent);
+                startActivity(intent);
                 finish();
 			}
 		});

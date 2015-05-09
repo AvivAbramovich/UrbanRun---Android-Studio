@@ -11,17 +11,16 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/button2" />
+        android:layout_below="@+id/doneButton" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Done"
-        android:id="@+id/button2"
+        android:id="@+id/doneButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="FriendsChosenToServer" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
 <!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/src/main/res/layout/activity_friend_choosing.xml -->

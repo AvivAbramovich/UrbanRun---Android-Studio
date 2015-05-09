@@ -12,8 +12,6 @@ import java.io.InputStream;
  * Created by Aviv on 23/04/2015.
  */
 class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-    public DownloadImageTask() {
-    }
 
     protected Bitmap doInBackground(String... urls) {
         String urldisplay = urls[0];

@@ -47,11 +47,6 @@
         <activity
             android:name=".LaunchActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".FriendChoosingActivity"
@@ -81,11 +76,6 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".PlayerChoosingActivity"
-            android:label="Choose Player (You)" >
-        </activity>
-
-        <activity
             android:name=".MainScreen"
             android:label="MainScreen" >
         </activity>
@@ -95,6 +85,19 @@
             android:label="Set Time" >
         </activity>
 
+        <activity
+            android:name=".WaitingScreen"
+            android:label="Status Screen">
+        </activity>
+
+        <activity
+            android:name=".WelcomePage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 

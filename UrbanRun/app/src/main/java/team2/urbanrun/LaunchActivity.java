@@ -37,7 +37,6 @@ public class LaunchActivity extends Activity {
         @Override
         public void onSuccess(LoginResult loginResult) {
             final AccessToken AcToekn = loginResult.getAccessToken();
-            Profile profile = Profile.getCurrentProfile();
             GraphRequest request = GraphRequest.newMeRequest(
                     AcToekn,
                     new GraphRequest.GraphJSONObjectCallback() {
@@ -47,31 +46,16 @@ public class LaunchActivity extends Activity {
                                 GraphResponse response) {
 
                             try {
-                                Log.d("Aviv","Token: "+AcToekn.toString());
                                 String id = object.getString("id");
                                 String firstName = object.getString("first_name");
                                 String lastName = object.getString("last_name");
                                 String pic = object.getJSONObject("picture").getJSONObject("data").getString("url");
 
-                                SharedPreferences prefs = getSharedPreferences("Prefs", 0);
-                                SharedPreferences.Editor editor = prefs.edit();
-                                editor.putString("FacebookToken",AcToekn.toString());
-                                editor.putString("ID", id);
-                                editor.putString("FirstName",firstName);
-                                editor.putString("LastName",lastName);
-                                editor.putString("imageURL", pic);
-
                                 JSONObject temp = new JSONObject(object.getString("friends"));
                                 Log.d("Aviv","Players: "+temp.toString());
 
-                                String res = (new ServletLogin().execute(id, firstName, lastName, pic)).get();
-                                Log.d("Aviv", "Result from loggin "+res);
+                                Log.d("Aviv", "Result from loggin "+(new ServletLogin().execute(id, firstName, lastName, pic)).get());
                                 Intent intent = new Intent(LaunchActivity.this, MainScreen.class);
-                                //TODO: remove it for the shared preffrences
-                                intent.putExtra("firstName", firstName);
-                                intent.putExtra("lastName", lastName);
-                                intent.putExtra("id", id);
-                                intent.putExtra("pic", pic);
                                 intent.putExtra("friends", temp.toString());
                                 startActivity(intent);
 
@@ -102,17 +86,6 @@ public class LaunchActivity extends Activity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_launch);
-
-        SharedPreferences prefs = getSharedPreferences("Prefs", 0);
-        String ID = prefs.getString("ID","null");
-        Log.d("Aviv", "ID: "+ID);
-        if(!ID.equals("null"))  //user already logged in
-        {
-            Log.d("Aviv","Already logged in");
-            Intent intent = new Intent(LaunchActivity.this, MainScreen.class);
-            startActivity(intent);
-            finish();
-        }
 
         try {
             /* PRINT TO THE LOG THIS COMPUTER HASH KEY _ ADD IT TO FACEBOOK DEVELOPER APP PAGE! */
