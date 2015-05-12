@@ -26,12 +26,12 @@ import java.util.concurrent.ExecutionException;
 public class MainScreen extends Activity {
     boolean hasInvitation = false;
     Timer timer;
-    TimerTask tt;
+    Profile myProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-        final Profile myProfile = Profile.getCurrentProfile();
+         myProfile = Profile.getCurrentProfile();
 
         ((ImageButton)findViewById(R.id.PlayBut)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +48,13 @@ public class MainScreen extends Activity {
                 startActivity(intent);
             }
         });
+    }
 
-        //checking if were invited to game by another player
-        tt = new TimerTask() {
+    @Override
+    protected void onResume(){
+        super.onResume();
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 MainScreen.this.runOnUiThread(new Runnable() {
@@ -107,14 +111,7 @@ public class MainScreen extends Activity {
                     }
                 });
             }
-        };
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-        timer = new Timer();
-        timer.scheduleAtFixedRate(tt,0,5000);
+        },0,5000);
     }
 
     @Override

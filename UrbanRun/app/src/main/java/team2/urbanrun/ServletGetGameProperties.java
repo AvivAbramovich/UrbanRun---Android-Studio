@@ -28,9 +28,10 @@ public class ServletGetGameProperties extends AsyncTask<String,String,String>
         HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/GetGameProperties");
         try {
             // Add name data to request
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
             nameValuePairs.add(new BasicNameValuePair("GameID",params[0]));
             nameValuePairs.add(new BasicNameValuePair("ID",params[1]));
+            nameValuePairs.add(new BasicNameValuePair("Screen",params[2]));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             // Execute HTTP Post Request

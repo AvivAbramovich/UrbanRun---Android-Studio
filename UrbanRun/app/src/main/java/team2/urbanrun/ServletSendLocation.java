@@ -41,7 +41,7 @@ public class ServletSendLocation extends AsyncTask<String,String,String>{
             try {
                 // Add name data to request
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
-                nameValuePairs.add(new BasicNameValuePair("username",name));
+                nameValuePairs.add(new BasicNameValuePair("ID",name));
                 nameValuePairs.add(new BasicNameValuePair("GameID",GameID));
                 nameValuePairs.add(new BasicNameValuePair("mylat",lat));
                 nameValuePairs.add(new BasicNameValuePair("mylng",lng));

@@ -27,5 +27,4 @@
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_launcher" />
 
-</RelativeLayout>
-<!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/src/main/res/layout/friend_status_list_item.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/src/main/res/layout/friend_status_list_item.xml -->

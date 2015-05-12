@@ -25,20 +25,15 @@ public class ServletGameStart extends AsyncTask<String,String,String>
 //if the oppenent not ready yet, returns "Waiting for opp"
 //if both players ready, send back the ID of the game (as String)
 {
-    private String myName, GameID;
-
     @Override
     protected String doInBackground(String...params) {
-        myName = params[0];
-        GameID = params[1];
 
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost request = new HttpPost("http://1-dot-team2urban.appspot.com/GameStart");
         try {
             // Add name data to request
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("username",myName));
-            nameValuePairs.add(new BasicNameValuePair("GameID",GameID));
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+            nameValuePairs.add(new BasicNameValuePair("GameID",params[0]));
             request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             // Execute HTTP Post Request

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -168,16 +169,21 @@ public class FriendChoosingActivity extends ListActivity {
                 public void onClick(View v) {
                     Log.d("Aviv", names[position]);
                     //check if already in the list
+                    CheckBox cb = (CheckBox) v.findViewById(R.id.cbBox);
+
                     if(friendChosen.contains(IDs[position])){
-                        Log.d("Aviv","Remove "+names[position]+" from the list");
+                        Log.d("Aviv","Removing "+names[position]+" from the list");
                         friendChosen.remove(IDs[position]);
+                        cb.setChecked(false);
                     }
                     else{
                         Log.d("Aviv", "Adding "+names[position]+" to the game");
                         friendChosen.add(IDs[position]);
+                        cb.setChecked(true);
                     }
                 }
             });
+
             return row;
         }
     }

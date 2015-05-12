@@ -30,10 +30,10 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
--
+    -
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/logo2"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <meta-data
@@ -51,20 +51,24 @@
         </activity>
         <activity
             android:name="team2.urbanrun.FriendChoosingActivity"
-            android:label="Choose Your Opponent" >
+            android:label="CHOOSE YOUR OPPONENTS"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="team2.urbanrun.ArenaChoosingActivity"
-            android:label="@string/app_name" >
+            android:label="CHOOSE ARENA"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="team2.urbanrun.GameActivity"
             android:label="@string/title_activity_game"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="team2.urbanrun.EndGameActivity"
-            android:label="@string/title_activity_end_game" >
+            android:label="@string/title_activity_end_game"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
 
         <meta-data
@@ -78,15 +82,18 @@
 
         <activity
             android:name="team2.urbanrun.MainScreen"
-            android:label="MainScreen" >
+            android:label="MainScreen"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="team2.urbanrun.SetTime"
-            android:label="Set Time" >
+            android:label="Set Time"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="team2.urbanrun.WaitingScreen"
-            android:label="Status Screen" >
+            android:label="Status Screen"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity android:name="team2.urbanrun.WelcomePage" >
             <intent-filter>

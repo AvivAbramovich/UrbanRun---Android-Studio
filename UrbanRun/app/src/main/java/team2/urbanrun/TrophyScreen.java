@@ -28,42 +28,6 @@ public class TrophyScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophy_screen);
-
-/*
-        int[] scores = {};
-        int myIndex = 0;
-        String[] names = {}, images = {};
-        try {
-            String res = (new ServletGameScores().execute(getIntent().getExtras().getString("GameID"),
-                    getIntent().getExtras().getString("myName")).get());
-            Log.d("Aviv", "Response from servlet: " + res);
-            JSONArray array = new JSONArray(res);
-
-            int numPlayers = array.length();
-            scores = new int[numPlayers];
-            names = new String[numPlayers];
-            images = new String[numPlayers];
-            for (int i = 0; i < numPlayers; i++) {
-                JSONObject player = array.getJSONObject(i);
-                names[i] = player.getString("FullName");
-                images[i] = player.getString("ImageURL");
-                scores[i] = player.getInt("score");
-                if (player.getString("Username").equals(getIntent().getExtras().getString("myName")))
-                    myIndex = i;
-            }
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        setListAdapter(new ScroesListAdapter(this, android.R.layout.simple_list_item_1, R.id.textView ,
-                names, images ,scores, myIndex));
-*/
     }
 
 
