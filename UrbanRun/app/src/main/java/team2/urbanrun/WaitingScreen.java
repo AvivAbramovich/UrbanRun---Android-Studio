@@ -40,7 +40,6 @@ public class WaitingScreen extends ListActivity {
     Profile myProfile = Profile.getCurrentProfile();
     GoogleMap map;
     String GameID;
-    ImageView image_rows[];
     String statuses[]; //Wait, Accepted, Declined
     Timer timer;
     Bitmap accept, declined;
@@ -103,7 +102,6 @@ public class WaitingScreen extends ListActivity {
                 names = new String[numPlayers];
                 images = new String[numPlayers];
                 ids = new String[numPlayers];
-                image_rows = new ImageView[numPlayers];
                 statuses = new String[numPlayers];
                 ///////// set players //////////
                 for (int i = 0; i < numPlayers; i++) {
@@ -227,11 +225,9 @@ public class WaitingScreen extends ListActivity {
                             statuses[i] = temp;
                             if (temp.equals("Accepted")) {
                                 Log.d("Aviv", "change " + i + " to Accepted");
-                                image_rows[i].setImageBitmap(accept);
                             }
                             if (temp.equals("Declined")) {
                                 Log.d("Aviv", "change " + i + " to Declined");
-                                image_rows[i].setImageBitmap(declined);
                             }
                         }
                     }
@@ -272,7 +268,7 @@ public class WaitingScreen extends ListActivity {
             View  row = inflator.inflate(R.layout.friend_status_list_item, parent, false);
             final ImageView iv = (ImageView) row.findViewById(R.id.userImage);
             final TextView tv = (TextView) row.findViewById(R.id.userName);
-            image_rows[position] = (ImageView) row.findViewById(R.id.userStatus);
+            final ImageView status = (ImageView) row.findViewById(R.id.userStatus);
 
             try {
                 iv.setImageBitmap((new DownloadImageTask().execute(images[position])).get());
@@ -284,11 +280,11 @@ public class WaitingScreen extends ListActivity {
             tv.setText(names[position]);
             if(!getIntent().getExtras().getBoolean("isCreator") &&
                     getIntent().getExtras().getString("creator").equals(ids[position])) {
-                image_rows[position].setImageBitmap(creator);
+                status.setImageBitmap(creator);
                 statuses[position] = "creator";
             }
             else
-                image_rows[position].setImageBitmap(waiting);
+                status.setImageBitmap(waiting);
 
             return row;
         }

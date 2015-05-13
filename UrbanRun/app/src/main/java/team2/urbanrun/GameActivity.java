@@ -280,19 +280,25 @@ public class GameActivity extends Activity {
                     public void run() {
                         String str;
                         try {
-                            str = (new ServletSendLocation().execute(myProfile.getId(), GameID, Double.toString(
-                                           myLoc.getPosition().latitude),Double.toString(myLoc.getPosition().longitude))).get();
-                            Log.d("Aviv", str);
-                            JSONObject object = new JSONObject(str);
                             if (stage == 0) {
-                                int time = object.getInt("timeLeft");
-                                if (time > 0) {
+                                str = (new ServletReadySetGo().execute(GameID)).get();
+                                Log.d("Aviv", "second till the game start: "+str);
+                                JSONObject object = new JSONObject(str);
+                                String status = object.getString("status");
+                                if(status.equals("start")){
                                     Log.d("Aviv","Starting the game!!!");
                                     stage = 1;
                                     whistle.start();
                                 }
-                                countDown.setText(Integer.toString(-1 * time) + " seconds to the game");
-                            } else {
+                                else{
+                                    countDown.setText(Integer.toString(object.getInt("time")) + " seconds to the game");
+                                }
+                            }
+                            if(stage==1){
+                                str = (new ServletSendLocation().execute(myProfile.getId(), GameID, Double.toString(
+                                        myLoc.getPosition().latitude),Double.toString(myLoc.getPosition().longitude))).get();
+                                Log.d("Aviv", str);
+                                JSONObject object = new JSONObject(str);
                                 int myScore, oppScore, sound;
                                 JSONArray playersJson = object.getJSONArray("Players");
                                 JSONArray elementsArr = object.getJSONArray("Elements");
@@ -416,7 +422,7 @@ public class GameActivity extends Activity {
                     };
                 });
             };
-        },0,500);   //every half second
+        },0,1000);   //every second
     }
     @Override
     protected void onDestroy()

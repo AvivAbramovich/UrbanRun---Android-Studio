@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.Profile;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,8 +32,8 @@ public class EndGameActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game);
+        Profile myProfile = Profile.getCurrentProfile();
         int[] scores={};
-        int myIndex=0;
         String[] names={},images={};
         try {
             String res=(new ServletGameScores().execute(getIntent().getExtras().getString("GameID"),
@@ -45,11 +47,11 @@ public class EndGameActivity extends ListActivity {
             images = new String[numPlayers];
             for(int i=0; i<numPlayers; i++){
                 JSONObject player = array.getJSONObject(i);
-                names[i]=player.getString("FullName");
+                names[i]=player.getString("FirstName");
                 images[i]= player.getString("ImageURL");
                 scores[i]=player.getInt("score");
-                if(player.getString("Username").equals(getIntent().getExtras().getString("myName")))
-                    myIndex=i;
+                if(player.getString("ID").equals(myProfile.getId()))
+                    names[i] = "You";
             }
 
 
@@ -62,7 +64,7 @@ public class EndGameActivity extends ListActivity {
         }
 
         setListAdapter(new EndGameAdapter(this, android.R.layout.simple_list_item_1, R.id.textView ,
-                names, images ,scores, myIndex));
+                names, images ,scores));
 
         ((Button)findViewById(R.id.newGameButton)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,12 +79,11 @@ public class EndGameActivity extends ListActivity {
         int[] scores;
         int myIndex;
         public EndGameAdapter(Context context, int resource, int textViewResourceId
-                         , String[] _names, String[] _img, int _scores[], int _myIndex) {
+                         , String[] _names, String[] _img, int _scores[]) {
             super(context, resource, textViewResourceId, _names);
             names = _names;
             images = _img;
             scores = _scores;
-            myIndex = _myIndex;
         }
 
         @Override
@@ -94,10 +95,7 @@ public class EndGameActivity extends ListActivity {
             final TextView tv = (TextView) row.findViewById(R.id.name);
             final TextView scr = (TextView) row.findViewById(R.id.score);
 
-            if(position==myIndex)
-                tv.setText("You");
-            else
-                tv.setText(names[position]);
+            tv.setText(names[position]);
             scr.setText(Integer.toString(scores[position]));
             try {
                 URL url = new URL(images[position]);
