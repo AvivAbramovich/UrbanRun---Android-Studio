@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
@@ -38,6 +39,9 @@ public class ArenaChoosingActivity extends Activity {
 	Marker center;
 	TextView tv;
     Bitmap myIcon;
+    NumberPicker minutes = null;
+    TextView timeDis = null;
+    int time;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -172,11 +176,26 @@ public class ArenaChoosingActivity extends Activity {
                 intent.putExtra("Radius", (int)cir.getRadius());
                 intent.putExtra("CenterLat", center.getPosition().latitude);
                 intent.putExtra("CenterLng", center.getPosition().longitude);
-                intent.putExtra("Time", getIntent().getExtras().getString("Time"));
+                intent.putExtra("Time",String.valueOf(time));
                 startActivity(intent);
                 finish();
 			}
 		});
+
+        minutes = (NumberPicker)findViewById(R.id.PickMin);
+        minutes.setMinValue(0);
+        minutes.setMaxValue(1000);
+        minutes.setWrapSelectorWheel(true);
+        timeDis = (TextView) findViewById(R.id.TimeDisplay);
+        minutes.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                String Old = "";
+                String New = "New Value : ";
+                time = newVal*60;
+                timeDis.setText(Old.concat(String.valueOf(newVal)+":"+"00"));
+            }
+        });
 	}
 
     @Override

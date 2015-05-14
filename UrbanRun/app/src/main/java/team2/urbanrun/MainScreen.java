@@ -36,7 +36,7 @@ public class MainScreen extends Activity {
         ((ImageButton)findViewById(R.id.PlayBut)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainScreen.this, SetTime.class);
+                Intent intent = new Intent(MainScreen.this, ArenaChoosingActivity.class);
                 startActivity(intent);
             }
         });
