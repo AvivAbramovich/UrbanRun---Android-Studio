@@ -441,7 +441,9 @@ public class GameActivity extends Activity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                GameActivity.super.onBackPressed();                    //TODO: sending to the servlet that i left the game
+                //TODO: sending to the servlet that i left the game
+                startActivity(new Intent(GameActivity.this, MainScreen.class));
+                finish();
             }
         });
         builder.setNegativeButton("Stay", null);

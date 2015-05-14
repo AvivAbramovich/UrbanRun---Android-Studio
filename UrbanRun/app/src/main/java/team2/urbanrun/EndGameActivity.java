@@ -2,6 +2,7 @@ package team2.urbanrun;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -69,9 +70,16 @@ public class EndGameActivity extends ListActivity {
         ((Button)findViewById(R.id.newGameButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); //return to the friend choosing activity
+                startActivity(new Intent(EndGameActivity.this, MainScreen.class));
+                finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(EndGameActivity.this, MainScreen.class));
+        finish();
     }
 
     private class EndGameAdapter extends ArrayAdapter<String> {

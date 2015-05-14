@@ -48,6 +48,8 @@ public class MainScreen extends Activity {
                 startActivity(intent);
             }
         });
+
+        new ServletCleanDB().execute(); //help keeping the DB in the server clean
     }
 
     @Override

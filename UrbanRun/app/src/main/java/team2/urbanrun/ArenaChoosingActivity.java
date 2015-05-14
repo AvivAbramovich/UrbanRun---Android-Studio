@@ -43,7 +43,6 @@ public class ArenaChoosingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-        Log.d("Aviv","arena choosing create");
         Profile myProfile = Profile.getCurrentProfile();
 
         map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
@@ -179,6 +178,12 @@ public class ArenaChoosingActivity extends Activity {
 			}
 		});
 	}
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(ArenaChoosingActivity.this, MainScreen.class));
+        finish();
+    }
 
 	void update_game_size_text(TextView tv, double radius)
 	{

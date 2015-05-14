@@ -84,7 +84,6 @@ public class FriendChoosingActivity extends ListActivity {
         ((Button)findViewById(R.id.doneButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Aviv","num choosen: "+friendChosen.size());
                 if (friendChosen.size() == 0) {
                     FriendChoosingActivity.this.runOnUiThread(new Runnable() {
                         @Override
@@ -112,8 +111,6 @@ public class FriendChoosingActivity extends ListActivity {
                     String CenterLat = Double.toString(getIntent().getExtras().getDouble("CenterLat"));
                     String CenterLng = Double.toString(getIntent().getExtras().getDouble("CenterLng"));
                     String TimeInSeconds = getIntent().getExtras().getString("Time");
-                    Log.d("Aviv", "Game properties: radius: " + getIntent().getExtras().getInt("Radius") + ", x: " + getIntent().getExtras().getDouble("CenterLat") + ", y: " + getIntent().getExtras().getDouble("CenterLng"));
-                    Log.d("Aviv", "Game properties: radius: " + radius + ", x: " + CenterLat + ", y: " + CenterLng + ", myID: " + myID + ", opps: " + opponents);
                     String res = null;
                     try {
                         res = (new ServletInitGame().execute(myID, opponents, radius, CenterLat, CenterLng, TimeInSeconds)).get();
@@ -139,6 +136,25 @@ public class FriendChoosingActivity extends ListActivity {
     {
         super.onPause();
     }
+
+    @Override
+    public void onBackPressed(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(FriendChoosingActivity.this);
+
+        builder.setMessage("Cancel the game?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(FriendChoosingActivity.this, MainScreen.class));
+                finish();
+            }
+        });
+        builder.setNegativeButton("Stay", null);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 
     private class MyAdapter extends ArrayAdapter<String> {
         private String[] IDs, names, images;
@@ -167,17 +183,13 @@ public class FriendChoosingActivity extends ListActivity {
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("Aviv", names[position]);
-                    //check if already in the list
                     CheckBox cb = (CheckBox) v.findViewById(R.id.cbBox);
 
                     if(friendChosen.contains(IDs[position])){
-                        Log.d("Aviv","Removing "+names[position]+" from the list");
                         friendChosen.remove(IDs[position]);
                         cb.setChecked(false);
                     }
                     else{
-                        Log.d("Aviv", "Adding "+names[position]+" to the game");
                         friendChosen.add(IDs[position]);
                         cb.setChecked(true);
                     }

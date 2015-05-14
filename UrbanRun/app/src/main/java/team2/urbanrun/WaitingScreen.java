@@ -40,9 +40,11 @@ public class WaitingScreen extends ListActivity {
     Profile myProfile = Profile.getCurrentProfile();
     GoogleMap map;
     String GameID;
-    String statuses[]; //Wait, Accepted, Declined
+    String ids[]={}, names[]={}, statuses[]={}; //Wait, Accepted, Declined
+    Bitmap[] images={};
     Timer timer;
-    Bitmap accept, declined;
+    Bitmap accept, declined, creator, waiting;
+    boolean isAlreadyBegun = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,16 +56,18 @@ public class WaitingScreen extends ListActivity {
         GameID = getIntent().getExtras().getString("GameID");
         accept = (BitmapFactory.decodeResource(getResources(), R.drawable.approved));
         declined = (BitmapFactory.decodeResource(getResources(), R.drawable.decline));
+        waiting = (BitmapFactory.decodeResource(getResources(), R.drawable.waiting));
+        creator = (BitmapFactory.decodeResource(getResources(), R.drawable.inviter));
+        timer = null;
         int Radius = 0;
         double centerLat = 0, centerLng = 0;
-        String[] names = {}, images = {}, ids = {};
         try {
             String res = (new ServletGetGameProperties().execute(GameID, myProfile.getId(), "WaitingScreen")).get();
-            Log.d("Aviv", "Response from servlet: " + res);
             if (res.equals("started"))   //Game already begun, returns to the main screen
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(WaitingScreen.this);
                 builder.setMessage("The game has already begun");
+                isAlreadyBegun = true;
                 builder.setCancelable(false);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -100,7 +104,7 @@ public class WaitingScreen extends ListActivity {
 
                 int numPlayers = array.length();
                 names = new String[numPlayers];
-                images = new String[numPlayers];
+                images = new Bitmap[numPlayers];
                 ids = new String[numPlayers];
                 statuses = new String[numPlayers];
                 ///////// set players //////////
@@ -108,12 +112,9 @@ public class WaitingScreen extends ListActivity {
                     JSONObject player = array.getJSONObject(i);
                     ids[i] = player.getString("ID");    //maybe dont need it, because the servlet return them sorting by the id's
                     names[i] = player.getString("FirstName") + " " + player.getString("LastName");
-                    images[i] = player.getString("ImageURL");
-                    statuses[i] = "wait";
+                    images[i] = (new DownloadImageTask().execute(player.getString("ImageURL"))).get();
+                    statuses[i] = "";
                 }
-
-
-                setListAdapter(new FriendsListAdapter(this, android.R.layout.simple_list_item_1, R.id.textView, names, images, ids));
 
                 final Button Startbtn = (Button) findViewById(R.id.startButton);
                 final Button acceptBtn = (Button) findViewById(R.id.AcceptBtn);
@@ -146,13 +147,7 @@ public class WaitingScreen extends ListActivity {
                             }
                             else {
                                 Intent intent = new Intent(WaitingScreen.this, GameActivity.class);
-                                try {
-                                    Log.d("Aviv", (new ServletGameStart().execute(GameID)).get());
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                } catch (ExecutionException e) {
-                                    e.printStackTrace();
-                                }
+                                new ServletGameStart().execute(GameID);
                                 intent.putExtra("GameID", GameID);
                                 startActivity(intent);
                             }
@@ -191,101 +186,156 @@ public class WaitingScreen extends ListActivity {
                         public void onClick(View v) {
                             new ServletAccept().execute(myProfile.getId(), GameID);
                             //TODO: toast a message
-                            acceptBtn.setVisibility(View.GONE);
+                            acceptBtn.setVisibility(View.INVISIBLE);
+                            acceptBtn.setOnClickListener(null);
                         }
                     });
+
                 }
-
-                final Bitmap accept, declined, waiting;
             }
-
         } catch(Exception e){
             e.printStackTrace();
         }
-
-        timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                String res = null;
-                try {
-                    res = (new ServletCheckStatuses().execute(GameID, myProfile.getId())).get();
-                    Log.d("Aviv", "Result from servlet: " + res);
-                    boolean isStart = new JSONObject(res).getBoolean("isStart");
-                    if (isStart) {
-                        Intent intent = new Intent(WaitingScreen.this, GameActivity.class);
-                        intent.putExtra("GameID", GameID);
-                        startActivity(intent);
-                        finish();
-                    }
-                    JSONArray arr = new JSONObject(res).getJSONArray("status");
-                    for (int i = 0; i < arr.length(); i++) {
-                        String temp = arr.getString(i);
-                        if (!statuses[i].equals(temp)) {
-                            statuses[i] = temp;
-                            if (temp.equals("Accepted")) {
-                                Log.d("Aviv", "change " + i + " to Accepted");
-                            }
-                            if (temp.equals("Declined")) {
-                                Log.d("Aviv", "change " + i + " to Declined");
-                            }
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, 0, 2000);
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        timer.cancel();
+        if(timer!=null)
+            timer.cancel();
+    }
+
+    @Override
+    protected  void onResume(){
+        super.onResume();
+        if(!isAlreadyBegun){
+            timer = new Timer();
+            timer.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    try {
+                        String res = (new ServletCheckStatuses().execute(GameID, myProfile.getId())).get();
+                        Log.d("Aviv", "Result from servlet: " + res);
+                        String isStart = new JSONObject(res).getString("isStart");  //"true", "false" or "canceled"
+                        if (isStart.equals("true")) {
+                            Intent intent = new Intent(WaitingScreen.this, GameActivity.class);
+                            intent.putExtra("GameID", GameID);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else if(isStart.equals("canceled")){
+                            WaitingScreen.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    new ServletDeclined().execute();    //so the user won't get anymore the game invitations
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(WaitingScreen.this);
+                                    builder.setMessage("The game was canceled, return to the main screen");
+                                    builder.setCancelable(false);
+                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                            startActivity(new Intent(WaitingScreen.this, MainScreen.class));
+                                            finish();
+                                            timer.cancel();
+                                        }
+                                    });
+                                    AlertDialog alert = builder.create();
+                                    alert.show();
+                                }
+                            });
+                        }
+                        JSONArray arr = new JSONObject(res).getJSONArray("status");
+                        boolean flag = false;
+                        for (int i = 0; i < arr.length(); i++) {
+                            String temp = arr.getString(i);
+                            if (!statuses[i].equals(temp)) {
+                                statuses[i] = temp;
+                                flag = true;
+                            }
+                        }
+                        if(flag){
+                            WaitingScreen.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    setListAdapter(new FriendsListAdapter(WaitingScreen.this, android.R.layout.simple_list_item_1, R.id.textView, ids));
+                                }
+                            });
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, 0, 2000);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(WaitingScreen.this);
+        if(getIntent().getExtras().getBoolean("isCreator")){
+            builder.setMessage("If you choose to leave, the game will be canceled. Are you sure?");
+            builder.setCancelable(false);
+            builder.setPositiveButton("Cancel game", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    new ServletCancelGame().execute(GameID);
+                    startActivity(new Intent(WaitingScreen.this, MainScreen.class));
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Stay", null);
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+        else{
+            builder.setMessage("Decline the invitation?");
+            builder.setCancelable(false);
+            builder.setPositiveButton("Decline", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    new ServletDeclined().execute(myProfile.getId(), GameID);
+                    startActivity(new Intent(WaitingScreen.this, MainScreen.class));
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Stay", null);
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
     }
 
     private class FriendsListAdapter extends ArrayAdapter<String> {
-        private String[] names, images, ids;
-        private Bitmap waiting, creator;
 
-
-        public FriendsListAdapter(Context context, int resource, int textViewResourceId, String[] _names, String[] _img, String[] _ids) {
-            super(context, resource, textViewResourceId, _names);
-            names = _names;
-            images = _img;
-            ids = _ids;
-            waiting = (BitmapFactory.decodeResource(getResources(), R.drawable.waiting));
-            creator = (BitmapFactory.decodeResource(getResources(), R.drawable.inviter));
+        public FriendsListAdapter(Context context, int resource, int textViewResourceId, String[] _ids) {
+            super(context, resource, textViewResourceId, _ids);
         }
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             LayoutInflater inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View  row = inflator.inflate(R.layout.friend_status_list_item, parent, false);
-            final ImageView iv = (ImageView) row.findViewById(R.id.userImage);
-            final TextView tv = (TextView) row.findViewById(R.id.userName);
+            ((ImageView) row.findViewById(R.id.userImage)).setImageBitmap(images[position]);
+            ((TextView) row.findViewById(R.id.userName)).setText(names[position]);
             final ImageView status = (ImageView) row.findViewById(R.id.userStatus);
 
-            try {
-                iv.setImageBitmap((new DownloadImageTask().execute(images[position])).get());
-            }catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-            tv.setText(names[position]);
-            if(!getIntent().getExtras().getBoolean("isCreator") &&
-                    getIntent().getExtras().getString("creator").equals(ids[position])) {
-                status.setImageBitmap(creator);
-                statuses[position] = "creator";
-            }
-            else
+            if(statuses[position].equals("wait"))
                 status.setImageBitmap(waiting);
-
+            else{
+                if(statuses[position].equals("Accepted"))
+                    status.setImageBitmap(accept);
+                else{
+                    if(statuses[position].equals("Declined"))
+                        status.setImageBitmap(declined);
+                    else
+                        status.setImageBitmap(creator);
+                }
+            }
             return row;
         }
     }

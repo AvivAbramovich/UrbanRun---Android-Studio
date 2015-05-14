@@ -24,8 +24,6 @@ public class ServletAmIInvited extends AsyncTask<String,String,String>
 //if the oppenent not ready yet, returns "Waiting for opp"
 //if both players ready, send back the ID of the game (as String)
 {
-    private String myName;
-
     @Override
     protected String doInBackground(String...params) {
         HttpClient httpClient = new DefaultHttpClient();
