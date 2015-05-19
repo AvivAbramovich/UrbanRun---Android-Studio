@@ -1,12 +1,12 @@
 package team2.urbanrun;
 
 import com.facebook.Profile;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerDragListener;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -17,8 +17,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -28,6 +32,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
@@ -38,7 +43,6 @@ public class ArenaChoosingActivity extends Activity {
 	Marker usersLoc;
 	Marker center;
 	TextView tv;
-    Bitmap myIcon;
     NumberPicker minutes = null;
     TextView timeDis = null;
     int time;
@@ -50,35 +54,25 @@ public class ArenaChoosingActivity extends Activity {
         Profile myProfile = Profile.getCurrentProfile();
 
         map = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
-		
-		CircleOptions circOp = new CircleOptions();
-		center = map.addMarker(new MarkerOptions().position(new LatLng(32.761872,35.018299)));   //HAIFA UNIV.
+
+        CircleOptions circOp = new CircleOptions();
+		center = map.addMarker(new MarkerOptions().position(new LatLng(32.761872,35.018299)));
 		center.setDraggable(true);
 		circOp.center(center.getPosition());
 		circOp.radius(AppConstants.DEFAULT_RADIUS);
 		usersLoc = map.addMarker(new MarkerOptions().position(new LatLng(0, 0)));
 		cir = map.addCircle(circOp);
 
-        tv = (TextView) findViewById(R.id.textView_size_arena);
-		update_game_size_text(tv,cir.getRadius());
-
 		//from the previous intent, right now, this is the launched intent, so we use in Oren's image and name
-        Bitmap myImage=null;
         try {
-             myImage = (new DownloadImageTask().execute(myProfile.getProfilePictureUri(50,50).toString())).get();
+            Log.d("Aviv", "imageURL: " + myProfile.getProfilePictureUri(50, 50).toString());
+             Bitmap myImage = (new DownloadImageTask().execute(myProfile.getProfilePictureUri(50,50).toString())).get();
+             usersLoc.setIcon(BitmapDescriptorFactory.fromBitmap(getCroppedBitmap(myImage)));
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-        myIcon = Bitmap.createScaledBitmap(myImage,50,50,false);
-        usersLoc.setIcon(BitmapDescriptorFactory.fromBitmap(myIcon));
-		
-		//settings
-		UiSettings settings = map.getUiSettings();
-		settings.setZoomControlsEnabled(true);
-		settings.setMyLocationButtonEnabled(true);
 		
 		//user's locations
 		LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -132,8 +126,9 @@ public class ArenaChoosingActivity extends Activity {
 					public void onClick(View v) {
 						if(cir.getRadius()<AppConstants.MAX_RADIUS)
                         {
-                            cir.setRadius(2*cir.getRadius());
-                            update_game_size_text(tv,cir.getRadius());
+                            cir.setRadius(cir.getRadius()+20);
+                            Toast.makeText(getApplicationContext(), "Arena Radius is "+
+                                    Integer.toString((int)cir.getRadius())+" meters", Toast.LENGTH_SHORT).show();
 						}
 					}
 				});
@@ -144,19 +139,12 @@ public class ArenaChoosingActivity extends Activity {
 					public void onClick(View v) {
 						if(cir.getRadius()>AppConstants.MIN_RADIUS)
                         {
-						    cir.setRadius(cir.getRadius()/2);
-                            update_game_size_text(tv,cir.getRadius());
+						    cir.setRadius(cir.getRadius()-20);
+                            Toast.makeText(getApplicationContext(), "Arena Radius is "+
+                                    Integer.toString((int)cir.getRadius())+" meters", Toast.LENGTH_SHORT).show();
 						}
 					}
 				});
-
-		findViewById(R.id.button_me).setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				map.animateCamera(CameraUpdateFactory.newLatLngZoom(usersLoc.getPosition(), 16));
-			}
-		});
 
 		map.setOnMapLongClickListener(new OnMapLongClickListener() {
 
@@ -172,19 +160,35 @@ public class ArenaChoosingActivity extends Activity {
 			@Override
 			public void onClick(View v) {
                  //intent to the friends choosing activity
-				Intent intent = new Intent(ArenaChoosingActivity.this, FriendChoosingActivity.class);
-                intent.putExtra("Radius", (int)cir.getRadius());
-                intent.putExtra("CenterLat", center.getPosition().latitude);
-                intent.putExtra("CenterLng", center.getPosition().longitude);
-                intent.putExtra("Time",String.valueOf(time));
-                startActivity(intent);
-                finish();
+                 Intent intent = new Intent(ArenaChoosingActivity.this, FriendsChoosingActivity.class);
+                 intent.putExtra("Radius", (int) cir.getRadius());
+                 intent.putExtra("CenterLat", center.getPosition().latitude);
+                 intent.putExtra("CenterLng", center.getPosition().longitude);
+                 intent.putExtra("Time", time);
+                 startActivity(intent);
+                 finish();
 			}
 		});
 
+        findViewById(R.id.button_me).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(usersLoc.getPosition(), 18));
+            }
+        });
+
+        findViewById(R.id.button_help).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ArenaChoosingActivity.this, tutorial.class));
+            }
+        });
+
+        time = 60;
         minutes = (NumberPicker)findViewById(R.id.PickMin);
-        minutes.setMinValue(0);
-        minutes.setMaxValue(1000);
+        minutes.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        minutes.setMinValue(1);
+        minutes.setMaxValue(100);
         minutes.setWrapSelectorWheel(true);
         timeDis = (TextView) findViewById(R.id.TimeDisplay);
         minutes.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -196,6 +200,14 @@ public class ArenaChoosingActivity extends Activity {
                 timeDis.setText(Old.concat(String.valueOf(newVal)+":"+"00"));
             }
         });
+
+        if(getIntent().getExtras().getString("From").equals("FriendChoosingActivity")){
+
+            center.setPosition(new LatLng(getIntent().getExtras().getDouble("CenterLat"),getIntent().getExtras().getDouble("CenterLng")));
+            cir.setRadius(getIntent().getExtras().getInt("Radius"));
+            cir.setCenter(center.getPosition());
+            time = getIntent().getExtras().getInt("Time");
+        }
 	}
 
     @Override
@@ -204,8 +216,25 @@ public class ArenaChoosingActivity extends Activity {
         finish();
     }
 
-	void update_game_size_text(TextView tv, double radius)
-	{
-		tv.setText("Game Arena Radius: "+Integer.toString((int)radius)+" meters");
-	}
+    public Bitmap getCroppedBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
+                bitmap.getWidth() / 2, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
+        //return _bmp;
+        return output;
+    }
 }

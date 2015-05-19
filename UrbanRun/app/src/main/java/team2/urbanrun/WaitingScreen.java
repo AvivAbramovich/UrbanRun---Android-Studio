@@ -150,6 +150,7 @@ public class WaitingScreen extends ListActivity {
                                 new ServletGameStart().execute(GameID);
                                 intent.putExtra("GameID", GameID);
                                 startActivity(intent);
+                                finish();
                             }
                         }
                     });
@@ -223,44 +224,46 @@ public class WaitingScreen extends ListActivity {
                             startActivity(intent);
                             finish();
                         }
-                        else if(isStart.equals("canceled")){
-                            WaitingScreen.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    new ServletDeclined().execute();    //so the user won't get anymore the game invitations
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(WaitingScreen.this);
-                                    builder.setMessage("The game was canceled, return to the main screen");
-                                    builder.setCancelable(false);
-                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.cancel();
-                                            startActivity(new Intent(WaitingScreen.this, MainScreen.class));
-                                            finish();
-                                            timer.cancel();
-                                        }
-                                    });
-                                    AlertDialog alert = builder.create();
-                                    alert.show();
-                                }
-                            });
-                        }
-                        JSONArray arr = new JSONObject(res).getJSONArray("status");
-                        boolean flag = false;
-                        for (int i = 0; i < arr.length(); i++) {
-                            String temp = arr.getString(i);
-                            if (!statuses[i].equals(temp)) {
-                                statuses[i] = temp;
-                                flag = true;
+                        else {
+                            if (isStart.equals("canceled")) {
+                                WaitingScreen.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        new ServletDeclined().execute();    //so the user won't get anymore the game invitations
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(WaitingScreen.this);
+                                        builder.setMessage("The game was canceled, return to the main screen");
+                                        builder.setCancelable(false);
+                                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.cancel();
+                                                startActivity(new Intent(WaitingScreen.this, MainScreen.class));
+                                                finish();
+                                                timer.cancel();
+                                            }
+                                        });
+                                        AlertDialog alert = builder.create();
+                                        alert.show();
+                                    }
+                                });
                             }
-                        }
-                        if(flag){
-                            WaitingScreen.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    setListAdapter(new FriendsListAdapter(WaitingScreen.this, android.R.layout.simple_list_item_1, R.id.textView, ids));
+                            JSONArray arr = new JSONObject(res).getJSONArray("status");
+                            boolean flag = false;
+                            for (int i = 0; i < arr.length(); i++) {
+                                String temp = arr.getString(i);
+                                if (!statuses[i].equals(temp)) {
+                                    statuses[i] = temp;
+                                    flag = true;
                                 }
-                            });
+                            }
+                            if (flag) {
+                                WaitingScreen.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        setListAdapter(new FriendsListAdapter(WaitingScreen.this, android.R.layout.simple_list_item_1, R.id.textView, ids));
+                                    }
+                                });
+                            }
                         }
 
                     } catch (JSONException e) {

@@ -119,11 +119,11 @@ public class EndGameActivity extends ListActivity {
 
             //adding a image for each place
             if(position==0)
-                label.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.first_place));
+                label.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.first));
             if(position==1)
-                label.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.second_place));
+                label.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.second));
             if(position==2)
-                label.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.third_place));
+                label.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.third));
             if(position>2)
                 label.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.sad));
             return row;

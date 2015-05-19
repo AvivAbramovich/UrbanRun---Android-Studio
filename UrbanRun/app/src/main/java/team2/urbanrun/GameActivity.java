@@ -7,6 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -37,7 +45,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
-public class GameActivity extends Activity {
+public class GameActivity extends Activity{
 
     Profile myProfile;
     GoogleMap map;
@@ -62,7 +70,6 @@ public class GameActivity extends Activity {
     boolean endGame = true;
 
     //TextViews
-    TextView countDown;
     TextView myScoreTV;
     TextView opp1scoreTV, opp1nameTV, opp2scoreTV, opp2nameTV, opp3scoreTV, opp3nameTV;
     ImageView opp1img, opp2img, opp3img;
@@ -94,12 +101,14 @@ public class GameActivity extends Activity {
         GameID= getIntent().getExtras().getString("GameID");
         int Radius=0;
         double centerLat=0,centerLng=0;
+        int gameTime = 0;
         try {
             JSONObject json = new JSONObject((new ServletGetGameProperties().execute(GameID,myProfile.getId(),"GameScreen")).get());
             Log.d("Aviv","json: "+json.toString());
             Radius = json.getInt("Radius");
             centerLat = json.getDouble("centerLat");
             centerLng = json.getDouble("centerLng");
+            gameTime = json.getInt("time");
 
             CircleOptions circOp = new CircleOptions().center(new LatLng(centerLat,centerLng)).radius(Radius);
             Arena = map.addCircle(circOp);
@@ -109,7 +118,6 @@ public class GameActivity extends Activity {
             JSONArray playersInfo = json.getJSONArray("Players");
 
             numPlayers = playersInfo.length();
-            Log.d("Aviv","Num players: "+numPlayers);
             players = new Marker[numPlayers];
             firstNames = new String[numPlayers];
             scores = new int[numPlayers];
@@ -119,12 +127,12 @@ public class GameActivity extends Activity {
             for(int i=0; i<playersInfo.length();i++) {
                 players[i] = map.addMarker(new MarkerOptions().position(new LatLng(0,0)));
                 firstNames[i] = ((JSONObject)playersInfo.get(i)).getString("FirstName");
-                icons[i] =  new DownloadImageTask().execute(((JSONObject)playersInfo.get(i)).getString("ImageURL")).get();
+                icons[i] =  getCroppedBitmap(new DownloadImageTask().execute(((JSONObject) playersInfo.get(i)).getString("ImageURL")).get());
                 players[i].setIcon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(icons[i],50,50,false)));
                 scores[i] = 0;
             }
 
-            Bitmap myImage = (new DownloadImageTask().execute(myProfile.getProfilePictureUri(40,40).toString())).get();
+            Bitmap myImage = getCroppedBitmap((new DownloadImageTask().execute(myProfile.getProfilePictureUri(40, 40).toString())).get());
             ((ImageView)findViewById(R.id.myImage)).setImageBitmap(myImage);
             myLoc = map.addMarker(new MarkerOptions().position(new LatLng(0,0)));;
             myLoc.setIcon(BitmapDescriptorFactory.fromBitmap(Bitmap.createScaledBitmap(myImage,50,50,false)));
@@ -142,13 +150,10 @@ public class GameActivity extends Activity {
         bronzeCoin = (BitmapFactory.decodeResource(getResources(), R.drawable.bronze40));
         diamond = (BitmapFactory.decodeResource(getResources(), R.drawable.diamond40));
 
-        //settings
-        UiSettings settings = map.getUiSettings();
-        settings.setZoomControlsEnabled(true);
-        settings.setMyLocationButtonEnabled(true);
-
-        countDown = (TextView)findViewById(R.id.clockTextView);
         myScoreTV = (TextView)findViewById(R.id.MyScore);
+        final TextView BeforeGameTV = (TextView) findViewById(R.id.countTillStart);
+        final TextView clock = (TextView)findViewById(R.id.clockTextView);
+        clock.setText(String.format("%02d:%02d",gameTime/60,gameTime%60));
 
         opp1scoreTV = (TextView)findViewById(R.id.opp1score);
         opp2scoreTV = (TextView)findViewById(R.id.opp2score);
@@ -172,6 +177,8 @@ public class GameActivity extends Activity {
         opp1scoreTV.setVisibility(View.INVISIBLE);
         opp2scoreTV.setVisibility(View.INVISIBLE);
         opp3scoreTV.setVisibility(View.INVISIBLE);
+
+        clock.setVisibility(View.INVISIBLE);
 
         if(numPlayers == 1)
         {
@@ -201,9 +208,9 @@ public class GameActivity extends Activity {
                 opp1img.setImageBitmap(icons[0]);
                 opp1nameTV.setText(firstNames[0]);
                 opp1scoreTV.setText("0");
-                opp1img.setImageBitmap(icons[1]);
-                opp1nameTV.setText(firstNames[1]);
-                opp1scoreTV.setText("0");
+                opp2img.setImageBitmap(icons[1]);
+                opp2nameTV.setText(firstNames[1]);
+                opp2scoreTV.setText("0");
 
                 opp3nameTV.setVisibility(View.GONE);
                 opp3scoreTV.setVisibility(View.GONE);
@@ -223,12 +230,12 @@ public class GameActivity extends Activity {
                 opp1img.setImageBitmap(icons[0]);
                 opp1nameTV.setText(firstNames[0]);
                 opp1scoreTV.setText("0");
-                opp1img.setImageBitmap(icons[1]);
-                opp1nameTV.setText(firstNames[1]);
-                opp1scoreTV.setText("0");
-                opp1img.setImageBitmap(icons[2]);
-                opp1nameTV.setText(firstNames[2]);
-                opp1scoreTV.setText("0");
+                opp2img.setImageBitmap(icons[1]);
+                opp2nameTV.setText(firstNames[1]);
+                opp2scoreTV.setText("0");
+                opp3img.setImageBitmap(icons[2]);
+                opp3nameTV.setText(firstNames[2]);
+                opp3scoreTV.setText("0");
             }
         }
 
@@ -281,17 +288,27 @@ public class GameActivity extends Activity {
                         String str;
                         try {
                             if (stage == 0) {
-                                str = (new ServletReadySetGo().execute(GameID)).get();
-                                Log.d("Aviv", "second till the game start: "+str);
+                                str = (new ServletReadySetGo().execute(GameID, myProfile.getId(),
+                                        Double.toString(myLoc.getPosition().latitude),Double.toString(myLoc.getPosition().longitude))).get();
+                                Log.d("Aviv", "ReadySetGo: "+str);
                                 JSONObject object = new JSONObject(str);
                                 String status = object.getString("status");
                                 if(status.equals("start")){
                                     Log.d("Aviv","Starting the game!!!");
+                                    BeforeGameTV.setVisibility(View.GONE);
+                                    clock.setVisibility(View.VISIBLE);
                                     stage = 1;
                                     whistle.start();
                                 }
                                 else{
-                                    countDown.setText(Integer.toString(object.getInt("time")) + " seconds to the game");
+                                    int secondsToStart = object.getInt("time");
+                                    BeforeGameTV.setText(Integer.toString(secondsToStart));
+
+                                    JSONArray arr = object.getJSONArray("Players");
+                                    for(int i=0; i<numPlayers; i++){
+                                        JSONArray loc = (JSONArray) arr.get(i);
+                                        players[i].setPosition(new LatLng(loc.getDouble(0), loc.getDouble(1)));
+                                    }
                                 }
                             }
                             if(stage==1){
@@ -304,8 +321,6 @@ public class GameActivity extends Activity {
                                 JSONArray elementsArr = object.getJSONArray("Elements");
                                 secondsLeft = object.getLong("timeLeft");
                                 sound = object.getInt("sound");
-                                myScore = object.getInt("myScore");
-
                                 if (sound == 1)
                                     CoinsSound.start();
 
@@ -314,16 +329,11 @@ public class GameActivity extends Activity {
                                     EndOfGame();
                                 }
 
-                                //DEBUG
-                                if (numPlayers != playersJson.length())
-                                    Log.e("Aviv", "Num players form json (" + Integer.toString(playersJson.length()) +
-                                            ") not equal to numPlayer from the game propoerties (" + Integer.toString(numPlayers) + ")");
-
                                 //PLAYERS
                                 for (int i = 0; i < numPlayers; i++) {
-                                    JSONObject obj = (JSONObject) playersJson.get(i);
-                                    scores[i] = obj.getInt("score");
-                                    players[i].setPosition(new LatLng(obj.getDouble("Lat"), obj.getDouble("Lng")));
+                                    JSONArray obj = (JSONArray) playersJson.get(i);
+                                    players[i].setPosition(new LatLng(obj.getDouble(0), obj.getDouble(1)));
+                                    scores[i] = obj.getInt(2);
                                 }
 
                                 //find best 3 opponents
@@ -351,18 +361,18 @@ public class GameActivity extends Activity {
                                         }
                                 }
 
-                                myScoreTV.setText(Integer.toString(myScore));
+                                myScoreTV.setText(Integer.toString(object.getInt("myScore")));
                                 opp1nameTV.setText(firstNames[firstIndex]);
                                 opp1img.setImageBitmap(icons[firstIndex]);
                                 opp1scoreTV.setText(Integer.toString(scores[firstIndex]));
 
-                                if (numPlayers > 2) {
+                                if (numPlayers > 1) {
                                     opp2nameTV.setText(firstNames[secondIndex]);
                                     opp2img.setImageBitmap(icons[secondIndex]);
                                     opp2scoreTV.setText(Integer.toString(scores[secondIndex]));
                                 }
 
-                                if (numPlayers > 3) {
+                                if (numPlayers > 2) {
                                     opp3nameTV.setText(firstNames[thirdIndex]);
                                     opp3img.setImageBitmap(icons[thirdIndex]);
                                     opp3scoreTV.setText(Integer.toString(scores[thirdIndex]));
@@ -410,7 +420,9 @@ public class GameActivity extends Activity {
                                 for (; i < AppConstants.MAX_ELEMENTS; i++)   //hide all the unused elements
                                     elements[i].setVisible(false);
 
-                                setTime(secondsLeft);
+                                int minutes = (int)(secondsLeft/60);
+                                int seconds = (int)(secondsLeft%60);
+                                clock.setText(String.format("%02d:%02d",minutes,seconds));
                             }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -422,7 +434,7 @@ public class GameActivity extends Activity {
                     };
                 });
             };
-        },0,1000);   //every second
+        },0,1000);   //every half second
     }
     @Override
     protected void onDestroy()
@@ -451,13 +463,6 @@ public class GameActivity extends Activity {
         alert.show();
     }
 
-    void setTime(long secondsLeft)
-    {
-        int minutes = (int)(secondsLeft/60);
-        int seconds = (int)(secondsLeft%60);
-        countDown.setText(String.format("%02d:%02d",minutes,seconds));
-    }
-
     void EndOfGame()
     {
         if(endGame) {
@@ -469,5 +474,27 @@ public class GameActivity extends Activity {
             startActivity(intent);
             finish();
         }
+    }
+
+    public Bitmap getCroppedBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
+                bitmap.getWidth() / 2, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
+        //return _bmp;
+        return output;
     }
 }

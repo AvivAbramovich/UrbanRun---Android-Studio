@@ -104,7 +104,7 @@ public class PlayerChoosingActivity extends ListActivity {
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     }
-                    Intent intent = new Intent(PlayerChoosingActivity.this, FriendChoosingActivity.class);
+                    Intent intent = new Intent(PlayerChoosingActivity.this, FriendsChoosingActivity.class);
                     intent.putExtra("myName",usernames[position]);
                     intent.putExtra("myImage", ((BitmapDrawable)iv.getDrawable()).getBitmap());
                     startActivity(intent);

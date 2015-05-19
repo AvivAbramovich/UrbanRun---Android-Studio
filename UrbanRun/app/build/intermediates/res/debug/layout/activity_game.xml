@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:configChanges="orientation"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}"
+    android:background="#ffffff">
 
     <fragment
         android:id="@+id/map"
@@ -29,7 +30,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/opp1score"
-        android:layout_alignEnd="@+id/opp1score" />
+        android:layout_alignEnd="@+id/opp1score"
+        android:textColor="#000000"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/opp1score"
@@ -39,16 +42,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_alignBottom="@+id/opp1img"
         android:layout_toLeftOf="@+id/opp1img"
-        android:layout_toStartOf="@+id/opp1img" />
-
-    <TextView
-        android:id="@+id/textDebugDist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20dp"
-        android:layout_above="@+id/clockTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_toStartOf="@+id/opp1img"
+        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/MyScore"
@@ -58,7 +53,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_below="@+id/opp1name"
         android:layout_toRightOf="@+id/myImage"
-        android:layout_toEndOf="@+id/myImage" />
+        android:layout_toEndOf="@+id/myImage"
+        android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,7 +63,11 @@
         android:text="01:00"
         android:id="@+id/clockTextView"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="40dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/game_clock"
+        android:padding="5dp" />
 
     <ImageView
         android:id="@+id/myImage"
@@ -104,7 +104,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_alignTop="@+id/opp2img"
         android:layout_toLeftOf="@+id/opp2img"
-        android:layout_toStartOf="@+id/opp2img" />
+        android:layout_toStartOf="@+id/opp2img"
+        android:textColor="#000000"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/opp3score"
@@ -114,7 +116,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_alignBottom="@+id/opp3img"
         android:layout_toLeftOf="@+id/opp3img"
-        android:layout_toStartOf="@+id/opp3img" />
+        android:layout_toStartOf="@+id/opp3img"
+        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/opp3name"
@@ -124,7 +127,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_below="@+id/opp2img"
         android:layout_toLeftOf="@+id/opp3img"
-        android:layout_toStartOf="@+id/opp3img" />
+        android:layout_toStartOf="@+id/opp3img"
+        android:textColor="#000000"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/opp2score"
@@ -134,7 +139,20 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_above="@+id/opp3img"
         android:layout_toLeftOf="@+id/opp2img"
-        android:layout_toStartOf="@+id/opp2img" />
+        android:layout_toStartOf="@+id/opp2img"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="10"
+        android:id="@+id/countTillStart"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="200dp"
+        android:enabled="true"
+        android:textColor="#000000" />
 
 </RelativeLayout>
 <!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/src/main/res/layout/activity_game.xml -->

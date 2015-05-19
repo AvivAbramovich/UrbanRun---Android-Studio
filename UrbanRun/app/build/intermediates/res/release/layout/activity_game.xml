@@ -1,0 +1,157 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:configChanges="orientation"
+    tools:context="${relativePackage}.${activityClass}"
+    android:background="#ffffff">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/opp1img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/opp1name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="opp1name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/opp1score"
+        android:layout_alignEnd="@+id/opp1score"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/opp1score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignBottom="@+id/opp1img"
+        android:layout_toLeftOf="@+id/opp1img"
+        android:layout_toStartOf="@+id/opp1img"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/MyScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/opp1name"
+        android:layout_toRightOf="@+id/myImage"
+        android:layout_toEndOf="@+id/myImage"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="01:00"
+        android:id="@+id/clockTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="40dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/game_clock"
+        android:padding="5dp" />
+
+    <ImageView
+        android:id="@+id/myImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/opp2img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_below="@+id/MyScore"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/opp3img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_below="@+id/opp2img"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/opp2name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="opp2name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignTop="@+id/opp2img"
+        android:layout_toLeftOf="@+id/opp2img"
+        android:layout_toStartOf="@+id/opp2img"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/opp3score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignBottom="@+id/opp3img"
+        android:layout_toLeftOf="@+id/opp3img"
+        android:layout_toStartOf="@+id/opp3img"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/opp3name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="opp3name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/opp2img"
+        android:layout_toLeftOf="@+id/opp3img"
+        android:layout_toStartOf="@+id/opp3img"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/opp2score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_above="@+id/opp3img"
+        android:layout_toLeftOf="@+id/opp2img"
+        android:layout_toStartOf="@+id/opp2img"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="10"
+        android:id="@+id/countTillStart"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="200dp"
+        android:enabled="true" />
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/Aviv/Documents/GitHub/UrbanRun%2D%2D-Android-Studio/UrbanRun/app/src/main/res/layout/activity_game.xml -->

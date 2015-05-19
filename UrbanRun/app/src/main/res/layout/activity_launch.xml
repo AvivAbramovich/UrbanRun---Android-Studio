@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="team2.urbanrun.LaunchActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/bg">
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
@@ -14,5 +14,4 @@
         android:layout_gravity="center_horizontal"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-
 </RelativeLayout>

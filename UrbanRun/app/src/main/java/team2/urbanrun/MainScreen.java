@@ -4,16 +4,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.facebook.Profile;
+import com.facebook.login.LoginManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +37,7 @@ public class MainScreen extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainScreen.this, ArenaChoosingActivity.class);
+                intent.putExtra("From","MainScreen");
                 startActivity(intent);
             }
         });
@@ -49,7 +50,20 @@ public class MainScreen extends Activity {
             }
         });
 
-        new ServletCleanDB().execute(); //help keeping the DB in the server clean
+        try {
+            String res = (new ServletUpdateDB().execute(myProfile.getId(),myProfile.getProfilePictureUri(100,100).toString())).get(); //help keeping the DB in the server clean
+            Toast.makeText(getApplicationContext(), res , Toast.LENGTH_LONG).show();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void LogoutFB(View view) {
+        LoginManager.getInstance().logOut();
+        Intent intent = new Intent(MainScreen.this, LaunchActivity.class);
+        startActivity(intent);
     }
 
     @Override
